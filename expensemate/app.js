@@ -126,17 +126,18 @@ function initSmartInsightsRotation() {
 }
 
 /* ==========================================================================
-   3. Interactive Onboarding Showcase (Replicating onBorading.dart)
+   3. Interactive Onboarding Showcase (Replicating Flutter onBorading.dart)
+   Multi-Layer Atmospheric Radiating Glows + Glassmorphic Card Shadows
    ========================================================================== */
-const SLIDE_GLOW_COLORS = [
-  '#81C784', // Welcome: ExpenseMate signature light green
-  '#81C784', // Slide 1: Fast & Effortless
-  '#4DD0E1', // Slide 2: Deep Analytics (Cyan)
-  '#FFB74D', // Slide 3: Budgeting & Smart Insights (Amber)
-  '#26A69A', // Slide 4: Recurring Subscriptions (Teal)
-  '#FF7043', // Slide 5: Split Bills & Debts (Coral)
-  '#81C784', // Slide 6: Home Screen Widgets
-  '#BA68C8'  // Slide 7: Data Freedom & Customisation (Purple)
+const SLIDE_GLOW_DATA = [
+  { hex: '#81C784', rgb: '129, 199, 132' }, // Slide 0: Welcome (Light Green)
+  { hex: '#81C784', rgb: '129, 199, 132' }, // Slide 1: Fast & Effortless (Light Green)
+  { hex: '#4DD0E1', rgb: '77, 208, 225' },  // Slide 2: Deep Analytics (Cyan)
+  { hex: '#FFB74D', rgb: '255, 183, 77' },  // Slide 3: Budgeting & Smart Insights (Amber)
+  { hex: '#26A69A', rgb: '38, 166, 154' },  // Slide 4: Recurring Subscriptions (Teal)
+  { hex: '#FF7043', rgb: '255, 112, 67' },  // Slide 5: Split Bills & Debts (Coral)
+  { hex: '#81C784', rgb: '129, 199, 132' }, // Slide 6: Home Screen Widgets (Light Green)
+  { hex: '#BA68C8', rgb: '186, 104, 200' }  // Slide 7: Data Freedom & Customisation (Purple)
 ];
 
 let currentSlide = 0;
@@ -148,7 +149,11 @@ function initOnboardingSlider() {
   const prevBtn = document.getElementById('onboardingPrevBtn');
   const nextBtn = document.getElementById('onboardingNextBtn');
   const nextBtnText = document.getElementById('nextBtnText');
-  const auraContainer = document.getElementById('onboardingDynamicAura');
+  const phoneFrame = document.getElementById('onboardingPhoneFrame');
+  const auraTop = document.getElementById('onboardingAuraTop');
+  const auraBottomRight = document.getElementById('onboardingAuraBottomRight');
+  const auraTopLeft = document.getElementById('onboardingAuraTopLeft');
+  const mockupBranding = document.querySelector('.mockup-branding');
 
   if (!slides.length) return;
 
@@ -185,15 +190,47 @@ function initOnboardingSlider() {
       }
     }
 
-    // Update Next button label for last slide
+    // On Page 0, hide top branding so there is only one heading ExpenseMate (matches onBorading.dart line 265)
+    if (mockupBranding) {
+      mockupBranding.style.opacity = currentSlide === 0 ? '0' : '1';
+      mockupBranding.style.pointerEvents = currentSlide === 0 ? 'none' : 'auto';
+      mockupBranding.style.transition = 'opacity 0.25s ease';
+    }
+
+    // Update Next button label and special gradient glow on final slide
     if (nextBtnText) {
       nextBtnText.textContent = currentSlide === totalSlides - 1 ? 'Get Started' : 'Next';
     }
+    if (nextBtn) {
+      if (currentSlide === totalSlides - 1) {
+        nextBtn.classList.add('last-slide');
+      } else {
+        nextBtn.classList.remove('last-slide');
+      }
+    }
 
-    // Subtle Dark Atmosphere Undertone Transition
-    const color = SLIDE_GLOW_COLORS[currentSlide];
-    if (auraContainer) {
-      auraContainer.style.background = `radial-gradient(circle at 50% 30%, ${color}0d 0%, transparent 60%)`;
+    // Multi-Layer Atmospheric Lighting System replicating Flutter onBorading.dart
+    const glow = SLIDE_GLOW_DATA[currentSlide];
+    const rgb = glow.rgb;
+
+    // 1. Atmospheric top perimeter radiating glow
+    if (auraTop) {
+      auraTop.style.background = `radial-gradient(ellipse at 50% 15%, rgba(${rgb}, 0.28) 0%, rgba(${rgb}, 0.10) 50%, transparent 100%)`;
+    }
+    // 2. Bottom-right corner aura bleeding inward
+    if (auraBottomRight) {
+      auraBottomRight.style.background = `radial-gradient(circle, rgba(${rgb}, 0.18) 0%, rgba(${rgb}, 0.04) 55%, transparent 100%)`;
+    }
+    // 3. Top-left corner aura bleeding inward
+    if (auraTopLeft) {
+      auraTopLeft.style.background = `radial-gradient(circle, rgba(${rgb}, 0.20) 0%, transparent 70%)`;
+    }
+    // 4. Smartphone outer chassis ambient rim lighting & card glow & active dot color
+    if (phoneFrame) {
+      phoneFrame.style.setProperty('--slide-rim-glow', `rgba(${rgb}, 0.22)`);
+      phoneFrame.style.setProperty('--slide-card-glow', `rgba(${rgb}, 0.18)`);
+      phoneFrame.style.setProperty('--slide-dot-color', glow.hex);
+      phoneFrame.style.setProperty('--slide-dot-glow', `rgba(${rgb}, 0.6)`);
     }
   }
 

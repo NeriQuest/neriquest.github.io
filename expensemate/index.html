@@ -135,9 +135,16 @@
         </div>
 
         <!-- Android Glass Frame for Onboarding Tour -->
-        <div class="onboarding-phone-frame">
-          <!-- Dynamic Atmospheric Background Aura that shifts color per slide -->
-          <div class="onboarding-dynamic-aura" id="onboardingDynamicAura"></div>
+        <div class="onboarding-phone-frame" id="onboardingPhoneFrame">
+          <!-- Dart onBorading.dart Multi-Layer Atmospheric Lighting System -->
+          <!-- 1. Top perimeter atmospheric radiating glow -->
+          <div class="onboarding-aura-top" id="onboardingAuraTop" aria-hidden="true"></div>
+          <!-- 2. Corner aura bleeding inward from bottom-right perimeter -->
+          <div class="onboarding-aura-bottom-right" id="onboardingAuraBottomRight" aria-hidden="true"></div>
+          <!-- 3. Corner aura bleeding inward from top-left perimeter -->
+          <div class="onboarding-aura-top-left" id="onboardingAuraTopLeft" aria-hidden="true"></div>
+          <!-- 4. Subtle frosted diffusion layer to soften background lighting into a blurry aura -->
+          <div class="onboarding-aura-diffuser" aria-hidden="true"></div>
 
           <!-- Authentic Android Phone Top Status Bar & Punch Hole Camera -->
           <div class="phone-status-bar" aria-hidden="true">

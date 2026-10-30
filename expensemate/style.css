@@ -750,17 +750,18 @@ body {
   width: 100%;
   max-width: 375px; /* True smartphone dimension on desktop */
   margin: 0 auto;
-  background: #090c12;
+  background: #07090c;
   border: 8px solid #1a2232;
   outline: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 40px;
-  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.95), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.95), 0 0 45px var(--slide-rim-glow, rgba(129, 199, 132, 0.20)), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
   position: relative;
   overflow: hidden;
   padding: 10px 14px 12px;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  transition: box-shadow 0.55s ease;
 }
 
 /* Smartphone Top Status Bar */
@@ -810,17 +811,61 @@ body {
   flex-shrink: 0;
 }
 
-/* Dynamic color-shifting aura */
-.onboarding-dynamic-aura {
+/* ==========================================================================
+   Dart onBorading.dart Multi-Layer Atmospheric Lighting System
+   ========================================================================== */
+/* 1. Atmospheric top perimeter radiating glow */
+.onboarding-aura-top {
   position: absolute;
-  top: -80px;
-  left: 0;
-  right: 0;
-  height: 420px;
-  background: radial-gradient(circle at 50% 30%, rgba(129, 199, 132, 0.25) 0%, rgba(129, 199, 132, 0.08) 45%, transparent 70%);
-  filter: blur(50px);
+  top: -60px;
+  left: -40px;
+  right: -40px;
+  height: 330px;
+  border-radius: 50%;
   pointer-events: none;
-  transition: background 0.6s ease;
+  z-index: 0;
+  filter: blur(28px);
+  transition: background 0.55s ease-in-out;
+  background: radial-gradient(ellipse at 50% 15%, rgba(129, 199, 132, 0.28) 0%, rgba(129, 199, 132, 0.10) 50%, transparent 100%);
+}
+
+/* 2. Corner aura bleeding inward from bottom-right perimeter */
+.onboarding-aura-bottom-right {
+  position: absolute;
+  bottom: -50px;
+  right: -50px;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(24px);
+  transition: background 0.55s ease-in-out;
+  background: radial-gradient(circle, rgba(129, 199, 132, 0.18) 0%, rgba(129, 199, 132, 0.04) 55%, transparent 100%);
+}
+
+/* 3. Corner aura bleeding inward from top-left perimeter */
+.onboarding-aura-top-left {
+  position: absolute;
+  top: -30px;
+  left: -40px;
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(24px);
+  transition: background 0.55s ease-in-out;
+  background: radial-gradient(circle, rgba(129, 199, 132, 0.20) 0%, transparent 70%);
+}
+
+/* 4. Frosted diffusion layer to soften background lighting into a blurry aura */
+.onboarding-aura-diffuser {
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  pointer-events: none;
   z-index: 0;
 }
 
@@ -1054,20 +1099,24 @@ body {
   overflow: hidden;
 }
 
-/* Consistent Glass Mockup Card */
+/* Consistent Glass Mockup Card matching _buildGlassCard in onBorading.dart */
 .glass-mockup-card {
   flex: 1;
-  background: rgba(21, 27, 39, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(24, 29, 36, 0.70) 35%, rgba(18, 22, 29, 0.80) 75%, rgba(16, 19, 24, 0.90) 100%);
+  border: 1.2px solid rgba(255, 255, 255, 0.16);
+  border-radius: 22px;
   padding: 16px;
-  backdrop-filter: blur(16px);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65), 0 4px 30px var(--slide-card-glow, rgba(129, 199, 132, 0.16));
+  transition: box-shadow 0.55s ease;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   box-sizing: border-box;
   overflow: hidden;
+  position: relative;
+  z-index: 1;
 }
 
 /* Slide 1 Components */
@@ -1677,8 +1726,8 @@ body {
 
 .indicator-dot.active {
   width: 22px;
-  background: #fff;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  background: var(--slide-dot-color, #fff);
+  box-shadow: 0 0 12px var(--slide-dot-glow, rgba(255, 255, 255, 0.6));
 }
 
 .mockup-next-cta-btn {
@@ -1694,12 +1743,17 @@ body {
   border-radius: var(--radius-pill);
   cursor: pointer;
   box-shadow: 0 4px 18px rgba(255, 255, 255, 0.25);
-  transition: var(--transition-fast);
+  transition: all 0.3s ease;
 }
 
 .mockup-next-cta-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 24px rgba(255, 255, 255, 0.4);
+}
+
+.mockup-next-cta-btn.last-slide {
+  background: linear-gradient(135deg, #ffffff 0%, #81C784 100%);
+  box-shadow: -2px -2px 14px rgba(255, 255, 255, 0.40), 4px 4px 20px rgba(129, 199, 132, 0.35);
 }
 
 /* ==========================================================================
