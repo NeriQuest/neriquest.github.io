@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Calculator - Clean, Fast & Modern Everyday Calculator by NeriQuest</title>
+  <meta name="description" content="Lightning-fast everyday calculation tool featuring native Indian Lakh/Crore comma formatting, persistent history tape, live programmer base converter (DEC/BIN/OCT/HEX), and zero permissions.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="../images/calcLogo.png">
+</head>
+<body>
+
+  <!-- Dynamic Floating Blurred Frosted Color Glows (Aurora Ambient System) -->
+  <div class="ambient-glow-wrapper" aria-hidden="true">
+    <div class="ambient-glow glow-1" id="glowOrb1"></div>
+    <div class="ambient-glow glow-2" id="glowOrb2"></div>
+    <div class="ambient-glow glow-3" id="glowOrb3"></div>
+    <div class="ambient-glow glow-4" id="glowOrb4"></div>
+    <div class="ambient-frosted-diffuser"></div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="../" class="back-link" title="Back to NeriQuest Studio">
+        <svg class="back-link-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m15 18-6-6 6-6"/></svg>
+        <span class="back-link-text">NeriQuest Apps</span>
+      </a>
+
+      <div class="brand">
+        <div class="nav-logo-box">
+          <img src="../images/calcLogo.png" alt="Calculator Icon" class="nav-logo">
+        </div>
+        <div class="brand-info">
+          <span class="brand-name">Calculator</span>
+          <span class="brand-version">v1.0.0</span>
+        </div>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#calculator">Live Calculator</a>
+        <a href="#converter">Base Converter</a>
+        <a href="#features">Features</a>
+        <a href="#userguide">User Guide</a>
+      </nav>
+
+      <a href="https://play.google.com/store/apps/details?id=neriquest.calculator" target="_blank" rel="noopener noreferrer" class="btn-topbar-cta" title="Download on Google Play">
+        <span class="topbar-cta-glow"></span>
+        <svg class="topbar-cta-icon" viewBox="0 0 466 512" aria-hidden="true">
+          <path fill="#EA4335" d="M199.9 237.8 1.4 470.17c7.22 24.57 30.16 41.81 55.8 41.81 11.16 0 20.93-2.79 29.3-8.37l244.16-139.46L199.9 237.8z"/>
+          <path fill="#FBBC04" d="m433.91 205.1-104.65-60-111.61 110.22 113.01 108.83 104.64-58.6c18.14-9.77 30.7-29.3 30.7-50.23-1.4-20.93-13.95-40.46-32.09-50.22z"/>
+          <path fill="#34A853" d="M199.42 273.45 329.27 145.1 87.9 8.37C79.53 2.79 68.36 0 57.2 0 30.7 0 6.98 18.14 1.4 41.86l198.02 231.59z"/>
+          <path fill="#4285F4" d="M1.39 41.86C0 46.04 0 51.63 0 57.2v397.64c0 5.57 0 9.76 1.4 15.34l216.27-214.86L1.39 41.86z"/>
+        </svg>
+        <span class="topbar-cta-text">Get App</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container hero-content">
+        <!-- Capability Chips -->
+        <div class="hero-chips-container">
+          <div class="hero-chip chip-emerald">
+            <span class="chip-dot"></span>
+            <span class="chip-icon">₹</span>
+            <span>Indian Comma Formatting</span>
+          </div>
+          <div class="hero-chip chip-cyan">
+            <span class="chip-dot"></span>
+            <span class="chip-icon">📜</span>
+            <span>History Tape Memory</span>
+          </div>
+          <div class="hero-chip chip-purple">
+            <span class="chip-dot"></span>
+            <span class="chip-icon">01</span>
+            <span>Base 2/8/10/16 Converter</span>
+          </div>
+          <div class="hero-chip chip-offline">
+            <span class="chip-dot"></span>
+            <span class="chip-icon">🔒</span>
+            <span>Zero Permissions • Offline</span>
+          </div>
+        </div>
+
+        <h1 class="hero-title">
+          Everyday Math.<br>
+          <span class="text-gradient-emerald">Material Precision.</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Designed for speed, clarity, and native Indian numerical grouping. Calculate effortlessly with full calculation history, real-time programmer conversions, and a private offline engine.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="hero-cta-group">
+          <a href="https://play.google.com/store/apps/details?id=neriquest.calculator" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-cta-glow">
+            <svg class="play-store-svg" viewBox="0 0 466 512" aria-hidden="true">
+              <path fill="#EA4335" d="M199.9 237.8 1.4 470.17c7.22 24.57 30.16 41.81 55.8 41.81 11.16 0 20.93-2.79 29.3-8.37l244.16-139.46L199.9 237.8z"/>
+              <path fill="#FBBC04" d="m433.91 205.1-104.65-60-111.61 110.22 113.01 108.83 104.64-58.6c18.14-9.77 30.7-29.3 30.7-50.23-1.4-20.93-13.95-40.46-32.09-50.22z"/>
+              <path fill="#34A853" d="M199.42 273.45 329.27 145.1 87.9 8.37C79.53 2.79 68.36 0 57.2 0 30.7 0 6.98 18.14 1.4 41.86l198.02 231.59z"/>
+              <path fill="#4285F4" d="M1.39 41.86C0 46.04 0 51.63 0 57.2v397.64c0 5.57 0 9.76 1.4 15.34l216.27-214.86L1.39 41.86z"/>
+            </svg>
+            <span>Install on Google Play</span>
+          </a>
+          <a href="#calculator" class="btn btn-secondary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg>
+            <span>Try Calculator Online</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Calculator & Converter Section -->
+    <section id="calculator" class="calc-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag-chip">Interactive Simulator</div>
+          <h2 class="section-title">Material You Functional Calculator</h2>
+          <p class="section-desc">Experience native Indian comma grouping (Lakhs & Crores), live history recall, and instant base conversions right in your browser.</p>
+        </div>
+
+        <div class="calc-simulator-card">
+          <!-- Widget Toolbar -->
+          <div class="calc-toolbar">
+            <div class="calc-modes">
+              <button class="mode-tab-btn active" id="tabStandardBtn">Standard Math</button>
+              <button class="mode-tab-btn" id="tabConverterBtn">Base Converter</button>
+            </div>
+            <div class="calc-toolbar-actions">
+              <button class="calc-tool-btn" id="toggleIndianBtn" title="Toggle Indian Lakhs/Crores vs Western Number Grouping">
+                <span class="tool-flag">🇮🇳</span>
+                <span id="indianBtnLabel">Indian: 1,00,000</span>
+              </button>
+              <button class="calc-tool-btn" id="toggleHistoryBtn" title="View Calculation History Tape">
+                <span>📜 History</span>
+                <span class="history-count-badge" id="historyCountBadge">0</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Main Calculator Body -->
+          <div class="calc-body-layout">
+            <!-- Mode 1: Standard Calculator View -->
+            <div class="calc-main-pane" id="calcMainPane">
+              <!-- Digital Screen -->
+              <div class="calc-screen" id="calcScreen">
+                <div class="screen-top-bar">
+                  <span class="screen-badge" id="screenFormatBadge">Indian Grouping</span>
+                  <button class="btn-screen-copy" id="copyResultBtn" title="Copy Result">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    <span>Copy</span>
+                  </button>
+                </div>
+                <div class="screen-expression" id="screenExpression">12,500 × 8 + 450</div>
+                <div class="screen-result" id="screenResult">1,00,450</div>
+              </div>
+
+              <!-- Keypad Grid -->
+              <div class="calc-keypad">
+                <!-- Row 1 -->
+                <button class="key-btn key-action" data-action="clear" aria-label="Clear all">C</button>
+                <button class="key-btn key-func" data-action="brackets" aria-label="Parentheses">( )</button>
+                <button class="key-btn key-func" data-action="percent" aria-label="Percent">%</button>
+                <button class="key-btn key-operator" data-action="operator" data-val="÷" aria-label="Divide">÷</button>
+
+                <!-- Row 2 -->
+                <button class="key-btn key-num" data-val="7">7</button>
+                <button class="key-btn key-num" data-val="8">8</button>
+                <button class="key-btn key-num" data-val="9">9</button>
+                <button class="key-btn key-operator" data-action="operator" data-val="×" aria-label="Multiply">×</button>
+
+                <!-- Row 3 -->
+                <button class="key-btn key-num" data-val="4">4</button>
+                <button class="key-btn key-num" data-val="5">5</button>
+                <button class="key-btn key-num" data-val="6">6</button>
+                <button class="key-btn key-operator" data-action="operator" data-val="-" aria-label="Minus">−</button>
+
+                <!-- Row 4 -->
+                <button class="key-btn key-num" data-val="1">1</button>
+                <button class="key-btn key-num" data-val="2">2</button>
+                <button class="key-btn key-num" data-val="3">3</button>
+                <button class="key-btn key-operator" data-action="operator" data-val="+" aria-label="Plus">+</button>
+
+                <!-- Row 5 -->
+                <button class="key-btn key-num key-zero" data-val="0">0</button>
+                <button class="key-btn key-num" data-val=".">.</button>
+                <button class="key-btn key-func" data-action="backspace" aria-label="Backspace">⌫</button>
+                <button class="key-btn key-equals" data-action="equals" aria-label="Evaluate">=</button>
+              </div>
+            </div>
+
+            <!-- Mode 2: Base Converter View (DEC, BIN, OCT, HEX) -->
+            <div class="calc-converter-pane" id="calcConverterPane" style="display: none;">
+              <div class="converter-header">
+                <span class="conv-title">Programmer Real-Time Base Converter</span>
+                <span class="conv-sub">Enter any decimal value to inspect binary, octal, and hexadecimal equivalents.</span>
+              </div>
+
+              <div class="converter-input-wrap">
+                <label for="convInput">Input Decimal Number:</label>
+                <input type="number" id="convInput" class="converter-input" value="255" placeholder="Enter integer...">
+              </div>
+
+              <div class="converter-results-grid">
+                <!-- DEC -->
+                <div class="conv-row">
+                  <div class="conv-meta">
+                    <span class="conv-base-tag">DEC</span>
+                    <span class="conv-base-name">Decimal (Base 10)</span>
+                  </div>
+                  <div class="conv-val-box">
+                    <span class="conv-val" id="valDec">255</span>
+                    <button class="btn-copy-base" data-target="valDec" title="Copy Decimal">📋</button>
+                  </div>
+                </div>
+
+                <!-- BIN -->
+                <div class="conv-row">
+                  <div class="conv-meta">
+                    <span class="conv-base-tag tag-cyan">BIN</span>
+                    <span class="conv-base-name">Binary (Base 2)</span>
+                  </div>
+                  <div class="conv-val-box">
+                    <span class="conv-val font-mono" id="valBin">1111 1111</span>
+                    <button class="btn-copy-base" data-target="valBin" title="Copy Binary">📋</button>
+                  </div>
+                </div>
+
+                <!-- OCT -->
+                <div class="conv-row">
+                  <div class="conv-meta">
+                    <span class="conv-base-tag tag-amber">OCT</span>
+                    <span class="conv-base-name">Octal (Base 8)</span>
+                  </div>
+                  <div class="conv-val-box">
+                    <span class="conv-val font-mono" id="valOct">377</span>
+                    <button class="btn-copy-base" data-target="valOct" title="Copy Octal">📋</button>
+                  </div>
+                </div>
+
+                <!-- HEX -->
+                <div class="conv-row">
+                  <div class="conv-meta">
+                    <span class="conv-base-tag tag-purple">HEX</span>
+                    <span class="conv-base-name">Hexadecimal (Base 16)</span>
+                  </div>
+                  <div class="conv-val-box">
+                    <span class="conv-val font-mono" id="valHex">0xFF</span>
+                    <button class="btn-copy-base" data-target="valHex" title="Copy Hex">📋</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide-Out Calculation History Drawer -->
+            <div class="calc-history-drawer" id="calcHistoryDrawer">
+              <div class="history-drawer-header">
+                <span class="history-drawer-title">📜 Calculation History</span>
+                <button class="btn-clear-history" id="clearHistoryBtn" title="Clear All History">Clear</button>
+              </div>
+              <div class="history-list" id="historyList">
+                <!-- Dynamically populated -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Toast Notification -->
+          <div class="sim-toast" id="calcToast" aria-live="polite">Copied to Clipboard</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature Suite Section -->
+    <section id="features" class="features-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag-chip">Smart Capabilities</div>
+          <h2 class="section-title">Designed for Daily Clarity & Speed</h2>
+          <p class="section-desc">From grocery budgets to programming conversions, every detail is engineered for zero friction.</p>
+        </div>
+
+        <div class="features-grid">
+          <!-- Feature 1: Indian Numbering System -->
+          <div class="feature-card">
+            <div class="feature-card-glow glow-emerald"></div>
+            <div class="feature-header">
+              <div class="feature-icon-box icon-emerald">
+                <span>₹</span>
+              </div>
+              <span class="feature-tag tag-emerald">Lakhs & Crores</span>
+            </div>
+            <h3 class="feature-title">Native Indian Comma Grouping</h3>
+            <p class="feature-text">Seamlessly groups large numbers according to the Indian numeral system (e.g. ₹12,34,567.00). Perfect for financial transactions, accounts, and regional commerce.</p>
+          </div>
+
+          <!-- Feature 2: History Tape Memory -->
+          <div class="feature-card">
+            <div class="feature-card-glow glow-cyan"></div>
+            <div class="feature-header">
+              <div class="feature-icon-box icon-cyan">
+                <span>📜</span>
+              </div>
+              <span class="feature-tag tag-cyan">Continuous Tape</span>
+            </div>
+            <h3 class="feature-title">Persistent Calculation Tape</h3>
+            <p class="feature-text">Never lose track of your multi-step calculations. Every equation and result is stored securely on-device with single-tap recall into your active working expression.</p>
+          </div>
+
+          <!-- Feature 3: Base Converter -->
+          <div class="feature-card">
+            <div class="feature-card-glow glow-purple"></div>
+            <div class="feature-header">
+              <div class="feature-icon-box icon-purple">
+                <span>01</span>
+              </div>
+              <span class="feature-tag tag-purple">Multi-Radix</span>
+            </div>
+            <h3 class="feature-title">Programmer Base Converter</h3>
+            <p class="feature-text">Switch into converter mode for real-time simultaneous radix conversions across Decimal (Base 10), Binary (Base 2), Octal (Base 8), and Hexadecimal (Base 16).</p>
+          </div>
+
+          <!-- Feature 4: Scientific Power & Precision -->
+          <div class="feature-card">
+            <div class="feature-card-glow glow-amber"></div>
+            <div class="feature-header">
+              <div class="feature-icon-box icon-amber">
+                <span>📐</span>
+              </div>
+              <span class="feature-tag tag-amber">Math Engine</span>
+            </div>
+            <h3 class="feature-title">Scientific Precision & Brackets</h3>
+            <p class="feature-text">Support for intelligent auto-closing parenthesis grouping, exact percentages, powers, square roots, and trigonometric calculations with rigorous algebraic operator precedence.</p>
+          </div>
+
+          <!-- Feature 5: Zero Permissions & Offline -->
+          <div class="feature-card">
+            <div class="feature-card-glow glow-blue"></div>
+            <div class="feature-header">
+              <div class="feature-icon-box icon-blue">
+                <span>🛡️</span>
+              </div>
+              <span class="feature-tag tag-blue">Zero Telemetry</span>
+            </div>
+            <h3 class="feature-title">100% Offline & Private</h3>
+            <p class="feature-text">Requires zero Android permissions. Does not access your network, storage, or identity. Calculations never leave your device, ensuring maximum privacy and zero latency.</p>
+          </div>
+
+          <!-- Feature 6: Material You Fluid Design -->
+          <div class="feature-card">
+            <div class="feature-card-glow glow-gold"></div>
+            <div class="feature-header">
+              <div class="feature-icon-box icon-gold">
+                <span>✨</span>
+              </div>
+              <span class="feature-tag tag-gold">AMOLED Pitch</span>
+            </div>
+            <h3 class="feature-title">Material You AMOLED Design</h3>
+            <p class="feature-text">Hand-crafted dark theme featuring mint-green highlights, responsive button morphing, tactile haptic vibration, and battery-friendly pure black background.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- App Visual Showcase Section -->
+    <section class="banner-showcase-section">
+      <div class="container">
+        <div class="showcase-card">
+          <div class="showcase-grid">
+            <div class="showcase-content">
+              <span class="section-tag-chip">Sleek Aesthetics</span>
+              <h2 class="showcase-title">Fast. Responsive. Beautiful.</h2>
+              <p class="showcase-text">Whether you're balancing daily expenses, solving homework problems, or writing low-level code, Calculator provides an instant, distraction-free environment.</p>
+              <div class="showcase-highlights">
+                <div class="highlight-item">
+                  <span class="hl-bullet">✓</span>
+                  <span>Instant startup under 150ms</span>
+                </div>
+                <div class="highlight-item">
+                  <span class="hl-bullet">✓</span>
+                  <span>Under 8MB app package size</span>
+                </div>
+                <div class="highlight-item">
+                  <span class="hl-bullet">✓</span>
+                  <span>Supports Android 12+ dynamic theming</span>
+                </div>
+              </div>
+            </div>
+            <div class="showcase-visual">
+              <img src="../images/calculator_banner.png" alt="Calculator App Banner" class="showcase-banner-img" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Searchable User Guide / FAQ Section -->
+    <section id="userguide" class="userguide-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag-chip">Documentation & Help</div>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="section-desc">Got questions about Indian numbering, calculation history, or radix conversions? Find answers below.</p>
+        </div>
+
+        <!-- Live FAQ Search -->
+        <div class="faq-search-wrap">
+          <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="text" id="faqSearchInput" class="faq-search-input" placeholder="Search questions (e.g. Indian commas, history, binary, permissions)..." autocomplete="off">
+        </div>
+
+        <!-- Accordion FAQ Items -->
+        <div class="faq-accordion" id="faqAccordion">
+          <!-- Item 1 -->
+          <div class="faq-item" data-keywords="indian format commas lakhs crores numbering rupee">
+            <button class="faq-question">
+              <span>How does the Indian Numbering format work?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>In standard Western formatting, digits are grouped by thousands (e.g. 100,000 or 1,000,000). The Indian numbering system places the first comma after the hundreds place (3 digits), and all subsequent commas after every 2 digits (e.g. 1,00,000 for one lakh and 1,00,00,000 for one crore). You can toggle between Indian and Western formats at any time using the format toggle in the top bar.</p>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="faq-item" data-keywords="history tape recall past equations save calculations">
+            <button class="faq-question">
+              <span>Can I view and reuse my previous calculations?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>Yes. Tap the History button in the top toolbar to reveal your calculation tape. Each past equation is chronologically logged with its result. Tapping any entry instantly copies its expression back into your active working screen so you can continue calculating.</p>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="faq-item" data-keywords="base converter programmer binary hex octal decimal radix">
+            <button class="faq-question">
+              <span>How do I convert between Binary, Hex, and Decimal?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>Switch to the "Base Converter" tab in the top bar. Enter any positive integer or result, and the app instantly computes simultaneous representations in Decimal (Base 10), Binary (Base 2), Octal (Base 8), and Hexadecimal (Base 16), complete with 1-click clipboard copying.</p>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="faq-item" data-keywords="brackets parenthesis auto pairing smart calculation algebra">
+            <button class="faq-question">
+              <span>How does the smart parenthesis ( ) key work?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>Instead of requiring two separate keys for opening and closing brackets, the smart `( )` key automatically detects whether you need an open bracket or a matching close bracket based on the preceding character and bracket depth.</p>
+            </div>
+          </div>
+
+          <!-- Item 5 -->
+          <div class="faq-item" data-keywords="offline internet privacy tracking data permissions storage">
+            <button class="faq-question">
+              <span>Does Calculator require internet access or permissions?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>None whatsoever. Calculator is 100% offline. It requests zero Android permissions, requires no internet connection, and never transmits any telemetry or personal information.</p>
+            </div>
+          </div>
+
+          <!-- Item 6 -->
+          <div class="faq-item" data-keywords="copy paste clipboard result share expression">
+            <button class="faq-question">
+              <span>How do I copy results or equations to clipboard?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>Simply tap the "Copy" button located directly on the digital display, or tap on the result number itself. A toast confirmation will alert you that the formatted result is copied and ready to paste into any messaging app, document, or spreadsheet.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom CTA Banner -->
+    <section class="cta-banner-section">
+      <div class="container">
+        <div class="cta-banner-card">
+          <div class="cta-banner-glow"></div>
+          <div class="cta-banner-content">
+            <span class="cta-badge">Zero Bloat • Maximum Speed</span>
+            <h2 class="cta-title">Upgrade Your Daily Math Experience.</h2>
+            <p class="cta-subtitle">Available free on Google Play. Zero advertisements, zero permissions, pure precision.</p>
+            <div class="cta-actions">
+              <a href="https://play.google.com/store/apps/details?id=neriquest.calculator" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-cta-glow">
+                <svg class="play-store-svg" viewBox="0 0 466 512" aria-hidden="true">
+                  <path fill="#EA4335" d="M199.9 237.8 1.4 470.17c7.22 24.57 30.16 41.81 55.8 41.81 11.16 0 20.93-2.79 29.3-8.37l244.16-139.46L199.9 237.8z"/>
+                  <path fill="#FBBC04" d="m433.91 205.1-104.65-60-111.61 110.22 113.01 108.83 104.64-58.6c18.14-9.77 30.7-29.3 30.7-50.23-1.4-20.93-13.95-40.46-32.09-50.22z"/>
+                  <path fill="#34A853" d="M199.42 273.45 329.27 145.1 87.9 8.37C79.53 2.79 68.36 0 57.2 0 30.7 0 6.98 18.14 1.4 41.86l198.02 231.59z"/>
+                  <path fill="#4285F4" d="M1.39 41.86C0 46.04 0 51.63 0 57.2v397.64c0 5.57 0 9.76 1.4 15.34l216.27-214.86L1.39 41.86z"/>
+                </svg>
+                <span>Download Calculator Free</span>
+              </a>
+              <a href="../" class="btn btn-secondary">
+                <span>Explore Other Apps</span>
+              </a>
+            </div>
+          </div>
+          <div class="cta-banner-media">
+            <img src="../images/calculator_banner.png" alt="Calculator Banner" class="cta-media-img" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modern Footer -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-brand-col">
+        <a href="../" class="brand">
+          <div class="nav-logo-box">
+            <img src="../images/logo.png" alt="NeriQuest Logo" class="nav-logo">
+          </div>
+          <span class="brand-name">NeriQuest Studio</span>
+        </a>
+        <p class="footer-desc">Crafting private, beautiful, and tactile Android utility experiences.</p>
+        <span class="copyright">© 2026 NeriQuest. All rights reserved.</span>
+      </div>
+
+      <div class="footer-links-grid">
+        <div class="footer-col">
+          <span class="footer-heading">Apps</span>
+          <a href="../expensemate/">ExpenseMate v4.1</a>
+          <a href="../chesstimer/">ChessTimer v1.0.9</a>
+          <a href="../calculator/" class="active-footer-link">Calculator v1.0.0</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-heading">Legal & Privacy</span>
+          <a href="../privacypolicy/">Privacy Policy</a>
+          <a href="../privacypolicy/#security">Data Protection</a>
+          <a href="../privacypolicy/#permissions">Permissions Policy</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-heading">Store</span>
+          <a href="https://play.google.com/store/apps/details?id=neriquest.calculator" target="_blank" rel="noopener noreferrer">Google Play Store</a>
+          <a href="mailto:neriquest@gmail.com">Developer Support</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

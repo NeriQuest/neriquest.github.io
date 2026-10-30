@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>ChessTimer - Tournament Digital Chess Clock by NeriQuest</title>
+  <meta name="description" content="Precision timing for blitz, bullet, rapid, and tournament chess. ChessTimer features customizable Fischer increments, acoustic timing alerts, AMOLED dark mode, and an intuitive dual-tap face.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="../images/chessLogo.png">
+</head>
+<body>
+
+  <!-- Dynamic Floating Blurred Frosted Color Glows (Aurora Ambient System) -->
+  <div class="ambient-glow-wrapper" aria-hidden="true">
+    <div class="ambient-glow glow-1" id="glowOrb1"></div>
+    <div class="ambient-glow glow-2" id="glowOrb2"></div>
+    <div class="ambient-glow glow-3" id="glowOrb3"></div>
+    <div class="ambient-glow glow-4" id="glowOrb4"></div>
+    <div class="ambient-frosted-diffuser"></div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="../" class="back-link" title="Back to NeriQuest Studio">
+        <svg class="back-link-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m15 18-6-6 6-6"/></svg>
+        <span class="back-link-text">NeriQuest Apps</span>
+      </a>
+
+      <div class="brand">
+        <div class="nav-logo-box">
+          <img src="../images/chessLogo.png" alt="ChessTimer Icon" class="nav-logo">
+        </div>
+        <div class="brand-info">
+          <span class="brand-name">ChessTimer</span>
+          <span class="brand-version">v1.0.9</span>
+        </div>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#simulator">Clock Simulator</a>
+        <a href="#features">Features</a>
+        <a href="#screenshots">Screenshots</a>
+        <a href="#userguide">User Guide</a>
+      </nav>
+
+      <a href="https://play.google.com/store/apps/details?id=neriquest.chesstimer" target="_blank" rel="noopener noreferrer" class="btn-topbar-cta" title="Download on Google Play">
+        <span class="topbar-cta-glow"></span>
+        <svg class="topbar-cta-icon" viewBox="0 0 466 512" aria-hidden="true">
+          <path fill="#EA4335" d="M199.9 237.8 1.4 470.17c7.22 24.57 30.16 41.81 55.8 41.81 11.16 0 20.93-2.79 29.3-8.37l244.16-139.46L199.9 237.8z"/>
+          <path fill="#FBBC04" d="m433.91 205.1-104.65-60-111.61 110.22 113.01 108.83 104.64-58.6c18.14-9.77 30.7-29.3 30.7-50.23-1.4-20.93-13.95-40.46-32.09-50.22z"/>
+          <path fill="#34A853" d="M199.42 273.45 329.27 145.1 87.9 8.37C79.53 2.79 68.36 0 57.2 0 30.7 0 6.98 18.14 1.4 41.86l198.02 231.59z"/>
+          <path fill="#4285F4" d="M1.39 41.86C0 46.04 0 51.63 0 57.2v397.64c0 5.57 0 9.76 1.4 15.34l216.27-214.86L1.39 41.86z"/>
+        </svg>
+        <span class="topbar-cta-text">Get App</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container hero-content">
+        <!-- Capability Chips -->
+        <div class="hero-chips-container">
+          <div class="hero-chip chip-amber">
+            <span class="chip-dot"></span>
+            <span class="chip-icon">⏱️</span>
+            <span>Fischer & Delay Increments</span>
+          </div>
+          <div class="hero-chip chip-emerald">
+            <span class="chip-dot"></span>
+            <span class="chip-icon">⚡</span>
+            <span>Zero Input Lag</span>
+          </div>
+          <div class="hero-chip chip-amoled">
+            <span class="chip-dot"></span>
+            <span class="chip-icon">🖤</span>
+            <span>True AMOLED Black</span>
+          </div>
+          <div class="hero-chip chip-offline">
+            <span class="chip-dot"></span>
+            <span class="chip-icon">🔒</span>
+            <span>100% Offline & Private</span>
+          </div>
+        </div>
+
+        <h1 class="hero-title">
+          Tournament Precision.<br>
+          <span class="text-gradient-amber">Tactile Digital Clock.</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Engineered for blitz, bullet, rapid, and tournament classical chess. High-contrast dual touch surfaces, customizable Fischer increments, acoustic timing alerts, and AMOLED battery conservation.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="hero-cta-group">
+          <a href="https://play.google.com/store/apps/details?id=neriquest.chesstimer" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-cta-glow">
+            <svg class="play-store-svg" viewBox="0 0 466 512" aria-hidden="true">
+              <path fill="#EA4335" d="M199.9 237.8 1.4 470.17c7.22 24.57 30.16 41.81 55.8 41.81 11.16 0 20.93-2.79 29.3-8.37l244.16-139.46L199.9 237.8z"/>
+              <path fill="#FBBC04" d="m433.91 205.1-104.65-60-111.61 110.22 113.01 108.83 104.64-58.6c18.14-9.77 30.7-29.3 30.7-50.23-1.4-20.93-13.95-40.46-32.09-50.22z"/>
+              <path fill="#34A853" d="M199.42 273.45 329.27 145.1 87.9 8.37C79.53 2.79 68.36 0 57.2 0 30.7 0 6.98 18.14 1.4 41.86l198.02 231.59z"/>
+              <path fill="#4285F4" d="M1.39 41.86C0 46.04 0 51.63 0 57.2v397.64c0 5.57 0 9.76 1.4 15.34l216.27-214.86L1.39 41.86z"/>
+            </svg>
+            <span>Install on Google Play</span>
+          </a>
+          <a href="#simulator" class="btn btn-secondary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+            <span>Try Interactive Clock</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Chess Clock Simulator Section -->
+    <section id="simulator" class="simulator-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag-chip">Interactive Simulation</div>
+          <h2 class="section-title">Live Dual-Player Chess Clock</h2>
+          <p class="section-desc">Tap either clock face to switch turns. Long-press anywhere to pause both clocks.</p>
+        </div>
+
+        <div class="clock-simulator-card">
+          <!-- Simulator Controls Toolbar -->
+          <div class="sim-toolbar">
+            <div class="sim-presets">
+              <span class="sim-label">Presets:</span>
+              <button class="preset-btn active" data-time="180" data-inc="2">Blitz 3+2</button>
+              <button class="preset-btn" data-time="60" data-inc="1">Bullet 1+1</button>
+              <button class="preset-btn" data-time="600" data-inc="5">Rapid 10+5</button>
+              <button class="preset-btn" data-time="300" data-inc="0">5m Flat</button>
+            </div>
+            <div class="sim-actions">
+              <button class="tool-btn" id="soundToggleBtn" title="Toggle Sound Feedback">
+                <span class="tool-icon" id="soundIcon">🔊</span>
+                <span class="tool-text">Sound ON</span>
+              </button>
+              <button class="tool-btn" id="flipViewBtn" title="Invert Player 1 for Face-to-Face Play">
+                <span class="tool-icon">🔄</span>
+                <span class="tool-text">Face-to-Face</span>
+              </button>
+              <button class="tool-btn btn-reset" id="resetClockBtn" title="Reset Match">
+                <span class="tool-icon">↺</span>
+                <span class="tool-text">Reset</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Dual Clock Board -->
+          <div class="dual-clock-frame" id="clockBoard">
+            <!-- Player 1 (Top / Black / Invertible) -->
+            <div class="player-panel player-1" id="player1Panel" role="button" tabindex="0" aria-label="Player 1 Clock, tap to end turn">
+              <div class="player-header">
+                <div class="player-identity">
+                  <span class="player-avatar">♚</span>
+                  <span class="player-name" id="p1Name">Player 1 (Black)</span>
+                </div>
+                <div class="player-stats">
+                  <span class="stat-badge move-badge">Moves: <strong id="p1Moves">0</strong></span>
+                  <span class="stat-badge inc-badge">+<span id="p1Inc">2</span>s</span>
+                </div>
+              </div>
+
+              <div class="clock-display-wrap">
+                <div class="progress-ring-container">
+                  <svg class="progress-ring" viewBox="0 0 140 140">
+                    <circle class="ring-bg" cx="70" cy="70" r="62"/>
+                    <circle class="ring-indicator ring-p1" id="p1Ring" cx="70" cy="70" r="62" stroke-dasharray="390" stroke-dashoffset="0"/>
+                  </svg>
+                </div>
+                <div class="digital-time" id="p1Time">03:00</div>
+              </div>
+
+              <div class="tap-hint" id="p1Hint">Tap to end turn</div>
+            </div>
+
+            <!-- Match Divider Bar & Pause Status -->
+            <div class="clock-divider">
+              <div class="match-status-pill" id="matchStatusPill">
+                <span class="status-dot"></span>
+                <span id="matchStatusText">Ready • Tap White to Start</span>
+              </div>
+              <button class="btn-divider-pause" id="pauseCenterBtn" title="Long press anywhere or tap here to pause">
+                <span id="pauseIcon">⏸</span>
+              </button>
+            </div>
+
+            <!-- Player 2 (Bottom / White) -->
+            <div class="player-panel player-2 active-turn" id="player2Panel" role="button" tabindex="0" aria-label="Player 2 Clock, tap to end turn">
+              <div class="clock-display-wrap">
+                <div class="progress-ring-container">
+                  <svg class="progress-ring" viewBox="0 0 140 140">
+                    <circle class="ring-bg" cx="70" cy="70" r="62"/>
+                    <circle class="ring-indicator ring-p2" id="p2Ring" cx="70" cy="70" r="62" stroke-dasharray="390" stroke-dashoffset="0"/>
+                  </svg>
+                </div>
+                <div class="digital-time" id="p2Time">03:00</div>
+              </div>
+
+              <div class="player-header">
+                <div class="player-identity">
+                  <span class="player-avatar">♔</span>
+                  <span class="player-name" id="p2Name">Player 2 (White)</span>
+                </div>
+                <div class="player-stats">
+                  <span class="stat-badge move-badge">Moves: <strong id="p2Moves">0</strong></span>
+                  <span class="stat-badge inc-badge">+<span id="p2Inc">2</span>s</span>
+                </div>
+              </div>
+
+              <div class="tap-hint" id="p2Hint">Your Turn • Tap when move complete</div>
+            </div>
+
+            <!-- Floating Long-Press Pause Toast Notification -->
+            <div class="sim-toast" id="simToast" aria-live="polite">Game Paused</div>
+          </div>
+
+          <!-- Bottom Micro Instructions -->
+          <div class="sim-footer-note">
+            <span>💡 <strong>Tip:</strong> Press and hold on the clock face for 0.6s to trigger a tournament-safe Universal Pause.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature Suite Section -->
+    <section id="features" class="features-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag-chip">Engineered for Competition</div>
+          <h2 class="section-title">Built for Club, Park & Tournament Chess</h2>
+          <p class="section-desc">Every millisecond counts. Designed to give players instant visual clarity, rock-solid stability, and distraction-free operation.</p>
+        </div>
+
+        <div class="features-grid">
+          <!-- Feature 1: Fischer Increments -->
+          <div class="feature-card">
+            <div class="feature-card-glow glow-amber"></div>
+            <div class="feature-header">
+              <div class="feature-icon-box icon-amber">
+                <span>⏱️</span>
+              </div>
+              <span class="feature-tag tag-amber">FIDE Standard</span>
+            </div>
+            <h3 class="feature-title">Fischer & Delay Increments</h3>
+            <p class="feature-text">Support for standard Fischer increments (+1s, +2s, +5s, +10s) and Bronstein delays. Time is accurately added the exact millisecond a player finishes their move.</p>
+          </div>
+
+          <!-- Feature 2: High-Contrast Dual Touch -->
+          <div class="feature-card">
+            <div class="feature-card-glow glow-gold"></div>
+            <div class="feature-header">
+              <div class="feature-icon-box icon-gold">
+                <span>⚡</span>
+              </div>
+              <span class="feature-tag tag-gold">Zero Lag</span>
+            </div>
+            <h3 class="feature-title">Oversized Tactile Tap Zones</h3>
+            <p class="feature-text">Generous, full-screen touch surfaces designed for blind peripheral reach during intense blitz scrambles. No miss-clicks, no fiddly buttons.</p>
+          </div>
+
+          <!-- Feature 3: Circular Progress Rings -->
+          <div class="feature-card">
+            <div class="feature-card-glow glow-emerald"></div>
+            <div class="feature-header">
+              <div class="feature-icon-box icon-emerald">
+                <span>🔄</span>
+              </div>
+              <span class="feature-tag tag-emerald">Visual Clarity</span>
+            </div>
+            <h3 class="feature-title">Dynamic Circular Progress</h3>
+            <p class="feature-text">Glanceable circular progress rings visually drain in real-time, letting players assess their remaining time ratio instantly without reading numbers.</p>
+          </div>
+
+          <!-- Feature 4: Universal Long-Press Pause -->
+          <div class="feature-card">
+            <div class="feature-card-glow glow-purple"></div>
+            <div class="feature-header">
+              <div class="feature-icon-box icon-purple">
+                <span>🛡️</span>
+              </div>
+              <span class="feature-tag tag-purple">Tournament Safe</span>
+            </div>
+            <h3 class="feature-title">Long-Press Universal Pause</h3>
+            <p class="feature-text">Prevents accidental pauses during fast-paced play. Players must intentionally hold the clock display for a sustained duration to pause the match.</p>
+          </div>
+
+          <!-- Feature 5: Acoustic & Haptic Cues -->
+          <div class="feature-card">
+            <div class="feature-card-glow glow-cyan"></div>
+            <div class="feature-header">
+              <div class="feature-icon-box icon-cyan">
+                <span>🔊</span>
+              </div>
+              <span class="feature-tag tag-cyan">Sensory Alerts</span>
+            </div>
+            <h3 class="feature-title">Acoustic Pluck & Ticker Cues</h3>
+            <p class="feature-text">Crisp acoustic turn switches, subtle ticking under 10 seconds of time trouble, and a distinctive time-forfeit buzzer. Vibration feedback ensures silent play when needed.</p>
+          </div>
+
+          <!-- Feature 6: True AMOLED Power Saver -->
+          <div class="feature-card">
+            <div class="feature-card-glow glow-blue"></div>
+            <div class="feature-header">
+              <div class="feature-icon-box icon-blue">
+                <span>🖤</span>
+              </div>
+              <span class="feature-tag tag-blue">Efficiency</span>
+            </div>
+            <h3 class="feature-title">True AMOLED Battery Conservation</h3>
+            <p class="feature-text">Engineered with pitch-black #000000 pixel shutoff to ensure your phone's battery easily outlasts 6-round over-the-board weekend tournaments.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Screenshot Gallery Section -->
+    <section id="screenshots" class="screenshots-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag-chip">Visual Experience</div>
+          <h2 class="section-title">Clean, Modern Interface</h2>
+          <p class="section-desc">Experience an interface meticulously refined for distraction-free tournament play.</p>
+        </div>
+
+        <div class="gallery-wrapper">
+          <button class="gallery-nav-btn prev-btn" id="prevGalleryBtn" aria-label="Previous screenshot">‹</button>
+          
+          <div class="gallery-track" id="galleryTrack">
+            <div class="gallery-card">
+              <div class="gallery-frame">
+                <img src="../images/chessSS1.png" alt="ChessTimer Clock Face" loading="lazy">
+              </div>
+              <span class="gallery-caption">Dual Digital Face</span>
+            </div>
+            <div class="gallery-card">
+              <div class="gallery-frame">
+                <img src="../images/chessSS2.png" alt="ChessTimer Time Controls" loading="lazy">
+              </div>
+              <span class="gallery-caption">Time Control Presets</span>
+            </div>
+            <div class="gallery-card">
+              <div class="gallery-frame">
+                <img src="../images/chessSS3.png" alt="ChessTimer Delay Modes" loading="lazy">
+              </div>
+              <span class="gallery-caption">Fischer & Delay Setup</span>
+            </div>
+            <div class="gallery-card">
+              <div class="gallery-frame">
+                <img src="../images/chessSS4.png" alt="ChessTimer In Progress" loading="lazy">
+              </div>
+              <span class="gallery-caption">Active Turn Progress</span>
+            </div>
+            <div class="gallery-card">
+              <div class="gallery-frame">
+                <img src="../images/chessSS5.png" alt="ChessTimer AMOLED Mode" loading="lazy">
+              </div>
+              <span class="gallery-caption">AMOLED Low Power</span>
+            </div>
+            <div class="gallery-card">
+              <div class="gallery-frame">
+                <img src="../images/chessSS6.png" alt="ChessTimer Settings" loading="lazy">
+              </div>
+              <span class="gallery-caption">Audio & Haptic Toggles</span>
+            </div>
+            <div class="gallery-card">
+              <div class="gallery-frame">
+                <img src="../images/chessSS7.png" alt="ChessTimer Preset Selection" loading="lazy">
+              </div>
+              <span class="gallery-caption">Custom Match Profiles</span>
+            </div>
+          </div>
+
+          <button class="gallery-nav-btn next-btn" id="nextGalleryBtn" aria-label="Next screenshot">›</button>
+        </div>
+
+        <div class="gallery-dots" id="galleryDots"></div>
+      </div>
+    </section>
+
+    <!-- Searchable User Guide / FAQ Section -->
+    <section id="userguide" class="userguide-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag-chip">Documentation & Help</div>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="section-desc">Everything you need to know about setting up, playing, and mastering your matches with ChessTimer.</p>
+        </div>
+
+        <!-- Live FAQ Search -->
+        <div class="faq-search-wrap">
+          <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="text" id="faqSearchInput" class="faq-search-input" placeholder="Search questions (e.g. pause, Fischer, audio, battery)..." autocomplete="off">
+        </div>
+
+        <!-- Accordion FAQ Items -->
+        <div class="faq-accordion" id="faqAccordion">
+          <!-- Item 1 -->
+          <div class="faq-item" data-keywords="pause resume stop clock long-press universal touch">
+            <button class="faq-question">
+              <span>How do I pause and resume the game?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>To avoid accidental touches during blitz and rapid time trouble, ChessTimer uses a tournament-safe long-press mechanism. Simply press and hold anywhere on the clock display for 0.6 seconds. A confirmation toast will pop up, and the status bar will show "Game Paused". Tap the resume button or clock face to continue playing.</p>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="faq-item" data-keywords="fischer increment delay bronstein seconds add move time">
+            <button class="faq-question">
+              <span>How do Fischer increments and delay work?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>Under Fischer increment mode, whenever a player completes a move and taps the screen, the preset increment time (e.g., +2s, +5s, +10s) is automatically credited back to their remaining clock bank. In delay mode, the countdown is paused for the delay period before subtracting seconds.</p>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="faq-item" data-keywords="player names custom customize handles white black">
+            <button class="faq-question">
+              <span>Can I customize player names and board sides?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>Yes. Tap on the Settings icon before starting a game to customize player names, assign handles, or swap who starts with White or Black pieces.</p>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="faq-item" data-keywords="presets bullet blitz rapid classical time controls minutes fide">
+            <button class="faq-question">
+              <span>What time control presets are supported?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>ChessTimer includes instant 1-tap presets for Bullet (1|0, 1|1, 2|1), Blitz (3|0, 3|2, 5|0, 5|5), Rapid (10|0, 10|5, 15|10), and Classical (30|0). You can also configure any custom minutes, seconds, and bonus increments down to the exact second.</p>
+            </div>
+          </div>
+
+          <!-- Item 5 -->
+          <div class="faq-item" data-keywords="orientation face to face invert upside down players opposite">
+            <button class="faq-question">
+              <span>Can Player 1's clock be rotated for face-to-face play?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>Yes! By default or via the Face-to-Face toggle, Player 1's timer is rotated 180 degrees. When you place your smartphone or tablet flat on the table next to the board, both opponents see their clock perfectly right-side up from their respective chair.</p>
+            </div>
+          </div>
+
+          <!-- Item 6 -->
+          <div class="faq-item" data-keywords="sound tick warning beep vibrate haptics mute silent">
+            <button class="faq-question">
+              <span>How do sound cues and haptic vibration feedback work?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>ChessTimer features crisp wooden pluck sounds on every tap, ticking warning audio when under 10 seconds of time trouble, and a distinctive forfeit buzz on 00:00. In quiet tournament halls, you can mute audio and rely entirely on tactile haptic vibration.</p>
+            </div>
+          </div>
+
+          <!-- Item 7 -->
+          <div class="faq-item" data-keywords="screen sleep timeout wake lock stay awake display">
+            <button class="faq-question">
+              <span>Does my phone screen turn off or sleep during a match?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>Never. The app holds a system wake-lock while a match is in progress or paused, guaranteeing your screen stays illuminated and ready for touch without needing to unlock your phone.</p>
+            </div>
+          </div>
+
+          <!-- Item 8 -->
+          <div class="faq-item" data-keywords="offline internet privacy data tracker permissions wifi">
+            <button class="faq-question">
+              <span>Does ChessTimer require an internet connection?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>No. ChessTimer operates 100% locally on your device. It requests zero invasive permissions, operates flawlessly in airplane mode, and never collects or transmits your personal data.</p>
+            </div>
+          </div>
+
+          <!-- Item 9 -->
+          <div class="faq-item" data-keywords="forfeit flag fall time out 00:00 buzzer game over">
+            <button class="faq-question">
+              <span>What happens when a player flags (runs out of time)?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>The moment a player's clock reaches 00:00, the clock border glows bright red, the timer halts immediately, a forfeit buzzer sounds, and the opponent is declared winner on time.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom CTA Banner -->
+    <section class="cta-banner-section">
+      <div class="container">
+        <div class="cta-banner-card">
+          <div class="cta-banner-glow"></div>
+          <div class="cta-banner-content">
+            <span class="cta-badge">Ready for your next match?</span>
+            <h2 class="cta-title">Upgrade Your Chess Board with Tournament Timing.</h2>
+            <p class="cta-subtitle">Available free on Google Play. Zero tracking, zero bloat, pure tournament focus.</p>
+            <div class="cta-actions">
+              <a href="https://play.google.com/store/apps/details?id=neriquest.chesstimer" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-cta-glow">
+                <svg class="play-store-svg" viewBox="0 0 466 512" aria-hidden="true">
+                  <path fill="#EA4335" d="M199.9 237.8 1.4 470.17c7.22 24.57 30.16 41.81 55.8 41.81 11.16 0 20.93-2.79 29.3-8.37l244.16-139.46L199.9 237.8z"/>
+                  <path fill="#FBBC04" d="m433.91 205.1-104.65-60-111.61 110.22 113.01 108.83 104.64-58.6c18.14-9.77 30.7-29.3 30.7-50.23-1.4-20.93-13.95-40.46-32.09-50.22z"/>
+                  <path fill="#34A853" d="M199.42 273.45 329.27 145.1 87.9 8.37C79.53 2.79 68.36 0 57.2 0 30.7 0 6.98 18.14 1.4 41.86l198.02 231.59z"/>
+                  <path fill="#4285F4" d="M1.39 41.86C0 46.04 0 51.63 0 57.2v397.64c0 5.57 0 9.76 1.4 15.34l216.27-214.86L1.39 41.86z"/>
+                </svg>
+                <span>Download ChessTimer Free</span>
+              </a>
+              <a href="../" class="btn btn-secondary">
+                <span>Explore Other Apps</span>
+              </a>
+            </div>
+          </div>
+          <div class="cta-banner-media">
+            <img src="../images/chessTimer_banner.png" alt="ChessTimer Banner" class="cta-media-img" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modern Footer -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-brand-col">
+        <a href="../" class="brand">
+          <div class="nav-logo-box">
+            <img src="../images/logo.png" alt="NeriQuest Logo" class="nav-logo">
+          </div>
+          <span class="brand-name">NeriQuest Studio</span>
+        </a>
+        <p class="footer-desc">Crafting private, beautiful, and tactile Android utility experiences.</p>
+        <span class="copyright">© 2026 NeriQuest. All rights reserved.</span>
+      </div>
+
+      <div class="footer-links-grid">
+        <div class="footer-col">
+          <span class="footer-heading">Apps</span>
+          <a href="../expensemate/">ExpenseMate v4.1</a>
+          <a href="../chesstimer/" class="active-footer-link">ChessTimer v1.0.9</a>
+          <a href="../calculator/">Calculator v1.0.0</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-heading">Legal & Privacy</span>
+          <a href="../privacypolicy/">Privacy Policy</a>
+          <a href="../privacypolicy/#security">Data Protection</a>
+          <a href="../privacypolicy/#permissions">Permissions Policy</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-heading">Store</span>
+          <a href="https://play.google.com/store/apps/details?id=neriquest.chesstimer" target="_blank" rel="noopener noreferrer">Google Play Store</a>
+          <a href="mailto:neriquest@gmail.com">Developer Support</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
