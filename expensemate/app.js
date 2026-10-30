@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmartInsightsRotation();
   initScrollAnimations();
   initUserGuide();
+  initNavbarEnhancements();
+  initGalleryNavigation();
 });
 
 /* ==========================================================================
@@ -13,55 +15,37 @@ document.addEventListener('DOMContentLoaded', () => {
    Supports mouse movement, touch dragging, and continuous fluid float
    ========================================================================== */
 function initAmbientGlow() {
-  const glowOrb1 = document.getElementById('glowOrb1');
-  const glowOrb2 = document.getElementById('glowOrb2');
-  const glowOrb3 = document.getElementById('glowOrb3');
+  const orbs = [
+    { el: document.getElementById('glowOrb1'), factorX: 0.22, factorY: 0.16 },
+    { el: document.getElementById('glowOrb2'), factorX: -0.20, factorY: -0.14 },
+    { el: document.getElementById('glowOrb3'), factorX: 0.16, factorY: -0.12 },
+    { el: document.getElementById('glowOrb4'), factorX: -0.14, factorY: 0.18 }
+  ].filter(o => o.el !== null);
 
-  if (!glowOrb1 || !glowOrb2) return;
+  let targetX = 0;
+  let targetY = 0;
+  let currentX = 0;
+  let currentY = 0;
 
-  let targetX = window.innerWidth / 2;
-  let targetY = window.innerHeight / 3;
-  let currentX = targetX;
-  let currentY = targetY;
-  let time = 0;
-
-  // Track mouse
   window.addEventListener('mousemove', (e) => {
-    targetX = e.clientX;
-    targetY = e.clientY;
+    targetX = (e.clientX - window.innerWidth / 2) * 0.14;
+    targetY = (e.clientY - window.innerHeight / 2) * 0.14;
   });
 
-  // Track touch on mobile
   window.addEventListener('touchmove', (e) => {
     if (e.touches && e.touches[0]) {
-      targetX = e.touches[0].clientX;
-      targetY = e.touches[0].clientY;
+      targetX = (e.touches[0].clientX - window.innerWidth / 2) * 0.10;
+      targetY = (e.touches[0].clientY - window.innerHeight / 2) * 0.10;
     }
   }, { passive: true });
 
   function animateOrbs() {
-    time += 0.015;
-
-    // Organic continuous floating drift
-    const driftX = Math.sin(time) * 45;
-    const driftY = Math.cos(time * 0.8) * 35;
-
     currentX += (targetX - currentX) * 0.04;
     currentY += (targetY - currentY) * 0.04;
 
-    const orb1X = (currentX * 0.3) + driftX;
-    const orb1Y = (currentY * 0.2) + driftY;
-    glowOrb1.style.transform = `translate3d(${orb1X}px, ${orb1Y}px, 0)`;
-
-    const orb2X = (-currentX * 0.25) - driftX;
-    const orb2Y = (-currentY * 0.15) - driftY;
-    glowOrb2.style.transform = `translate3d(${orb2X}px, ${orb2Y}px, 0)`;
-
-    if (glowOrb3) {
-      const orb3X = (Math.cos(time * 0.6) * 60) + (currentX * 0.15);
-      const orb3Y = (Math.sin(time * 0.7) * 40) + (currentY * 0.1);
-      glowOrb3.style.transform = `translate3d(${orb3X}px, ${orb3Y}px, 0)`;
-    }
+    orbs.forEach(orb => {
+      orb.el.style.translate = `${currentX * orb.factorX}px ${currentY * orb.factorY}px`;
+    });
 
     requestAnimationFrame(animateOrbs);
   }
@@ -354,6 +338,20 @@ function initUserGuide() {
     searchInput.focus();
   });
 
+  // Expand / Collapse all user guide items
+  const toggleAllBtn = document.getElementById('guideToggleAllBtn');
+  if (toggleAllBtn) {
+    let allOpen = false;
+    toggleAllBtn.addEventListener('click', () => {
+      const items = document.querySelectorAll('.guide-item');
+      allOpen = !allOpen;
+      items.forEach(item => {
+        item.open = allOpen;
+      });
+      toggleAllBtn.textContent = allOpen ? 'Collapse All' : 'Expand All';
+    });
+  }
+
   // Quick tag links in hero or guide header
   document.querySelectorAll('.guide-quick-tag').forEach(tag => {
     tag.addEventListener('click', (e) => {
@@ -509,4 +507,91 @@ function escapeHtml(str) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
+}
+
+/* ==========================================================================
+   6. Navbar Dynamic Frosted Glass & Active ScrollSpy
+   ========================================================================== */
+function initNavbarEnhancements() {
+  const navbar = document.querySelector('.navbar');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const sections = document.querySelectorAll('section[id]');
+
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+
+    // Toggle frosted glass navbar
+    if (navbar) {
+      if (scrollY > 30) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    }
+
+    // ScrollSpy active link
+    let currentId = '';
+    sections.forEach(sec => {
+      const top = sec.offsetTop - 120;
+      const height = sec.offsetHeight;
+      if (scrollY >= top && scrollY < top + height) {
+        currentId = sec.getAttribute('id');
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (currentId && link.getAttribute('href') === `#${currentId}`) {
+        link.classList.add('active');
+      }
+    });
+  }, { passive: true });
+}
+
+/* ==========================================================================
+   7. Interactive Screenshots Gallery Navigation & Drag-to-Scroll
+   ========================================================================== */
+function initGalleryNavigation() {
+  const container = document.getElementById('screenshotsContainer');
+  const prevBtn = document.getElementById('galleryPrevBtn');
+  const nextBtn = document.getElementById('galleryNextBtn');
+
+  if (!container) return;
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      container.scrollBy({ left: -280, behavior: 'smooth' });
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      container.scrollBy({ left: 280, behavior: 'smooth' });
+    });
+  }
+
+  // Mouse drag-to-scroll support for desktop
+  let isDown = false;
+  let startX = 0;
+  let scrollLeft = 0;
+
+  container.addEventListener('mousedown', (e) => {
+    isDown = true;
+    container.classList.add('dragging');
+    startX = e.pageX - container.offsetLeft;
+    scrollLeft = container.scrollLeft;
+  });
+
+  window.addEventListener('mouseup', () => {
+    isDown = false;
+    if (container) container.classList.remove('dragging');
+  });
+
+  container.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - container.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    container.scrollLeft = scrollLeft - walk;
+  });
 }

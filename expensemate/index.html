@@ -13,11 +13,14 @@
 </head>
 <body>
 
-  <!-- Dynamic Ambient Glowing Lights Container (Prevents document overflow & mobile zoom out) -->
+  <!-- Dynamic Floating Blurred Frosted Color Glows (Aurora Ambient System) -->
   <div class="ambient-glow-wrapper" aria-hidden="true">
     <div class="ambient-glow glow-1" id="glowOrb1"></div>
     <div class="ambient-glow glow-2" id="glowOrb2"></div>
     <div class="ambient-glow glow-3" id="glowOrb3"></div>
+    <div class="ambient-glow glow-4" id="glowOrb4"></div>
+    <!-- Frosted Glass Diffuser Overlay -->
+    <div class="ambient-frosted-diffuser"></div>
   </div>
 
   <!-- Navigation -->
@@ -726,7 +729,11 @@
           <p>Real application screenshots highlighting the fluid dark mode, charts, and clean typography.</p>
         </div>
 
-        <div class="screenshots-scroll-container">
+        <div class="gallery-wrapper">
+          <button class="gallery-nav-btn prev" id="galleryPrevBtn" aria-label="Previous screenshots">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          <div class="screenshots-scroll-container" id="screenshotsContainer">
           <div class="screenshot-item">
             <div class="phone-mockup">
               <img src="../images/expenseSS1.jpeg" alt="ExpenseMate Dashboard Screenshot" loading="lazy">
@@ -775,6 +782,10 @@
             </div>
             <span class="screenshot-caption">Settings &amp; Excel Backup</span>
           </div>
+          </div>
+          <button class="gallery-nav-btn next" id="galleryNextBtn" aria-label="Next screenshots">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
         </div>
       </div>
     </section>
@@ -817,6 +828,7 @@
 
           <div class="guide-results-meta">
             <span id="guideResultCount">Loading guides...</span>
+            <button class="guide-toggle-all-btn" id="guideToggleAllBtn">Expand All</button>
           </div>
         </div>
 

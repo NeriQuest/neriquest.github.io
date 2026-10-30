@@ -138,7 +138,9 @@ body {
 /* ==========================================================================
    Ambient Moving Glowing Lights (Android Modern Ambient Illumination)
    ========================================================================== */
-/* Ambient Glow Viewport Container (Locks background & stops Android zoom-out empty space) */
+/* ==========================================================================
+   Ambient Floating Blurred Frosted Color Glows (Aurora System)
+   ========================================================================== */
 .ambient-glow-wrapper {
   position: fixed;
   top: 0;
@@ -150,37 +152,87 @@ body {
   z-index: 0;
 }
 
+.ambient-frosted-diffuser {
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(45px);
+  -webkit-backdrop-filter: blur(45px);
+  background: radial-gradient(circle at 50% 50%, transparent 35%, rgba(7, 9, 12, 0.5) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
 .ambient-glow {
   position: absolute;
   border-radius: 50%;
   pointer-events: none;
-  filter: blur(80px);
-  opacity: 0.65;
+  filter: blur(85px);
   will-change: transform;
+  mix-blend-mode: screen;
 }
 
+/* Glow 1: Vibrant Emerald / Mint */
 .glow-1 {
-  top: 5%;
-  left: 20%;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(129, 199, 132, 0.22) 0%, rgba(77, 208, 225, 0.08) 50%, transparent 70%);
+  top: -5%;
+  left: 12%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(74, 222, 128, 0.38) 0%, rgba(34, 197, 94, 0.18) 40%, rgba(16, 185, 129, 0.04) 65%, transparent 75%);
+  animation: float-glow-1 18s ease-in-out infinite alternate;
 }
 
+/* Glow 2: Electric Cyan / Sky Blue */
 .glow-2 {
-  top: 40%;
-  right: 15%;
-  width: 460px;
-  height: 460px;
-  background: radial-gradient(circle, rgba(77, 208, 225, 0.18) 0%, rgba(186, 104, 200, 0.06) 50%, transparent 70%);
+  top: 32%;
+  right: -5%;
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.35) 0%, rgba(14, 165, 233, 0.16) 40%, rgba(99, 102, 241, 0.04) 65%, transparent 75%);
+  animation: float-glow-2 22s ease-in-out infinite alternate;
 }
 
+/* Glow 3: Electric Purple / Violet Frosted Aura */
 .glow-3 {
-  bottom: 10%;
-  left: 30%;
-  width: 520px;
-  height: 520px;
-  background: radial-gradient(circle, rgba(38, 166, 154, 0.16) 0%, rgba(255, 183, 77, 0.06) 50%, transparent 70%);
+  bottom: 8%;
+  left: 8%;
+  width: 580px;
+  height: 580px;
+  background: radial-gradient(circle, rgba(192, 132, 252, 0.34) 0%, rgba(168, 85, 247, 0.15) 40%, rgba(236, 72, 153, 0.04) 65%, transparent 75%);
+  animation: float-glow-3 25s ease-in-out infinite alternate;
+}
+
+/* Glow 4: Warm Amber / Coral Sunburst */
+.glow-4 {
+  top: 55%;
+  left: 45%;
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(251, 146, 60, 0.30) 0%, rgba(245, 158, 11, 0.14) 40%, transparent 70%);
+  animation: float-glow-4 20s ease-in-out infinite alternate;
+}
+
+@keyframes float-glow-1 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(60px, 40px) scale(1.08); }
+  100% { transform: translate(-40px, 80px) scale(0.95); }
+}
+
+@keyframes float-glow-2 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-70px, -50px) scale(1.12); }
+  100% { transform: translate(40px, -80px) scale(0.92); }
+}
+
+@keyframes float-glow-3 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(80px, -60px) scale(1.06); }
+  100% { transform: translate(-50px, -30px) scale(1.14); }
+}
+
+@keyframes float-glow-4 {
+  0% { transform: translate(0, 0) scale(0.95); }
+  50% { transform: translate(-60px, 50px) scale(1.1); }
+  100% { transform: translate(50px, -40px) scale(1.02); }
 }
 
 .container {
@@ -2770,4 +2822,104 @@ mark.highlight {
 .btn-primary:hover::after, .btn-store:hover::after {
   left: 150%;
   transition: left 0.85s ease;
+}
+
+/* Hero Trust Bar */
+.hero-trust-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  font-size: 0.82rem;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.trust-star {
+  color: #fbbf24;
+}
+
+.trust-dot {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.trust-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Gallery Navigation Wrapper & Floating Buttons */
+.gallery-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.gallery-nav-btn {
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(16, 22, 34, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  transition: all 0.25s ease;
+}
+
+.gallery-nav-btn.prev {
+  left: -20px;
+}
+
+.gallery-nav-btn.next {
+  right: -20px;
+}
+
+.gallery-nav-btn:hover {
+  background: rgba(74, 222, 128, 0.2);
+  border-color: #4ade80;
+  color: #4ade80;
+  box-shadow: 0 0 20px rgba(74, 222, 128, 0.4);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.gallery-nav-btn:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+@media (max-width: 768px) {
+  .gallery-nav-btn {
+    display: none; /* Mobile users use natural touch swipe */
+  }
+}
+
+/* User Guide Toggle All Button */
+.guide-toggle-all-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--accent-green-bright);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 5px 14px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.guide-toggle-all-btn:hover {
+  background: rgba(74, 222, 128, 0.12);
+  border-color: rgba(74, 222, 128, 0.35);
+  box-shadow: 0 0 12px rgba(74, 222, 128, 0.2);
 }
