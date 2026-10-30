@@ -190,10 +190,10 @@ function initOnboardingSlider() {
       nextBtnText.textContent = currentSlide === totalSlides - 1 ? 'Get Started' : 'Next';
     }
 
-    // Dynamic Atmosphere Glow Color Transition
+    // Subtle Dark Atmosphere Undertone Transition
     const color = SLIDE_GLOW_COLORS[currentSlide];
     if (auraContainer) {
-      auraContainer.style.background = `radial-gradient(circle at 50% 30%, ${color}40 0%, ${color}15 45%, transparent 70%)`;
+      auraContainer.style.background = `radial-gradient(circle at 50% 30%, ${color}0d 0%, transparent 60%)`;
     }
   }
 
