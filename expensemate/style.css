@@ -41,19 +41,89 @@
   --font-mono: 'JetBrains Mono', monospace;
 }
 
-* {
+*, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
 }
 
 html {
+  -webkit-tap-highlight-color: transparent !important;
   scroll-behavior: smooth;
   font-family: var(--font-family);
   background-color: var(--bg-amoled);
   color: var(--text-main);
   line-height: 1.6;
   -webkit-text-size-adjust: 100%;
+}
+
+/* Remove default browser sharp blue focus/touch overlay on click & tap */
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid rgba(74, 222, 128, 0.7);
+  outline-offset: 3px;
+  border-radius: inherit;
+}
+
+/* Interactive elements: disable browser tap-highlight and accidental text selection */
+a,
+button,
+input,
+select,
+textarea,
+[role="button"],
+.btn,
+.btn-topbar-cta,
+.mockup-nav-btn,
+.mockup-next-cta-btn,
+.mockup-type-tab,
+.mockup-cat-pill,
+.indicator-dot,
+.guide-question,
+.filter-tab,
+.hero-chip,
+.badge,
+.cta-badge {
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+  -webkit-touch-callout: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Tactile rounded press feedback instead of sharp square browser overlays */
+.btn:active,
+.btn-store:active,
+.google-play-btn:active,
+.cta-play-btn:active {
+  transform: scale(0.96) !important;
+  transition: transform 0.12s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mockup-nav-btn:active {
+  transform: scale(0.92);
+}
+
+.mockup-next-cta-btn:active {
+  transform: scale(0.95);
+}
+
+.filter-tab:active {
+  transform: scale(0.96);
+}
+
+.guide-question:active {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-md);
+}
+
+.indicator-dot:active {
+  transform: scale(1.15);
 }
 
 body {
