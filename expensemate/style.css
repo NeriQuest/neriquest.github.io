@@ -395,30 +395,81 @@ body {
   align-items: center;
 }
 
-.hero-badge {
-  display: inline-flex;
+/* Hero Capability Chips */
+.hero-chips-container {
+  display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 7px 18px;
-  background: rgba(129, 199, 132, 0.08);
-  border: 1px solid rgba(129, 199, 132, 0.24);
-  border-radius: var(--radius-pill);
-  font-size: clamp(0.75rem, 2.5vw, 0.85rem);
-  font-weight: 600;
-  color: var(--accent-green);
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
   margin-bottom: 24px;
-  max-width: 100%;
-  line-height: 1.4;
 }
 
-.badge-dot {
-  width: 8px;
-  height: 8px;
+.hero-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 15px;
+  border-radius: var(--radius-pill);
+  font-size: clamp(0.76rem, 2.2vw, 0.85rem);
+  font-weight: 600;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  user-select: none;
+}
+
+.hero-chip:hover {
+  transform: translateY(-2px);
+}
+
+.chip-offline {
+  background: rgba(129, 199, 132, 0.09);
+  border: 1px solid rgba(129, 199, 132, 0.28);
+  color: var(--accent-green-bright);
+}
+
+.chip-offline:hover {
+  border-color: var(--accent-green);
+  box-shadow: 0 4px 16px rgba(129, 199, 132, 0.28);
+}
+
+.chip-instant {
+  background: rgba(77, 208, 225, 0.09);
+  border: 1px solid rgba(77, 208, 225, 0.28);
+  color: var(--accent-cyan);
+}
+
+.chip-instant:hover {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 4px 16px rgba(77, 208, 225, 0.28);
+}
+
+.chip-analysis {
+  background: rgba(255, 183, 77, 0.09);
+  border: 1px solid rgba(255, 183, 77, 0.28);
+  color: var(--accent-amber);
+}
+
+.chip-analysis:hover {
+  border-color: var(--accent-amber);
+  box-shadow: 0 4px 16px rgba(255, 183, 77, 0.28);
+}
+
+.chip-dot {
+  width: 7px;
+  height: 7px;
   background-color: var(--accent-green-bright);
   border-radius: 50%;
-  box-shadow: 0 0 10px var(--accent-green-bright);
+  box-shadow: 0 0 8px var(--accent-green-bright);
   animation: pulse-dot 2s infinite;
   flex-shrink: 0;
+}
+
+.chip-icon {
+  font-size: 0.95em;
+  line-height: 1;
 }
 
 @keyframes pulse-dot {
@@ -745,14 +796,32 @@ body {
   margin-bottom: 18px;
 }
 
-.welcome-feature-badge {
-  font-size: 0.78rem;
+/* Welcome Slide Chips Container */
+.welcome-chips-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.welcome-chip {
+  font-size: 0.74rem;
   font-weight: 600;
-  color: var(--accent-green);
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 6px 14px;
+  color: #e2e8f0;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 5px 11px;
   border-radius: var(--radius-pill);
+  transition: var(--transition-fast);
+  white-space: nowrap;
+}
+
+.welcome-chip:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
 }
 
 /* Feature Slides (1 to 7) Wrapper */
