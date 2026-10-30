@@ -263,5 +263,53 @@
     </div>
   </footer>
 
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const elements = [
+        document.querySelector('.glow-1'),
+        document.querySelector('.glow-2'),
+        document.querySelector('.glow-3')
+      ].filter(el => el !== null);
+
+      if (!elements.length) return;
+
+      const orbs = elements.map((el, i) => ({
+        el,
+        x: (Math.random() - 0.5) * 80,
+        y: (Math.random() - 0.5) * 80,
+        targetX: (Math.random() - 0.5) * 160,
+        targetY: (Math.random() - 0.5) * 160,
+        speed: 0.003 + (Math.random() * 0.003),
+        freqX: 0.0008 + (Math.random() * 0.0006),
+        freqY: 0.0006 + (Math.random() * 0.0005),
+        phase: i * 2.5,
+        timer: Math.floor(Math.random() * 180) + 120
+      }));
+
+      let time = 0;
+      function updateDrift() {
+        time += 1;
+        orbs.forEach(orb => {
+          orb.timer -= 1;
+          if (orb.timer <= 0) {
+            orb.targetX = (Math.random() - 0.5) * 200;
+            orb.targetY = (Math.random() - 0.5) * 160;
+            orb.speed = 0.0025 + (Math.random() * 0.0035);
+            orb.timer = Math.floor(Math.random() * 300) + 180;
+          }
+          orb.x += (orb.targetX - orb.x) * orb.speed;
+          orb.y += (orb.targetY - orb.y) * orb.speed;
+
+          const waveX = Math.sin((time * orb.freqX) + orb.phase) * 40;
+          const waveY = Math.cos((time * orb.freqY) + orb.phase) * 30;
+
+          orb.el.style.transform = `translate3d(${(orb.x + waveX).toFixed(2)}px, ${(orb.y + waveY).toFixed(2)}px, 0)`;
+        });
+        requestAnimationFrame(updateDrift);
+      }
+      updateDrift();
+    });
+  </script>
 </body>
 </html>

@@ -14,43 +14,86 @@ document.addEventListener('DOMContentLoaded', () => {
    1. Dynamic Moving Glow Light (Android Modern Ambient Lighting)
    Supports mouse movement, touch dragging, and continuous fluid float
    ========================================================================== */
+/* ==========================================================================
+   1. Dynamic Organic Random Floating Glow Lights
+   Continuous Brownian random walk with curved sine drift & gentle mouse influence
+   ========================================================================== */
 function initAmbientGlow() {
-  const orbs = [
-    { el: document.getElementById('glowOrb1'), factorX: 0.22, factorY: 0.16 },
-    { el: document.getElementById('glowOrb2'), factorX: -0.20, factorY: -0.14 },
-    { el: document.getElementById('glowOrb3'), factorX: 0.16, factorY: -0.12 },
-    { el: document.getElementById('glowOrb4'), factorX: -0.14, factorY: 0.18 }
-  ].filter(o => o.el !== null);
+  const elements = [
+    document.getElementById('glowOrb1'),
+    document.getElementById('glowOrb2'),
+    document.getElementById('glowOrb3'),
+    document.getElementById('glowOrb4')
+  ].filter(el => el !== null);
 
-  let targetX = 0;
-  let targetY = 0;
-  let currentX = 0;
-  let currentY = 0;
+  if (!elements.length) return;
+
+  // Independent randomized physics state for each orb
+  const orbs = elements.map((el, i) => ({
+    el,
+    x: (Math.random() - 0.5) * 80,
+    y: (Math.random() - 0.5) * 80,
+    targetX: (Math.random() - 0.5) * 160,
+    targetY: (Math.random() - 0.5) * 160,
+    speed: 0.003 + (Math.random() * 0.003),
+    freqX: 0.0008 + (Math.random() * 0.0006),
+    freqY: 0.0006 + (Math.random() * 0.0005),
+    phase: i * 2.5,
+    timer: Math.floor(Math.random() * 180) + 120
+  }));
+
+  let mouseX = 0;
+  let mouseY = 0;
+  let targetMouseX = 0;
+  let targetMouseY = 0;
 
   window.addEventListener('mousemove', (e) => {
-    targetX = (e.clientX - window.innerWidth / 2) * 0.14;
-    targetY = (e.clientY - window.innerHeight / 2) * 0.14;
+    targetMouseX = (e.clientX - window.innerWidth / 2) * 0.05;
+    targetMouseY = (e.clientY - window.innerHeight / 2) * 0.05;
   });
 
   window.addEventListener('touchmove', (e) => {
     if (e.touches && e.touches[0]) {
-      targetX = (e.touches[0].clientX - window.innerWidth / 2) * 0.10;
-      targetY = (e.touches[0].clientY - window.innerHeight / 2) * 0.10;
+      targetMouseX = (e.touches[0].clientX - window.innerWidth / 2) * 0.03;
+      targetMouseY = (e.touches[0].clientY - window.innerHeight / 2) * 0.03;
     }
   }, { passive: true });
 
-  function animateOrbs() {
-    currentX += (targetX - currentX) * 0.04;
-    currentY += (targetY - currentY) * 0.04;
+  let time = 0;
 
-    orbs.forEach(orb => {
-      orb.el.style.translate = `${currentX * orb.factorX}px ${currentY * orb.factorY}px`;
+  function updateRandomDrift() {
+    time += 1;
+    mouseX += (targetMouseX - mouseX) * 0.03;
+    mouseY += (targetMouseY - mouseY) * 0.03;
+
+    orbs.forEach((orb) => {
+      // Periodic target waypoint randomization
+      orb.timer -= 1;
+      if (orb.timer <= 0) {
+        orb.targetX = (Math.random() - 0.5) * 220;
+        orb.targetY = (Math.random() - 0.5) * 180;
+        orb.speed = 0.0025 + (Math.random() * 0.0035);
+        orb.timer = Math.floor(Math.random() * 300) + 180; // 3 to 8 seconds
+      }
+
+      // Smooth ease towards random target
+      orb.x += (orb.targetX - orb.x) * orb.speed;
+      orb.y += (orb.targetY - orb.y) * orb.speed;
+
+      // Add continuous organic sine curve so paths are wavy and fluid
+      const waveX = Math.sin((time * orb.freqX) + orb.phase) * 45;
+      const waveY = Math.cos((time * orb.freqY) + orb.phase) * 35;
+
+      const finalX = orb.x + waveX + mouseX;
+      const finalY = orb.y + waveY + mouseY;
+
+      orb.el.style.transform = `translate3d(${finalX.toFixed(2)}px, ${finalY.toFixed(2)}px, 0)`;
     });
 
-    requestAnimationFrame(animateOrbs);
+    requestAnimationFrame(updateRandomDrift);
   }
 
-  animateOrbs();
+  updateRandomDrift();
 }
 
 /* ==========================================================================
