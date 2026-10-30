@@ -1,37 +1,67 @@
-// ExpenseMate Interactive Logic & User Guide Engine
+// ExpenseMate Interactive Logic, Animations & User Guide Engine
 
 document.addEventListener('DOMContentLoaded', () => {
   initAmbientGlow();
   initOnboardingSlider();
   initSmartInsightsRotation();
+  initScrollAnimations();
   initUserGuide();
 });
 
 /* ==========================================================================
    1. Dynamic Moving Glow Light (Android Modern Ambient Lighting)
+   Supports mouse movement, touch dragging, and continuous fluid float
    ========================================================================== */
 function initAmbientGlow() {
   const glowOrb1 = document.getElementById('glowOrb1');
   const glowOrb2 = document.getElementById('glowOrb2');
+  const glowOrb3 = document.getElementById('glowOrb3');
 
   if (!glowOrb1 || !glowOrb2) return;
 
-  let mouseX = window.innerWidth / 2;
-  let mouseY = window.innerHeight / 3;
-  let orbX = mouseX;
-  let orbY = mouseY;
+  let targetX = window.innerWidth / 2;
+  let targetY = window.innerHeight / 3;
+  let currentX = targetX;
+  let currentY = targetY;
+  let time = 0;
 
+  // Track mouse
   window.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY + window.scrollY;
+    targetX = e.clientX;
+    targetY = e.clientY;
   });
 
-  function animateOrbs() {
-    orbX += (mouseX - orbX) * 0.05;
-    orbY += (mouseY - orbY) * 0.05;
+  // Track touch on mobile
+  window.addEventListener('touchmove', (e) => {
+    if (e.touches && e.touches[0]) {
+      targetX = e.touches[0].clientX;
+      targetY = e.touches[0].clientY;
+    }
+  }, { passive: true });
 
-    glowOrb1.style.transform = `translate3d(${orbX * 0.4}px, ${orbY * 0.25}px, 0)`;
-    glowOrb2.style.transform = `translate3d(${-orbX * 0.3}px, ${-orbY * 0.2}px, 0)`;
+  function animateOrbs() {
+    time += 0.015;
+
+    // Organic continuous floating drift
+    const driftX = Math.sin(time) * 45;
+    const driftY = Math.cos(time * 0.8) * 35;
+
+    currentX += (targetX - currentX) * 0.04;
+    currentY += (targetY - currentY) * 0.04;
+
+    const orb1X = (currentX * 0.3) + driftX;
+    const orb1Y = (currentY * 0.2) + driftY;
+    glowOrb1.style.transform = `translate3d(${orb1X}px, ${orb1Y}px, 0)`;
+
+    const orb2X = (-currentX * 0.25) - driftX;
+    const orb2Y = (-currentY * 0.15) - driftY;
+    glowOrb2.style.transform = `translate3d(${orb2X}px, ${orb2Y}px, 0)`;
+
+    if (glowOrb3) {
+      const orb3X = (Math.cos(time * 0.6) * 60) + (currentX * 0.15);
+      const orb3Y = (Math.sin(time * 0.7) * 40) + (currentY * 0.1);
+      glowOrb3.style.transform = `translate3d(${orb3X}px, ${orb3Y}px, 0)`;
+    }
 
     requestAnimationFrame(animateOrbs);
   }
@@ -48,7 +78,8 @@ function initSmartInsightsRotation() {
     "To stay on budget: aim for ₹25.00/day",
     "On track: 30% of monthly budget remaining",
     "Top spend this week: Food & Groceries (42%)",
-    "No ads • 100% Offline • Biometric Protected"
+    "No ads • 100% Offline • Biometric Protected",
+    "Split trip debts settled: Priya owes you ₹500"
   ];
 
   const pillText = document.getElementById('smartInsightText');
@@ -57,7 +88,7 @@ function initSmartInsightsRotation() {
   let index = 0;
   setInterval(() => {
     pillText.style.opacity = '0';
-    pillText.style.transform = 'translateY(8px)';
+    pillText.style.transform = 'translateY(10px)';
     setTimeout(() => {
       index = (index + 1) % insights.length;
       pillText.textContent = insights[index];
@@ -101,6 +132,7 @@ function initOnboardingSlider() {
     slides.forEach((slide, idx) => {
       if (idx === currentSlide) {
         slide.classList.add('active');
+        triggerSlideMicroAnimations(slide, idx);
       } else {
         slide.classList.remove('active');
       }
@@ -138,6 +170,34 @@ function initOnboardingSlider() {
     }
   }
 
+  function triggerSlideMicroAnimations(slideElement, slideIdx) {
+    // Slide 2: Analytics Bars Animation
+    if (slideIdx === 2) {
+      const bars = slideElement.querySelectorAll('.progress-fill');
+      bars.forEach(bar => {
+        const targetWidth = bar.style.width;
+        bar.style.width = '0%';
+        setTimeout(() => {
+          bar.style.transition = 'width 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+          bar.style.width = targetWidth;
+        }, 50);
+      });
+    }
+
+    // Slide 3: Budget Bar Animation
+    if (slideIdx === 3) {
+      const budgetBar = slideElement.querySelector('.budget-track .progress-fill');
+      if (budgetBar) {
+        const targetWidth = budgetBar.style.width || '68%';
+        budgetBar.style.width = '0%';
+        setTimeout(() => {
+          budgetBar.style.transition = 'width 0.9s cubic-bezier(0.16, 1, 0.3, 1)';
+          budgetBar.style.width = targetWidth;
+        }, 50);
+      }
+    }
+  }
+
   if (prevBtn) {
     prevBtn.addEventListener('click', () => {
       updateSlider(currentSlide - 1);
@@ -161,7 +221,7 @@ function initOnboardingSlider() {
     });
   });
 
-  // Touch Swipe Support for Phones
+  // Touch Swipe Support for Mobile Phones
   const viewport = document.querySelector('.onboarding-viewport');
   if (viewport) {
     let touchStartX = 0;
@@ -207,7 +267,43 @@ function initOnboardingSlider() {
 }
 
 /* ==========================================================================
-   4. User Guide Search & Accordion Engine
+   4. Scroll-Triggered Reveal Animations (IntersectionObserver)
+   ========================================================================== */
+function initScrollAnimations() {
+  const animatedElements = document.querySelectorAll(
+    '.feature-card, .screenshot-item, .section-header, .cta-box, .hero-banner-frame, .hero-chip'
+  );
+
+  if (!('IntersectionObserver' in window)) {
+    animatedElements.forEach(el => el.classList.add('is-revealed'));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-revealed');
+        // Once revealed, unobserve to maintain high performance
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  animatedElements.forEach((el, index) => {
+    el.classList.add('reveal-element');
+    // Stagger transition delay slightly for grids
+    if (el.classList.contains('feature-card')) {
+      el.style.transitionDelay = `${(index % 3) * 0.1}s`;
+    }
+    observer.observe(el);
+  });
+}
+
+/* ==========================================================================
+   5. User Guide Search & Accordion Engine
    ========================================================================== */
 function initUserGuide() {
   const container = document.getElementById('userGuideContainer');

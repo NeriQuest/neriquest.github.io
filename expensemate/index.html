@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>ExpenseMate - Smart Personal Expense Tracker by NeriQuest</title>
   <meta name="description" content="Master your money, effortlessly. ExpenseMate is an offline-first, private, and beautifully animated expense tracker with visual analytics, budgeting, split debts, and voice logging.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,10 +13,12 @@
 </head>
 <body>
 
-  <!-- Dynamic Ambient Glowing Lights (Android Modern Ambient Lighting) -->
-  <div class="ambient-glow glow-1" id="glowOrb1"></div>
-  <div class="ambient-glow glow-2" id="glowOrb2"></div>
-  <div class="ambient-glow glow-3"></div>
+  <!-- Dynamic Ambient Glowing Lights Container (Prevents document overflow & mobile zoom out) -->
+  <div class="ambient-glow-wrapper" aria-hidden="true">
+    <div class="ambient-glow glow-1" id="glowOrb1"></div>
+    <div class="ambient-glow glow-2" id="glowOrb2"></div>
+    <div class="ambient-glow glow-3" id="glowOrb3"></div>
+  </div>
 
   <!-- Navigation -->
   <header class="navbar">
