@@ -1694,25 +1694,25 @@ body {
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-  gap: 22px;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 16px;
 }
 
-/* Modern Glassmorphic Feature Card with Thematic Accents */
+/* Modern Compact Glassmorphic Feature Card */
 .feature-card {
   position: relative;
   background: linear-gradient(150deg, rgba(20, 27, 40, 0.78) 0%, rgba(10, 14, 22, 0.92) 100%);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-top: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 22px;
-  padding: 26px;
+  border-radius: 18px;
+  padding: 18px 20px 16px; /* Compact aesthetic vertical height */
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   display: flex;
   flex-direction: column;
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   overflow: hidden;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.3);
 }
 
 /* Card Thematic Accent Palettes */
@@ -1730,11 +1730,11 @@ body {
   position: absolute;
   top: -10px;
   right: -10px;
-  width: 140px;
-  height: 140px;
+  width: 110px;
+  height: 110px;
   border-radius: 50%;
   background: radial-gradient(circle, var(--card-glow, rgba(74, 222, 128, 0.15)) 0%, transparent 70%);
-  filter: blur(28px);
+  filter: blur(22px);
   opacity: 0.45;
   transition: opacity 0.35s ease, transform 0.35s ease;
   pointer-events: none;
@@ -1755,20 +1755,20 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 12px; /* Streamlined compact gap */
 }
 
 .feature-icon-box {
-  width: 48px;
-  height: 48px;
+  width: 38px;
+  height: 38px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 14px;
+  border-radius: 11px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
-  font-size: 1.45rem;
+  font-size: 1.25rem;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
 }
 
@@ -1778,29 +1778,29 @@ body {
 }
 
 .feature-tag {
-  font-size: 0.66rem;
+  font-size: 0.62rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   color: var(--card-accent, #94a3b8);
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 3px 9px;
+  padding: 2px 8px;
   border-radius: var(--radius-pill);
 }
 
 .feature-card h3 {
-  font-size: 1.2rem;
+  font-size: 1.08rem;
   font-weight: 800;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
   letter-spacing: -0.015em;
   color: #fff;
 }
 
 .feature-card p {
   color: #94a3b8;
-  font-size: 0.92rem;
-  line-height: 1.6;
-  margin-bottom: 20px;
+  font-size: 0.85rem;
+  line-height: 1.48;
+  margin-bottom: 14px;
   flex: 1;
 }
 
@@ -1812,20 +1812,20 @@ body {
 .feature-card-footer {
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 6px;
   flex-wrap: wrap;
-  padding-top: 14px;
+  padding-top: 10px;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .feature-chip {
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 600;
   color: #cbd5e1;
   background: rgba(255, 255, 255, 0.035);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  padding: 3px 9px;
-  border-radius: 6px;
+  padding: 2px 8px;
+  border-radius: 5px;
   white-space: nowrap;
   transition: var(--transition-fast);
 }
@@ -2667,6 +2667,12 @@ mark.highlight {
 
   .features-grid {
     grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .feature-card {
+    padding: 16px 18px 14px;
+    border-radius: 16px;
   }
 
   .freedom-features-grid {
