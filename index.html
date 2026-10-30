@@ -2,67 +2,354 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NeriQuest - Developer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <title>NeriQuest - Crafting Beautiful, Private & Fast Android Apps</title>
+  <meta name="description" content="NeriQuest is an independent Android studio creating modern, offline-first, tracker-free utility applications like ExpenseMate and ChessTimer.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="images/logo.png">
 </head>
 <body>
-  <header>
-    <img src="images/logo.png" alt="NeriQuest Logo" class="logo">
-    <h1>Welcome to NeriQuest</h1>
+
+  <!-- Floating Blurred Frosted Ambient Aurora Glows (Atmospheric Halo System) -->
+  <div class="ambient-glow-wrapper" aria-hidden="true">
+    <div class="ambient-glow glow-1" id="glowOrb1"></div>
+    <div class="ambient-glow glow-2" id="glowOrb2"></div>
+    <div class="ambient-glow glow-3" id="glowOrb3"></div>
+    <div class="ambient-glow glow-4" id="glowOrb4"></div>
+    <!-- Frosted Glass Diffuser Overlay -->
+    <div class="ambient-frosted-diffuser"></div>
+  </div>
+
+  <!-- Modern Sticky Glass Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="./" class="brand" title="NeriQuest Home">
+        <div class="nav-logo-box">
+          <img src="images/logo.png" alt="NeriQuest Logo" class="nav-logo">
+        </div>
+        <div class="brand-info">
+          <span class="brand-name">NeriQuest</span>
+          <span class="brand-badge">Studio</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#apps" class="active">Apps</a>
+        <a href="expensemate/">ExpenseMate v4.1</a>
+        <a href="#philosophy">Our Principles</a>
+        <a href="privacypolicy/">Privacy Policy</a>
+      </nav>
+
+      <a href="expensemate/" class="btn-topbar-cta" title="Explore Flagship ExpenseMate">
+        <span>Featured: ExpenseMate</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+      </a>
+    </div>
   </header>
 
-  <section class="app-section">
-    <div class="app">
-      <a href="expensemate/" style="text-decoration: none; color: inherit;">
-        <img src="images/expenseMate_banner.jpeg" alt="ExpenseMate Banner" class="app-banner">
-        <h2>ExpenseMate</h2>
-      </a>
-      <p style="margin: 10px 0 20px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-        <a href="expensemate/" style="display: inline-block; padding: 8px 18px; background: #22c55e; color: #0b1710; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 0.95rem;">View ExpenseMate Page &rarr;</a>
-        <a href="https://play.google.com/store/apps/details?id=neriquest.expensemate" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; background: #161d2b; color: #e5e7eb; border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.9rem;">
-          <svg width="15" height="16" viewBox="0 0 466 512" aria-hidden="true"><path fill="#EA4335" d="M199.9 237.8 1.4 470.17c7.22 24.57 30.16 41.81 55.8 41.81 11.16 0 20.93-2.79 29.3-8.37l244.16-139.46L199.9 237.8z"/><path fill="#FBBC04" d="m433.91 205.1-104.65-60-111.61 110.22 113.01 108.83 104.64-58.6c18.14-9.77 30.7-29.3 30.7-50.23-1.4-20.93-13.95-40.46-32.09-50.22z"/><path fill="#34A853" d="M199.42 273.45 329.27 145.1 87.9 8.37C79.53 2.79 68.36 0 57.2 0 30.7 0 6.98 18.14 1.4 41.86l198.02 231.59z"/><path fill="#4285F4" d="M1.39 41.86C0 46.04 0 51.63 0 57.2v397.64c0 5.57 0 9.76 1.4 15.34l216.27-214.86L1.39 41.86z"/></svg>
-          Google Play
-        </a>
-      </p>
-      <div class="app-screenshots">
-        <img src="images/expenseSS1.jpeg" alt="ExpenseMate Screenshot">
-        <img src="images/expenseSS2.jpeg" alt="ExpenseMate Screenshot">
-        <img src="images/expenseSS3.jpeg" alt="ExpenseMate Screenshot">
-        <img src="images/expenseSS4.jpeg" alt="ExpenseMate Screenshot">
-        <img src="images/expenseSS5.jpeg" alt="ExpenseMate Screenshot">
-        <img src="images/expenseSS6.jpeg" alt="ExpenseMate Screenshot">
-        <img src="images/expenseSS7.jpeg" alt="ExpenseMate Screenshot">
-        <img src="images/expenseSS8.jpeg" alt="ExpenseMate Screenshot">
-        <!-- more screenshots -->
-      </div>
-    </div>
+  <!-- Hero Section -->
+  <main>
+    <section class="hero-section">
+      <div class="container hero-content">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          <span>Independent Android App Studio • 100% Offline-First</span>
+        </div>
 
-    <div class="app">
-      <img src="images/chessTimer_banner.png" alt="ChessTimer Banner" class="app-banner">
-      <h2>ChessTimer</h2>
-      <div class="app-screenshots">
-        <img src="images/chessSS1.png" alt="ChessTimer Screenshot">
-        <img src="images/chessSS2.png" alt="ChessTimer Screenshot">
-        <img src="images/chessSS3.png" alt="ChessTimer Screenshot">
-        <img src="images/chessSS4.png" alt="ChessTimer Screenshot">
-        <img src="images/chessSS5.png" alt="ChessTimer Screenshot">
-        <img src="images/chessSS6.png" alt="ChessTimer Screenshot">
-        <img src="images/chessSS7.png" alt="ChessTimer Screenshot">
-        <!-- more screenshots -->
-      </div>
-    </div>
+        <h1 class="hero-title">
+          Crafting Beautiful, <br>
+          <span class="gradient-text">Private &amp; Fluid</span> Android Apps
+        </h1>
 
-    <div class="app">
-      <img src="images/calculator_banner.png" alt="Calculator Banner" class="app-banner">
-      <h2>Calculator</h2>
-      <div class="app-screenshots">
-        <img src="images/screenshot5.jpeg" alt="Calculator Screenshot">
-        <img src="images/screenshot6.jpeg" alt="Calculator Screenshot">
-        <!-- more screenshots -->
+        <p class="hero-subtitle">
+          At NeriQuest, we build purposeful, lightning-fast utilities crafted in Flutter. Zero ads, zero background telemetry, and pure Material You dark aesthetics.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#apps" class="btn btn-primary">
+            <span>Explore Applications</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg>
+          </a>
+          <a href="expensemate/" class="btn btn-secondary">
+            <span>View ExpenseMate v4.1</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m9 18 6-6-6-6"/></svg>
+          </a>
+        </div>
+
+        <div class="hero-chips">
+          <span class="hero-chip-item">🔒 100% On-Device Privacy</span>
+          <span class="hero-chip-item">⚡ 120Hz Fluid Flutter UI</span>
+          <span class="hero-chip-item">🚫 Zero Advertisements</span>
+          <span class="hero-chip-item">🎨 Material You AMOLED</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Apps Showcase Section -->
+    <section class="apps-section" id="apps">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Applications Portfolio</span>
+          <h2>Thoughtful Utilities Built For You</h2>
+          <p>Every app is engineered with obsessive focus on speed, privacy, and refined mobile design.</p>
+        </div>
+
+        <div class="apps-grid">
+
+          <!-- 1. ExpenseMate (Flagship App) -->
+          <article class="app-card" data-theme="emerald">
+            <div class="app-card-glow" aria-hidden="true"></div>
+
+            <div class="app-card-header">
+              <div class="app-brand-lockup">
+                <div class="app-icon-wrap">
+                  <img src="images/expenseLogo.png" alt="ExpenseMate Icon" class="app-icon">
+                </div>
+                <div class="app-title-group">
+                  <h3>
+                    ExpenseMate
+                    <span class="app-version-badge">v4.1</span>
+                  </h3>
+                  <p class="app-tagline">Master your money, effortlessly.</p>
+                </div>
+              </div>
+              <span class="app-tag-pill">FLAGSHIP • PERSONAL FINANCE</span>
+            </div>
+
+            <p class="app-desc">
+              The premier private personal finance and expense tracker for Android. Complete with Smart AI voice assistant, weekly/monthly visual analytics, automatic recurring subscriptions, collaborative split bills &amp; debt tracking, resizable Material You widgets, and instant Excel (.xlsx) data backup.
+            </p>
+
+            <div class="app-feature-chips">
+              <span class="app-feature-chip">⚡ Instant 3s Logging</span>
+              <span class="app-feature-chip">📊 Deep Pie &amp; Trend Analytics</span>
+              <span class="app-feature-chip">🎯 Monthly Budget Intelligence</span>
+              <span class="app-feature-chip">🔄 Auto-Repeat Subscriptions</span>
+              <span class="app-feature-chip">👥 Split Bills &amp; Debts</span>
+              <span class="app-feature-chip">📱 Home Screen Widgets</span>
+              <span class="app-feature-chip">🔒 Biometric Security</span>
+              <span class="app-feature-chip">💾 100% Offline Excel Backup</span>
+            </div>
+
+            <div class="app-actions">
+              <a href="expensemate/" class="btn-card-primary">
+                <span>View ExpenseMate Showcase</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+              </a>
+
+              <a href="https://play.google.com/store/apps/details?id=neriquest.expensemate" target="_blank" rel="noopener noreferrer" class="btn-card-store" title="Get ExpenseMate on Google Play">
+                <svg width="18" height="18" viewBox="0 0 466 512" aria-hidden="true">
+                  <path fill="#EA4335" d="M199.9 237.8 1.4 470.17c7.22 24.57 30.16 41.81 55.8 41.81 11.16 0 20.93-2.79 29.3-8.37l244.16-139.46L199.9 237.8z"/>
+                  <path fill="#FBBC04" d="m433.91 205.1-104.65-60-111.61 110.22 113.01 108.83 104.64-58.6c18.14-9.77 30.7-29.3 30.7-50.23-1.4-20.93-13.95-40.46-32.09-50.22z"/>
+                  <path fill="#34A853" d="M199.42 273.45 329.27 145.1 87.9 8.37C79.53 2.79 68.36 0 57.2 0 30.7 0 6.98 18.14 1.4 41.86l198.02 231.59z"/>
+                  <path fill="#4285F4" d="M1.39 41.86C0 46.04 0 51.63 0 57.2v397.64c0 5.57 0 9.76 1.4 15.34l216.27-214.86L1.39 41.86z"/>
+                </svg>
+                <span>Google Play</span>
+              </a>
+            </div>
+
+            <!-- Banner Showcase -->
+            <div class="app-banner-wrap">
+              <a href="expensemate/" class="app-banner-frame" title="Click to view ExpenseMate details">
+                <img src="images/expenseMate_banner.jpeg" alt="ExpenseMate Overview Banner" class="app-banner-img" loading="lazy">
+              </a>
+            </div>
+
+            <!-- Horizontal Screenshot Carousel Strip -->
+            <div class="screenshots-strip-wrap">
+              <div class="screenshots-strip-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m9 9 6 6m0-6-6 6"/></svg>
+                <span>In-App Screenshots (Swipe or Scroll horizontally)</span>
+              </div>
+              <div class="screenshots-scroll-track">
+                <div class="screenshot-thumb-frame"><img src="images/expenseSS1.jpeg" alt="ExpenseMate Transaction Overview" class="screenshot-thumb-img" loading="lazy"></div>
+                <div class="screenshot-thumb-frame"><img src="images/expenseSS2.jpeg" alt="ExpenseMate Visual Analytics" class="screenshot-thumb-img" loading="lazy"></div>
+                <div class="screenshot-thumb-frame"><img src="images/expenseSS3.jpeg" alt="ExpenseMate Smart Budgeting" class="screenshot-thumb-img" loading="lazy"></div>
+                <div class="screenshot-thumb-frame"><img src="images/expenseSS4.jpeg" alt="ExpenseMate Subscriptions" class="screenshot-thumb-img" loading="lazy"></div>
+                <div class="screenshot-thumb-frame"><img src="images/expenseSS5.jpeg" alt="ExpenseMate Split Bills" class="screenshot-thumb-img" loading="lazy"></div>
+                <div class="screenshot-thumb-frame"><img src="images/expenseSS6.jpeg" alt="ExpenseMate Home Widgets" class="screenshot-thumb-img" loading="lazy"></div>
+                <div class="screenshot-thumb-frame"><img src="images/expenseSS7.jpeg" alt="ExpenseMate Data Privacy" class="screenshot-thumb-img" loading="lazy"></div>
+                <div class="screenshot-thumb-frame"><img src="images/expenseSS8.jpeg" alt="ExpenseMate Summary Card" class="screenshot-thumb-img" loading="lazy"></div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 2. ChessTimer -->
+          <article class="app-card" data-theme="amber">
+            <div class="app-card-glow" aria-hidden="true"></div>
+
+            <div class="app-card-header">
+              <div class="app-brand-lockup">
+                <div class="app-icon-wrap" style="font-size: 1.8rem; background: rgba(251, 191, 36, 0.1); border-color: rgba(251, 191, 36, 0.3);">
+                  <span>⏱️</span>
+                </div>
+                <div class="app-title-group">
+                  <h3>ChessTimer</h3>
+                  <p class="app-tagline">Tournament-grade digital chess clock.</p>
+                </div>
+              </div>
+              <span class="app-tag-pill">TOURNAMENT READY • UTILITY</span>
+            </div>
+
+            <p class="app-desc">
+              A distraction-free, precision chess clock designed for blitz, rapid, classical, and custom games. Features Fischer, Bronstein, and simple delay increment modes, high-contrast AMOLED numbers for sunlit outdoor play, tactile haptic feedback, and pure zero-ad battery efficiency.
+            </p>
+
+            <div class="app-feature-chips">
+              <span class="app-feature-chip">♟️ Blitz, Bullet &amp; Classical</span>
+              <span class="app-feature-chip">⚡ Fischer &amp; Bronstein Delays</span>
+              <span class="app-feature-chip">🌙 Battery-Saver Pure AMOLED</span>
+              <span class="app-feature-chip">🔔 Tactile Sound &amp; Haptic Pulse</span>
+              <span class="app-feature-chip">🚫 Zero Ads • Zero Interruptions</span>
+            </div>
+
+            <div class="app-banner-wrap">
+              <div class="app-banner-frame">
+                <img src="images/chessTimer_banner.png" alt="ChessTimer Banner" class="app-banner-img" loading="lazy">
+              </div>
+            </div>
+
+            <!-- Horizontal Screenshot Carousel Strip -->
+            <div class="screenshots-strip-wrap">
+              <div class="screenshots-strip-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/></svg>
+                <span>Game Screenshots</span>
+              </div>
+              <div class="screenshots-scroll-track">
+                <div class="screenshot-thumb-frame"><img src="images/chessSS1.png" alt="ChessTimer Clock Face" class="screenshot-thumb-img" loading="lazy"></div>
+                <div class="screenshot-thumb-frame"><img src="images/chessSS2.png" alt="ChessTimer Time Controls" class="screenshot-thumb-img" loading="lazy"></div>
+                <div class="screenshot-thumb-frame"><img src="images/chessSS3.png" alt="ChessTimer Delay Modes" class="screenshot-thumb-img" loading="lazy"></div>
+                <div class="screenshot-thumb-frame"><img src="images/chessSS4.png" alt="ChessTimer Game In Progress" class="screenshot-thumb-img" loading="lazy"></div>
+                <div class="screenshot-thumb-frame"><img src="images/chessSS5.png" alt="ChessTimer AMOLED Mode" class="screenshot-thumb-img" loading="lazy"></div>
+                <div class="screenshot-thumb-frame"><img src="images/chessSS6.png" alt="ChessTimer Settings" class="screenshot-thumb-img" loading="lazy"></div>
+                <div class="screenshot-thumb-frame"><img src="images/chessSS7.png" alt="ChessTimer Preset Selection" class="screenshot-thumb-img" loading="lazy"></div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 3. Calculator -->
+          <article class="app-card" data-theme="cyan">
+            <div class="app-card-glow" aria-hidden="true"></div>
+
+            <div class="app-card-header">
+              <div class="app-brand-lockup">
+                <div class="app-icon-wrap" style="font-size: 1.8rem; background: rgba(56, 189, 248, 0.1); border-color: rgba(56, 189, 248, 0.3);">
+                  <span>🔢</span>
+                </div>
+                <div class="app-title-group">
+                  <h3>Calculator</h3>
+                  <p class="app-tagline">Clean, lightning-fast everyday calculation tool.</p>
+                </div>
+              </div>
+              <span class="app-tag-pill">MINIMALIST • UTILITY</span>
+            </div>
+
+            <p class="app-desc">
+              Lightweight, instant calculation engine built with Material You principles. Enjoy clear number formatting, history memory tape, seamless ergonomics, and zero permission or internet access requirements.
+            </p>
+
+            <div class="app-feature-chips">
+              <span class="app-feature-chip">⚡ Sub-millisecond Calculations</span>
+              <span class="app-feature-chip">📝 Scrollable History Tape</span>
+              <span class="app-feature-chip">🎨 Material You Theming</span>
+              <span class="app-feature-chip">🔒 Zero Permissions Required</span>
+            </div>
+
+            <div class="app-banner-wrap">
+              <div class="app-banner-frame">
+                <img src="images/calculator_banner.png" alt="Calculator App Banner" class="app-banner-img" loading="lazy">
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Studio Philosophy & Engineering Principles -->
+    <section class="philosophy-section" id="philosophy">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Engineering Philosophy</span>
+          <h2>Why We Build Differently</h2>
+          <p>We reject surveillance software, intrusive advertising, and unnecessary cloud servers.</p>
+        </div>
+
+        <div class="philosophy-grid">
+          <div class="philosophy-card">
+            <div class="philosophy-icon-box">🔒</div>
+            <h3>Privacy By Design</h3>
+            <p>Your personal data resides strictly on your physical phone hardware. We do not run external tracking databases or sell your data.</p>
+          </div>
+
+          <div class="philosophy-card">
+            <div class="philosophy-icon-box">⚡</div>
+            <h3>120Hz Fluid Speed</h3>
+            <p>Engineered using Flutter and Dart for silky-smooth 120fps animations, instant launch performance, and zero bloatware.</p>
+          </div>
+
+          <div class="philosophy-card">
+            <div class="philosophy-icon-box">🚫</div>
+            <h3>100% Ad-Free Focus</h3>
+            <p>No pop-ups, no banner ads, and no subscription traps. Pure utility designed to respect your time and concentration.</p>
+          </div>
+
+          <div class="philosophy-card">
+            <div class="philosophy-icon-box">💾</div>
+            <h3>True Data Freedom</h3>
+            <p>You always own your data. Export your records into open Excel (.xlsx) and CSV spreadsheets anytime with zero lock-in.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modern Glassmorphic Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <div class="footer-brand-title">
+            <img src="images/logo.png" alt="NeriQuest Logo" style="width: 28px; height: 28px; object-fit: contain;">
+            <span>NeriQuest</span>
+          </div>
+          <p class="footer-desc">
+            Independent mobile app development studio committed to building private, elegant, and blazing-fast Android software.
+          </p>
+        </div>
+
+        <div class="footer-nav-col">
+          <div class="footer-links-group">
+            <span class="footer-group-title">Products</span>
+            <a href="expensemate/">ExpenseMate v4.1</a>
+            <a href="#apps">ChessTimer</a>
+            <a href="#apps">Calculator</a>
+          </div>
+
+          <div class="footer-links-group">
+            <span class="footer-group-title">Resources</span>
+            <a href="privacypolicy/">Privacy Policy</a>
+            <a href="expensemate/#userguide">ExpenseMate Guide</a>
+            <a href="https://play.google.com/store/apps/details?id=neriquest.expensemate" target="_blank" rel="noopener noreferrer">Google Play Store</a>
+          </div>
+
+          <div class="footer-links-group">
+            <span class="footer-group-title">Contact</span>
+            <a href="mailto:neriquest@gmail.com">neriquest@gmail.com</a>
+            <a href="https://github.com/NeriQuest" target="_blank" rel="noopener noreferrer">GitHub Profile</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 NeriQuest. All rights reserved.</span>
+        <span>Crafted with Flutter &amp; Material You</span>
       </div>
     </div>
-  </section>
+  </footer>
 
   <script src="app.js"></script>
 </body>
