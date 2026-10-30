@@ -136,7 +136,7 @@ body {
 }
 
 /* ==========================================================================
-   Ambient Floating Blurred Frosted Color Glows (Subtle Frosted Dark Theme)
+   Ambient Floating Blurred Frosted Color Glows (Similar to Feature Suite & Onboarding Glow)
    ========================================================================== */
 .ambient-glow-wrapper {
   position: fixed;
@@ -152,9 +152,9 @@ body {
 .ambient-frosted-diffuser {
   position: absolute;
   inset: 0;
-  backdrop-filter: blur(40px);
-  -webkit-backdrop-filter: blur(40px);
-  background: radial-gradient(circle at 50% 50%, rgba(7, 9, 12, 0.15) 0%, rgba(7, 9, 12, 0.5) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: radial-gradient(circle at 50% 50%, transparent 65%, rgba(7, 9, 12, 0.3) 100%);
   pointer-events: none;
   z-index: 1;
 }
@@ -163,45 +163,45 @@ body {
   position: absolute;
   border-radius: 50%;
   pointer-events: none;
-  filter: blur(90px);
-  opacity: 0.32;
+  filter: blur(55px);
+  opacity: 0.52;
   will-change: transform;
 }
 
 /* Glow 1: Soft Mint Emerald */
 .glow-1 {
-  top: 6%;
-  left: 12%;
+  top: 4%;
+  left: 10%;
   width: 520px;
   height: 520px;
-  background: radial-gradient(circle, rgba(52, 211, 153, 0.24) 0%, rgba(16, 185, 129, 0.10) 45%, transparent 70%);
+  background: radial-gradient(circle, rgba(74, 222, 128, 0.18) 0%, rgba(34, 197, 94, 0.08) 42%, transparent 70%);
 }
 
 /* Glow 2: Soft Sky Cyan */
 .glow-2 {
-  top: 36%;
-  right: 8%;
+  top: 32%;
+  right: 6%;
   width: 480px;
   height: 480px;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.22) 0%, rgba(14, 165, 233, 0.09) 45%, transparent 70%);
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.16) 0%, rgba(14, 165, 233, 0.07) 42%, transparent 70%);
 }
 
 /* Glow 3: Soft Lavender Violet */
 .glow-3 {
-  bottom: 12%;
-  left: 10%;
+  bottom: 10%;
+  left: 8%;
   width: 520px;
   height: 520px;
-  background: radial-gradient(circle, rgba(168, 85, 247, 0.20) 0%, rgba(139, 92, 246, 0.08) 45%, transparent 70%);
+  background: radial-gradient(circle, rgba(192, 132, 252, 0.16) 0%, rgba(168, 85, 247, 0.06) 42%, transparent 70%);
 }
 
 /* Glow 4: Soft Warm Amber */
 .glow-4 {
-  top: 64%;
-  left: 45%;
+  top: 60%;
+  left: 42%;
   width: 460px;
   height: 460px;
-  background: radial-gradient(circle, rgba(251, 146, 60, 0.18) 0%, rgba(245, 158, 11, 0.07) 45%, transparent 70%);
+  background: radial-gradient(circle, rgba(251, 146, 60, 0.14) 0%, rgba(245, 158, 11, 0.05) 42%, transparent 70%);
 }
 
 .container {
@@ -493,6 +493,21 @@ body {
   text-align: center;
 }
 
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 6%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 680px;
+  height: 380px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(74, 222, 128, 0.10) 0%, rgba(56, 189, 248, 0.04) 50%, transparent 75%);
+  filter: blur(48px);
+  pointer-events: none;
+  z-index: 0;
+}
+
 .hero-content {
   display: flex;
   flex-direction: column;
@@ -702,6 +717,21 @@ body {
 .onboarding-section {
   padding: 44px 0 50px;
   position: relative;
+}
+
+.onboarding-section::before {
+  content: '';
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 480px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(129, 199, 132, 0.09) 0%, rgba(77, 208, 225, 0.03) 50%, transparent 75%);
+  filter: blur(55px);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .onboarding-section .section-header {
@@ -1764,6 +1794,21 @@ body {
   position: relative;
 }
 
+.features-section::before {
+  content: '';
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 820px;
+  height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(56, 189, 248, 0.07) 0%, rgba(192, 132, 252, 0.04) 50%, transparent 75%);
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
+}
+
 .features-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
@@ -2468,12 +2513,12 @@ mark.highlight {
 
 .cta-card-aura {
   position: absolute;
-  top: -80px;
+  top: -70px;
   left: 50%;
   transform: translateX(-50%);
-  width: 480px;
-  height: 280px;
-  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.04) 0%, transparent 60%);
+  width: 520px;
+  height: 320px;
+  background: radial-gradient(ellipse at center, rgba(74, 222, 128, 0.14) 0%, rgba(56, 189, 248, 0.06) 45%, transparent 72%);
   pointer-events: none;
   border-radius: 50%;
   filter: blur(40px);
