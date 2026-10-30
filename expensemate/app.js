@@ -97,7 +97,7 @@ function initOnboardingSlider() {
   function updateSlider(index) {
     currentSlide = Math.max(0, Math.min(index, totalSlides - 1));
 
-    // Update slides visibility
+    // Update slides visibility with smooth transition
     slides.forEach((slide, idx) => {
       if (idx === currentSlide) {
         slide.classList.add('active');
@@ -147,7 +147,6 @@ function initOnboardingSlider() {
   if (nextBtn) {
     nextBtn.addEventListener('click', () => {
       if (currentSlide === totalSlides - 1) {
-        // Scroll smoothly to download section
         const downloadSec = document.getElementById('download');
         if (downloadSec) downloadSec.scrollIntoView({ behavior: 'smooth' });
       } else {
@@ -161,6 +160,29 @@ function initOnboardingSlider() {
       updateSlider(idx);
     });
   });
+
+  // Touch Swipe Support for Phones
+  const viewport = document.querySelector('.onboarding-viewport');
+  if (viewport) {
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    viewport.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    viewport.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 40) {
+        if (diff > 0) {
+          if (currentSlide < totalSlides - 1) updateSlider(currentSlide + 1);
+        } else {
+          if (currentSlide > 0) updateSlider(currentSlide - 1);
+        }
+      }
+    }, { passive: true });
+  }
 
   // Interactive tab switches inside Slide 1 mockup
   const typeTabs = document.querySelectorAll('.mockup-type-tab');
