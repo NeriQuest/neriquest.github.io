@@ -50,6 +50,9 @@
 }
 
 html {
+  overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
   -webkit-tap-highlight-color: transparent !important;
   scroll-behavior: smooth;
   font-family: var(--font-family);
@@ -128,6 +131,8 @@ textarea,
 
 body {
   overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -3764,7 +3769,10 @@ mark.highlight {
 .origin-story-section {
   position: relative;
   overflow: hidden;
-  padding: 100px 0 110px;
+  overflow-x: clip;
+  max-width: 100%;
+  width: 100%;
+  padding: 90px 0 100px;
   background-color: #080a0e;
   /* Drafting Notebook Grid Texture Overlay */
   background-image: 
@@ -3782,7 +3790,7 @@ mark.highlight {
   top: 20%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 650px;
+  width: min(650px, 90vw);
   height: 350px;
   background: radial-gradient(circle, rgba(74, 222, 128, 0.06) 0%, rgba(251, 191, 36, 0.04) 50%, transparent 80%);
   filter: blur(80px);
@@ -3794,7 +3802,8 @@ mark.highlight {
   text-align: center;
   position: relative;
   z-index: 2;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
+  padding: 0 16px;
 }
 
 .origin-badge-wrap {
@@ -3851,8 +3860,9 @@ mark.highlight {
   position: relative;
   width: 100%;
   max-width: 1140px;
-  margin: 40px auto 0;
-  padding: 10px 10px 0;
+  margin: 35px auto 0;
+  padding: 10px 0 0;
+  overflow: hidden;
 }
 
 .origin-scribbles-canvas {
@@ -3863,7 +3873,7 @@ mark.highlight {
   height: 100%;
   pointer-events: none;
   z-index: 1;
-  overflow: visible;
+  overflow: hidden;
 }
 
 @keyframes scribbleTwinkle {
@@ -3889,9 +3899,12 @@ mark.highlight {
   z-index: 2;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 50px;
+  gap: 40px;
   align-items: start;
-  margin-bottom: 55px;
+  margin-bottom: 50px;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .origin-direct-item {
@@ -3899,6 +3912,8 @@ mark.highlight {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  max-width: 100%;
 }
 
 /* Standalone Floating Photo System (No Box Background, No Card Border) */
@@ -3910,7 +3925,9 @@ mark.highlight {
   flex-direction: column;
   align-items: center;
   width: 100%;
+  max-width: 100%;
   padding: 10px 0;
+  overflow: visible;
 }
 
 .origin-item-note .origin-photo-standalone {
@@ -3973,21 +3990,22 @@ mark.highlight {
   position: absolute;
   pointer-events: none;
   z-index: 1;
-  overflow: visible;
+  overflow: hidden;
+  max-width: 100%;
 }
 
 .scribble-note-behind {
-  top: -20px;
-  left: -20px;
-  width: calc(100% + 40px);
-  height: calc(100% + 40px);
+  top: -10px;
+  left: 0;
+  width: 100%;
+  height: calc(100% + 20px);
 }
 
 .scribble-blueprint-behind {
-  top: -20px;
-  right: -20px;
-  width: calc(100% + 40px);
-  height: calc(100% + 40px);
+  top: -10px;
+  right: 0;
+  width: 100%;
+  height: calc(100% + 20px);
 }
 
 /* Subtle Hover Zoom Hint */
@@ -4022,8 +4040,8 @@ mark.highlight {
 /* Realistic Paper Tape (Washi Tape) Directly Sticking to Photo */
 .washi-tape {
   position: absolute;
-  width: 120px;
-  height: 32px;
+  width: 110px;
+  height: 30px;
   z-index: 10;
   pointer-events: none;
   opacity: 0.9;
@@ -4053,7 +4071,7 @@ mark.highlight {
 
 .tape-top-right {
   top: -4px;
-  right: 28px;
+  right: 20px;
   transform: rotate(3deg);
 }
 
@@ -4070,6 +4088,7 @@ mark.highlight {
   border-radius: 12px;
   margin-bottom: 12px;
   width: fit-content;
+  max-width: 100%;
   position: relative;
   z-index: 4;
 }
@@ -4091,8 +4110,9 @@ mark.highlight {
 /* Direct Captions (Clean Editorial Layout, No Container Box) */
 .origin-direct-caption {
   width: 100%;
-  margin-top: 24px;
-  padding: 0 8px;
+  max-width: 100%;
+  margin-top: 20px;
+  padding: 0 4px;
   text-align: left;
 }
 
@@ -4133,7 +4153,7 @@ mark.highlight {
 }
 
 .origin-direct-title {
-  font-size: 1.28rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: #fff;
   margin: 0 0 10px;
@@ -4180,10 +4200,12 @@ mark.highlight {
 .origin-milestone-ribbon {
   position: relative;
   z-index: 2;
+  width: 100%;
+  max-width: 100%;
   background: linear-gradient(135deg, rgba(74, 222, 128, 0.08), rgba(56, 189, 248, 0.04) 50%, rgba(14, 18, 24, 0.8) 100%);
   border: 1px solid rgba(74, 222, 128, 0.22);
   border-radius: 20px;
-  padding: 32px 36px;
+  padding: 30px 32px;
   overflow: hidden;
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
 }
@@ -4226,7 +4248,7 @@ mark.highlight {
 }
 
 .ribbon-title {
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   font-weight: 800;
   color: #fff;
   margin: 0 0 10px;
@@ -4247,43 +4269,122 @@ mark.highlight {
   flex-wrap: wrap;
 }
 
-/* Mobile & Tablet Adaptations */
+/* ==========================================================================
+   MOBILE & ANDROID OPTIMIZED BREAKPOINTS (PREVENTS ACCIDENTAL ZOOMING OUT)
+   ========================================================================== */
 @media (max-width: 900px) {
+  /* Hide the 1200px wide background SVG canvas on mobile so it never leaks horizontal overflow */
+  .origin-scribbles-canvas {
+    display: none !important;
+  }
+
+  .origin-board-wrapper {
+    padding: 0;
+    margin: 25px auto 0;
+    overflow: hidden;
+  }
+
   .origin-direct-grid {
     grid-template-columns: 1fr;
     gap: 48px;
+    margin-bottom: 40px;
   }
 
+  /* Reset all desktop tilts so rotated edges never expand beyond viewport */
   .origin-item-note .origin-photo-standalone,
   .origin-item-blueprint .origin-photo-standalone {
     transform: none !important;
+    padding: 5px 0;
   }
 
-  .img-portrait-note,
-  .img-landscape-blueprint {
+  .origin-photo-standalone:hover {
+    transform: none !important;
+  }
+
+  /* Keep local scribbles safely within bounds */
+  .photo-local-scribble {
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    opacity: 0.7;
+  }
+
+  .img-portrait-note {
     max-height: 420px;
+    width: auto;
+    max-width: 100% !important;
   }
 
-  .origin-scribbles-canvas {
-    opacity: 0.6;
-  }
-
-  .origin-milestone-ribbon {
-    padding: 24px;
-  }
-}
-
-@media (max-width: 600px) {
-  .img-portrait-note,
   .img-landscape-blueprint {
-    max-height: 340px;
+    max-height: 360px;
+    width: 100% !important;
+    object-fit: contain;
+  }
+
+  .washi-tape {
+    width: 90px;
+    height: 26px;
+  }
+
+  .tape-top-right {
+    right: 10px;
+    transform: rotate(2deg);
+  }
+
+  .tape-top-center {
+    transform: translateX(-50%) rotate(0deg);
   }
 
   .origin-handwritten-note {
     font-size: 1.15rem;
+    padding: 5px 12px;
+    transform: none !important;
+  }
+
+  .origin-milestone-ribbon {
+    padding: 22px 18px;
+  }
+
+  .ribbon-title {
+    font-size: 1.2rem;
+  }
+
+  .ribbon-desc {
+    font-size: 0.88rem;
+  }
+
+  .ribbon-actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .ribbon-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .origin-story-section {
+    padding: 60px 0 70px;
+  }
+
+  .img-portrait-note {
+    max-height: 350px;
+  }
+
+  .img-landscape-blueprint {
+    max-height: 280px;
   }
 
   .origin-direct-title {
-    font-size: 1.15rem;
+    font-size: 1.12rem;
+  }
+
+  .origin-direct-desc {
+    font-size: 0.88rem;
   }
 }
