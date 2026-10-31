@@ -1137,7 +1137,7 @@ function initGalleryNavigation() {
     document.body.style.overflow = '';
   }
 
-  if (stageFrame) stageFrame.addEventListener('click', openLightbox);
+  // stageFrame click removed per user preference
   if (zoomBtn) zoomBtn.addEventListener('click', openLightbox);
   if (lightboxCloseBtn) lightboxCloseBtn.addEventListener('click', closeLightbox);
   if (lightboxBackdrop) lightboxBackdrop.addEventListener('click', closeLightbox);
