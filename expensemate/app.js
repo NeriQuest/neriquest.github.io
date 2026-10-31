@@ -891,10 +891,12 @@ function initGalleryNavigation() {
       tab.setAttribute('aria-selected', i === index ? 'true' : 'false');
     });
 
-    // Scroll active tab into view if needed
+    // Scroll active tab horizontally inside its own track only (NEVER scrolling the window vertically)
     const activeTab = tabs[index];
-    if (activeTab) {
-      activeTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    if (activeTab && activeTab.parentElement) {
+      const tabsTrack = activeTab.parentElement;
+      const targetLeft = activeTab.offsetLeft - (tabsTrack.clientWidth / 2) + (activeTab.clientWidth / 2);
+      tabsTrack.scrollTo({ left: targetLeft, behavior: 'smooth' });
     }
 
     // 2. Animate Image transition with quick scale & fade
@@ -952,9 +954,11 @@ function initGalleryNavigation() {
       item.classList.toggle('active', i === index);
     });
 
+    // Scroll active thumbnail horizontally inside filmstrip only (NEVER scrolling the window vertically)
     const activeThumb = filmstripItems[index];
     if (activeThumb && filmstripTrack) {
-      activeThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      const targetLeft = activeThumb.offsetLeft - (filmstripTrack.clientWidth / 2) + (activeThumb.clientWidth / 2);
+      filmstripTrack.scrollTo({ left: targetLeft, behavior: 'smooth' });
     }
 
     // 9. If Lightbox is open, update lightbox
@@ -979,26 +983,20 @@ function initGalleryNavigation() {
     });
   });
 
-  // Prev / Next Buttons
+  // Prev / Next Buttons (Stage Studio)
   if (prevBtn) {
-    prevBtn.addEventListener('click', () => {
+    prevBtn.addEventListener('click', (e) => {
+      e.preventDefault();
       stopAutoTour();
-      if (isOriginLightbox) {
-        window.openOriginPhoto((originPhotoIndex - 1 + originPhotos.length) % originPhotos.length);
-      } else {
-        setScreen(currentIndex - 1);
-      }
+      setScreen(currentIndex - 1);
     });
   }
 
   if (nextBtn) {
-    nextBtn.addEventListener('click', () => {
+    nextBtn.addEventListener('click', (e) => {
+      e.preventDefault();
       stopAutoTour();
-      if (isOriginLightbox) {
-        window.openOriginPhoto((originPhotoIndex + 1) % originPhotos.length);
-      } else {
-        setScreen(currentIndex + 1);
-      }
+      setScreen(currentIndex + 1);
     });
   }
 
@@ -1145,14 +1143,24 @@ function initGalleryNavigation() {
   if (lightboxBackdrop) lightboxBackdrop.addEventListener('click', closeLightbox);
 
   if (lightboxPrevBtn) {
-    lightboxPrevBtn.addEventListener('click', () => {
-      setScreen(currentIndex - 1);
+    lightboxPrevBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (isOriginLightbox) {
+        window.openOriginPhoto((originPhotoIndex - 1 + originPhotos.length) % originPhotos.length);
+      } else {
+        setScreen(currentIndex - 1);
+      }
     });
   }
 
   if (lightboxNextBtn) {
-    lightboxNextBtn.addEventListener('click', () => {
-      setScreen(currentIndex + 1);
+    lightboxNextBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (isOriginLightbox) {
+        window.openOriginPhoto((originPhotoIndex + 1) % originPhotos.length);
+      } else {
+        setScreen(currentIndex + 1);
+      }
     });
   }
 
