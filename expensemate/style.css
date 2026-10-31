@@ -3968,7 +3968,7 @@ mark.highlight {
 /* Standalone Floating Photo System (Inside Main Box) */
 .origin-photo-standalone {
   position: relative;
-  cursor: zoom-in;
+  cursor: default;
   transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
   display: flex;
   flex-direction: column;
@@ -3979,6 +3979,8 @@ mark.highlight {
   margin-bottom: 22px;
   padding: 6px 0;
   overflow: visible;
+  perspective: 1000px;
+  transform-style: preserve-3d;
 }
 
 .box-note .origin-photo-standalone {
@@ -3990,7 +3992,23 @@ mark.highlight {
 }
 
 .origin-photo-standalone:hover {
-  transform: rotate(0deg) translateY(-6px) scale(1.015);
+  transform: rotate(0deg) translateY(-8px) scale(1.02);
+}
+
+.origin-photo-standalone:hover .img-portrait-note {
+  transform: rotateX(2deg) rotateY(-2deg) translateZ(12px);
+  box-shadow: 
+    0 30px 65px rgba(0, 0, 0, 0.95),
+    0 0 35px rgba(251, 191, 36, 0.32),
+    0 0 0 1px rgba(251, 191, 36, 0.45);
+}
+
+.origin-photo-standalone:hover .img-landscape-blueprint {
+  transform: rotateX(2deg) rotateY(2deg) translateZ(12px);
+  box-shadow: 
+    0 30px 65px rgba(0, 0, 0, 0.95),
+    0 0 35px rgba(74, 222, 128, 0.32),
+    0 0 0 1px rgba(74, 222, 128, 0.45);
 }
 
 /* Standalone PNG Images */
@@ -4065,34 +4083,7 @@ mark.highlight {
   height: calc(100% + 20px);
 }
 
-/* Subtle Hover Zoom Hint */
-.origin-photo-zoom-hint {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%) translateY(8px);
-  opacity: 0;
-  transition: all 0.25s ease;
-  z-index: 6;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 14px;
-  background: rgba(15, 23, 42, 0.88);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: var(--radius-pill);
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: #fff;
-  pointer-events: none;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
-}
 
-.origin-photo-standalone:hover .origin-photo-zoom-hint {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
-}
 
 /* Realistic Paper Tape (Washi Tape) Directly Sticking to Photo */
 .washi-tape {
