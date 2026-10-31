@@ -3900,23 +3900,14 @@ mark.highlight {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px;
-  align-items: start;
+  align-items: stretch;
   margin-bottom: 50px;
   width: 100%;
   max-width: 100%;
   overflow: hidden;
 }
 
-.origin-direct-item {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: 100%;
-}
-
-/* Standalone Floating Photo System (No Box Background, No Card Border) */
+/* Standalone Floating Photo System (Inside Container with Paragraph) */
 .origin-photo-standalone {
   position: relative;
   cursor: zoom-in;
@@ -3924,22 +3915,24 @@ mark.highlight {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   width: 100%;
   max-width: 100%;
-  padding: 10px 0;
+  margin-bottom: 22px;
+  padding: 8px 0;
   overflow: visible;
 }
 
-.origin-item-note .origin-photo-standalone {
-  transform: rotate(-1.5deg);
+.box-note .origin-photo-standalone {
+  transform: rotate(-1.2deg);
 }
 
-.origin-item-blueprint .origin-photo-standalone {
-  transform: rotate(1.5deg);
+.box-blueprint .origin-photo-standalone {
+  transform: rotate(1.2deg);
 }
 
 .origin-photo-standalone:hover {
-  transform: rotate(0deg) translateY(-8px) scale(1.02);
+  transform: rotate(0deg) translateY(-6px) scale(1.015);
 }
 
 /* Direct Standalone PNG Images */
@@ -4083,28 +4076,38 @@ mark.highlight {
   position: relative;
   width: 100%;
   max-width: 100%;
-  margin-top: 30px;
-  padding: 34px 26px 24px;
+  margin-top: 15px;
+  padding: 36px 24px 26px;
   background: rgba(14, 18, 26, 0.94);
   border: 1px solid rgba(255, 255, 255, 0.09);
-  border-radius: 22px;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+  border-radius: 24px;
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.35s ease, box-shadow 0.35s ease;
   text-align: left;
 }
 
 .box-note {
-  border-top: 2px solid rgba(251, 191, 36, 0.4);
+  border-top: 2px solid rgba(251, 191, 36, 0.45);
 }
 
 .box-blueprint {
-  border-top: 2px solid rgba(74, 222, 128, 0.4);
+  border-top: 2px solid rgba(74, 222, 128, 0.45);
 }
 
-.origin-direct-item:hover .origin-main-box {
-  border-color: rgba(255, 255, 255, 0.16);
-  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.7);
-  transform: translateY(-4px);
+.origin-main-box:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75);
+  transform: translateY(-6px);
+}
+
+.origin-box-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  margin-top: auto;
 }
 
 /* Sticker on Top Edge of Main Box */
@@ -4141,12 +4144,12 @@ mark.highlight {
   transform: rotate(2deg);
 }
 
-.origin-direct-item:hover .sticker-gold {
+.box-note:hover .sticker-gold {
   transform: rotate(-3deg) scale(1.04);
   box-shadow: 0 8px 24px rgba(251, 191, 36, 0.3);
 }
 
-.origin-direct-item:hover .sticker-green {
+.box-blueprint:hover .sticker-green {
   transform: rotate(3deg) scale(1.04);
   box-shadow: 0 8px 24px rgba(74, 222, 128, 0.3);
 }

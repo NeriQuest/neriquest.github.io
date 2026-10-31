@@ -1047,10 +1047,15 @@
           <!-- Origin Raw Showcase: Direct PNG Photos & Main Story Boxes with Top Stickers -->
         <div class="origin-direct-grid">
 
-          <!-- Item 1: Midnight Note -->
-          <div class="origin-direct-item origin-item-note" id="originItemNote">
-            
-            <!-- Direct Floating Standalone Photo (No Container Box Around Image) -->
+          <!-- Item 1: Midnight Note Container (Photo & Paragraph inside one box) -->
+          <div class="origin-main-box box-note" id="originItemNote">
+            <!-- Sticker placed right on top edge of the main box -->
+            <div class="origin-box-sticker sticker-gold">
+              <span class="sticker-icon">💡</span>
+              <span class="sticker-text">Midnight · The First Spark!</span>
+            </div>
+
+            <!-- Direct Standalone PNG Photo (Inside the container) -->
             <div class="origin-photo-standalone" onclick="openOriginPhoto(0)" title="Click to inspect original note in full resolution">
               <!-- Washi Tape Strip directly pinned to photo -->
               <div class="washi-tape tape-top-center tape-gold" aria-hidden="true"></div>
@@ -1064,7 +1069,7 @@
                 <path d="M 10,40 Q 20,40 20,30 Q 20,40 30,40 Q 20,40 20,50 Q 20,40 10,40 Z" fill="#fbbf24" opacity="0.85"/>
               </svg>
 
-              <!-- Standalone PNG Image (Direct Image, No Frame Box) -->
+              <!-- Standalone PNG Image -->
               <img src="../images/expensemate/initalPlan/plan1.png" alt="ExpenseMate original phone notes idea captured at midnight" class="origin-standalone-img img-portrait-note" loading="lazy">
 
               <!-- Subtle Hover Zoom Indicator -->
@@ -1074,14 +1079,8 @@
               </div>
             </div>
 
-            <!-- The Main Box with Sticker on Top -->
-            <div class="origin-main-box box-note">
-              <!-- Sticker placed right on top edge of the main box -->
-              <div class="origin-box-sticker sticker-gold">
-                <span class="sticker-icon">💡</span>
-                <span class="sticker-text">Midnight · The First Spark!</span>
-              </div>
-
+            <!-- Paragraph Content inside the container -->
+            <div class="origin-box-content">
               <div class="origin-card-meta">
                 <span class="origin-phase-badge phase-spark">Phase 01 · Conceptual Spark</span>
                 <span class="origin-date">Phone Notes @ Midnight</span>
@@ -1101,7 +1100,7 @@
             </div>
           </div>
 
-          <!-- Inter-photo Hand-drawn Connector -->
+          <!-- Inter-box Hand-drawn Connector -->
           <div class="origin-connector-bridge" aria-hidden="true">
             <div class="connector-scribble-label">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -1109,10 +1108,15 @@
             </div>
           </div>
 
-          <!-- Item 2: July 2024 Notebook Blueprint -->
-          <div class="origin-direct-item origin-item-blueprint" id="originItemBlueprint">
-            
-            <!-- Direct Standalone PNG Photo (No Container Box Around Image) -->
+          <!-- Item 2: July 2024 Notebook Blueprint Container (Photo & Paragraph inside one box) -->
+          <div class="origin-main-box box-blueprint" id="originItemBlueprint">
+            <!-- Sticker placed right on top edge of the main box -->
+            <div class="origin-box-sticker sticker-green">
+              <span class="sticker-icon">📐</span>
+              <span class="sticker-text">July 2024 · Ink & Paper</span>
+            </div>
+
+            <!-- Direct Standalone PNG Photo (Inside the container) -->
             <div class="origin-photo-standalone" onclick="openOriginPhoto(1)" title="Click to inspect notebook wireframes in full resolution">
               <!-- Washi Tape Strip directly pinned to photo corner -->
               <div class="washi-tape tape-top-right tape-green" aria-hidden="true"></div>
@@ -1127,7 +1131,7 @@
                 <path d="M 50,440 Q 60,440 60,430 Q 60,440 70,440 Q 60,440 60,450 Q 60,440 50,440 Z" fill="#38bdf8" opacity="0.85"/>
               </svg>
 
-              <!-- Standalone PNG Image (Direct Image, No Frame Box) -->
+              <!-- Standalone PNG Image -->
               <img src="../images/expensemate/initalPlan/plan2.png" alt="ExpenseMate handwritten pen-and-paper wireframe blueprint from July 2024" class="origin-standalone-img img-landscape-blueprint" loading="lazy">
 
               <!-- Subtle Hover Zoom Indicator -->
@@ -1137,14 +1141,8 @@
               </div>
             </div>
 
-            <!-- The Main Box with Sticker on Top -->
-            <div class="origin-main-box box-blueprint">
-              <!-- Sticker placed right on top edge of the main box -->
-              <div class="origin-box-sticker sticker-green">
-                <span class="sticker-icon">📐</span>
-                <span class="sticker-text">July 2024 · Ink & Paper</span>
-              </div>
-
+            <!-- Paragraph Content inside the container -->
+            <div class="origin-box-content">
               <div class="origin-card-meta">
                 <span class="origin-phase-badge phase-blueprint">Phase 02 · Paper Blueprint</span>
                 <span class="origin-date">Notebook Wireframe · July 2024</span>
