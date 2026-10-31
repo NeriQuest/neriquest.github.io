@@ -728,74 +728,243 @@
     <!-- ====================================================================
          SCREENSHOTS GALLERY
          ==================================================================== -->
-    <section class="screenshots-section" id="screenshots">
+        <section class="screenshots-section" id="screenshots">
       <div class="container">
-        <div class="section-header">
-          <span class="section-tag">Visual Walkthrough</span>
-          <h2>Designed for Clarity &amp; Fluid Speed</h2>
-          <p>Real application screenshots highlighting the fluid dark mode, charts, and clean typography.</p>
+        <!-- Interactive Header with Live Badge -->
+        <div class="section-header text-center">
+          <div class="walkthrough-header-badge">
+            <span class="badge-pulse-dot"></span>
+            <span>Interactive Visual Walkthrough</span>
+          </div>
+          <h2 class="section-title">Explore ExpenseMate in Action</h2>
+          <p class="section-desc">Experience our fluid Material You interface. Switch screens, inspect features, or let the auto-tour guide you through all 8 core workflows.</p>
         </div>
 
-        <div class="gallery-wrapper">
-          <button class="gallery-nav-btn prev" id="galleryPrevBtn" aria-label="Previous screenshots">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
+        <!-- 1. Interactive Screen Selector Tabs (8 Screen Pills) -->
+        <div class="walkthrough-nav-bar" id="walkthroughTabs" role="tablist" aria-label="Walkthrough Screens">
+          <button class="wt-tab-btn active" data-index="0" role="tab" aria-selected="true">
+            <span class="wt-tab-icon">🏠</span>
+            <span class="wt-tab-text">Home Page</span>
           </button>
-          <div class="screenshots-scroll-container" id="screenshotsContainer">
-          <div class="screenshot-item">
-            <div class="phone-mockup">
-              <img src="../images/expensemate/mockup/1_home.png" alt="ExpenseMate Home Page" loading="lazy">
-            </div>
-            <span class="screenshot-caption">Home Page</span>
-          </div>
-          <div class="screenshot-item">
-            <div class="phone-mockup">
-              <img src="../images/expensemate/mockup/2_add.png" alt="ExpenseMate Add Page" loading="lazy">
-            </div>
-            <span class="screenshot-caption">Add Page</span>
-          </div>
-          <div class="screenshot-item">
-            <div class="phone-mockup">
-              <img src="../images/expensemate/mockup/3_stats.png" alt="ExpenseMate Pie Chart" loading="lazy">
-            </div>
-            <span class="screenshot-caption">Pie Chart</span>
-          </div>
-          <div class="screenshot-item">
-            <div class="phone-mockup">
-              <img src="../images/expensemate/mockup/4_calender.png" alt="ExpenseMate Calendar Expense" loading="lazy">
-            </div>
-            <span class="screenshot-caption">Calendar Expense</span>
-          </div>
-          <div class="screenshot-item">
-            <div class="phone-mockup">
-              <img src="../images/expensemate/mockup/5_budget.png" alt="ExpenseMate Budget" loading="lazy">
-            </div>
-            <span class="screenshot-caption">Budget</span>
-          </div>
-          <div class="screenshot-item">
-            <div class="phone-mockup">
-              <img src="../images/expensemate/mockup/6_account.png" alt="ExpenseMate All Account Dashboard" loading="lazy">
-            </div>
-            <span class="screenshot-caption">All Account Dashboard</span>
-          </div>
-          <div class="screenshot-item">
-            <div class="phone-mockup">
-              <img src="../images/expensemate/mockup/7_friends.png" alt="ExpenseMate Split with Friends" loading="lazy">
-            </div>
-            <span class="screenshot-caption">Split with Friends</span>
-          </div>
-          <div class="screenshot-item">
-            <div class="phone-mockup">
-              <img src="../images/expensemate/mockup/8_reccuring.png" alt="ExpenseMate Recurring, Trash, Settings Page" loading="lazy">
-            </div>
-            <span class="screenshot-caption">Recurring, Trash, Settings Page</span>
-          </div>
-          </div>
-          <button class="gallery-nav-btn next" id="galleryNextBtn" aria-label="Next screenshots">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+          <button class="wt-tab-btn" data-index="1" role="tab" aria-selected="false">
+            <span class="wt-tab-icon">➕</span>
+            <span class="wt-tab-text">Add Page</span>
           </button>
+          <button class="wt-tab-btn" data-index="2" role="tab" aria-selected="false">
+            <span class="wt-tab-icon">📊</span>
+            <span class="wt-tab-text">Pie Chart</span>
+          </button>
+          <button class="wt-tab-btn" data-index="3" role="tab" aria-selected="false">
+            <span class="wt-tab-icon">📅</span>
+            <span class="wt-tab-text">Calendar Expense</span>
+          </button>
+          <button class="wt-tab-btn" data-index="4" role="tab" aria-selected="false">
+            <span class="wt-tab-icon">🎯</span>
+            <span class="wt-tab-text">Budget</span>
+          </button>
+          <button class="wt-tab-btn" data-index="5" role="tab" aria-selected="false">
+            <span class="wt-tab-icon">💳</span>
+            <span class="wt-tab-text">All Account Dashboard</span>
+          </button>
+          <button class="wt-tab-btn" data-index="6" role="tab" aria-selected="false">
+            <span class="wt-tab-icon">👥</span>
+            <span class="wt-tab-text">Split with Friends</span>
+          </button>
+          <button class="wt-tab-btn" data-index="7" role="tab" aria-selected="false">
+            <span class="wt-tab-icon">⚙️</span>
+            <span class="wt-tab-text">Recurring, Trash, Settings Page</span>
+          </button>
+        </div>
+
+        <!-- 2. Spotlight Interactive Stage Card -->
+        <div class="walkthrough-stage-card" id="walkthroughStageCard">
+          <!-- Dynamic Ambient Halo behind Phone -->
+          <div class="stage-ambient-glow" id="stageAmbientGlow"></div>
+
+          <!-- Left: 3D Tiltable Smartphone Stage -->
+          <div class="stage-phone-column">
+            <!-- Floating Badge Top Left -->
+            <div class="floating-stat-pill float-pill-1" id="floatPill1">
+              <span class="fstat-icon" id="floatPillIcon1">⚡</span>
+              <span class="fstat-text" id="floatPillText1">Real-time Net Worth</span>
+            </div>
+
+            <!-- The 3D Phone Container -->
+            <div class="stage-phone-wrapper" id="stagePhoneWrapper">
+              <div class="stage-phone-frame" id="stagePhoneFrame" title="Tap or click to view fullscreen">
+                <!-- Phone Dynamic Island -->
+                <div class="phone-speaker-island"></div>
+                <!-- Glass Specular Reflection -->
+                <div class="phone-specular-sheen"></div>
+                <!-- Active Mockup Image -->
+                <img src="../images/expensemate/mockup/1_home.png" alt="ExpenseMate Active Screen" id="stageActiveImg" class="stage-phone-img" loading="eager">
+                <!-- Hover Zoom Hint -->
+                <div class="phone-zoom-overlay">
+                  <span class="zoom-icon">🔍</span>
+                  <span>Tap to Zoom</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Floating Badge Bottom Right -->
+            <div class="floating-stat-pill float-pill-2" id="floatPill2">
+              <span class="fstat-icon" id="floatPillIcon2">🔒</span>
+              <span class="fstat-text" id="floatPillText2">100% Offline SQLite</span>
+            </div>
+          </div>
+
+          <!-- Right: Interactive Detail Showcase Card -->
+          <div class="stage-info-column">
+            <div class="stage-meta-row">
+              <span class="stage-step-badge" id="stageStepBadge">SCREEN 01 OF 08</span>
+              <span class="stage-tag-badge" id="stageTagBadge">DASHBOARD &amp; NET WORTH</span>
+            </div>
+
+            <h3 class="stage-title" id="stageTitle">1. Home Page</h3>
+            <p class="stage-subtitle" id="stageSubtitle">Your financial command center at a single glance.</p>
+            <p class="stage-desc" id="stageDesc">Instant net worth calculation, monthly spending burn rate, and a categorized breakdown of recent cash flows. Beautiful AMOLED card hierarchy puts essential numbers front and center.</p>
+
+            <!-- Key Highlights List -->
+            <div class="stage-highlights-list" id="stageHighlightsList">
+              <div class="stage-hl-item">
+                <span class="hl-check">✓</span>
+                <span>Real-time Net Worth calculation</span>
+              </div>
+              <div class="stage-hl-item">
+                <span class="hl-check">✓</span>
+                <span>Recent transaction stream with category avatars</span>
+              </div>
+              <div class="stage-hl-item">
+                <span class="hl-check">✓</span>
+                <span>Visual monthly budget meter</span>
+              </div>
+            </div>
+
+            <!-- Stage Control Buttons -->
+            <div class="stage-controls-group">
+              <div class="stage-nav-buttons">
+                <button class="btn-stage-nav" id="stagePrevBtn" title="Previous Screen (Left Arrow)">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
+                  <span>Prev</span>
+                </button>
+                <button class="btn-stage-nav" id="stageNextBtn" title="Next Screen (Right Arrow)">
+                  <span>Next</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+                </button>
+              </div>
+
+              <div class="stage-fun-actions">
+                <button class="btn-fun-action btn-auto-tour" id="autoTourBtn" title="Auto-advance screens every 3.5 seconds">
+                  <span id="autoTourIcon">▶</span>
+                  <span id="autoTourLabel">Auto Tour</span>
+                </button>
+                <button class="btn-fun-action" id="shuffleScreenBtn" title="Discover a random screen">
+                  <span>🎲</span>
+                  <span>Surprise Me!</span>
+                </button>
+                <button class="btn-fun-action" id="stageZoomBtn" title="Open fullscreen zoom modal">
+                  <span>🔍</span>
+                  <span>Fullscreen</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Micro Progress Track -->
+            <div class="stage-progress-track">
+              <div class="stage-progress-bar" id="stageProgressBar" style="width: 12.5%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Filmstrip Reel (All 8 Thumbnails Below) -->
+        <div class="filmstrip-section">
+          <div class="filmstrip-header">
+            <span class="filmstrip-label">All Screens Filmstrip (Click to Switch):</span>
+            <div class="filmstrip-nav-arrows">
+              <button class="filmstrip-arrow" id="filmstripLeftArrow" aria-label="Scroll left">‹</button>
+              <button class="filmstrip-arrow" id="filmstripRightArrow" aria-label="Scroll right">›</button>
+            </div>
+          </div>
+
+          <div class="filmstrip-scroll-track" id="filmstripTrack">
+            <!-- 8 Filmstrip Items -->
+            <div class="filmstrip-item active" data-index="0">
+              <div class="filmstrip-thumb-wrap">
+                <img src="../images/expensemate/mockup/1_home.png" alt="Home Page" loading="lazy">
+                <span class="filmstrip-num">01</span>
+              </div>
+              <span class="filmstrip-caption">Home Page</span>
+            </div>
+            <div class="filmstrip-item" data-index="1">
+              <div class="filmstrip-thumb-wrap">
+                <img src="../images/expensemate/mockup/2_add.png" alt="Add Page" loading="lazy">
+                <span class="filmstrip-num">02</span>
+              </div>
+              <span class="filmstrip-caption">Add Page</span>
+            </div>
+            <div class="filmstrip-item" data-index="2">
+              <div class="filmstrip-thumb-wrap">
+                <img src="../images/expensemate/mockup/3_stats.png" alt="Pie Chart" loading="lazy">
+                <span class="filmstrip-num">03</span>
+              </div>
+              <span class="filmstrip-caption">Pie Chart</span>
+            </div>
+            <div class="filmstrip-item" data-index="3">
+              <div class="filmstrip-thumb-wrap">
+                <img src="../images/expensemate/mockup/4_calender.png" alt="Calendar Expense" loading="lazy">
+                <span class="filmstrip-num">04</span>
+              </div>
+              <span class="filmstrip-caption">Calendar Expense</span>
+            </div>
+            <div class="filmstrip-item" data-index="4">
+              <div class="filmstrip-thumb-wrap">
+                <img src="../images/expensemate/mockup/5_budget.png" alt="Budget" loading="lazy">
+                <span class="filmstrip-num">05</span>
+              </div>
+              <span class="filmstrip-caption">Budget</span>
+            </div>
+            <div class="filmstrip-item" data-index="5">
+              <div class="filmstrip-thumb-wrap">
+                <img src="../images/expensemate/mockup/6_account.png" alt="All Account Dashboard" loading="lazy">
+                <span class="filmstrip-num">06</span>
+              </div>
+              <span class="filmstrip-caption">All Account Dashboard</span>
+            </div>
+            <div class="filmstrip-item" data-index="6">
+              <div class="filmstrip-thumb-wrap">
+                <img src="../images/expensemate/mockup/7_friends.png" alt="Split with Friends" loading="lazy">
+                <span class="filmstrip-num">07</span>
+              </div>
+              <span class="filmstrip-caption">Split with Friends</span>
+            </div>
+            <div class="filmstrip-item" data-index="7">
+              <div class="filmstrip-thumb-wrap">
+                <img src="../images/expensemate/mockup/8_reccuring.png" alt="Recurring, Trash, Settings Page" loading="lazy">
+                <span class="filmstrip-num">08</span>
+              </div>
+              <span class="filmstrip-caption">Recurring, Trash, Settings</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
+
+    <!-- Fullscreen Zoom Lightbox Modal -->
+    <div class="walkthrough-lightbox" id="walkthroughLightbox" aria-hidden="true" role="dialog">
+      <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
+      <div class="lightbox-content">
+        <button class="lightbox-close-btn" id="lightboxCloseBtn" aria-label="Close Lightbox">✕</button>
+        <button class="lightbox-nav-btn lb-prev" id="lightboxPrevBtn" aria-label="Previous image">‹</button>
+        <div class="lightbox-image-wrap">
+          <img src="" alt="Zoomed Screenshot" id="lightboxImg">
+          <div class="lightbox-caption-bar">
+            <span class="lb-title" id="lightboxTitle"></span>
+            <span class="lb-step" id="lightboxStep"></span>
+          </div>
+        </div>
+        <button class="lightbox-nav-btn lb-next" id="lightboxNextBtn" aria-label="Next image">›</button>
+      </div>
+    </div>
 
     <!-- ====================================================================
          COMPLETE USER GUIDE WITH REAL-TIME SEARCH (From userguide.dart)

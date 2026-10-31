@@ -640,49 +640,511 @@ function initNavbarEnhancements() {
 }
 
 /* ==========================================================================
-   7. Interactive Screenshots Gallery Navigation & Drag-to-Scroll
+   7. Interactive Visual Walkthrough Studio Engine (3D Tilt, Auto-Tour, Audio & Lightbox)
    ========================================================================== */
+const walkthroughScreens = [
+  {
+    id: 1,
+    title: "1. Home Page",
+    badge: "Dashboard & Net Worth",
+    shortTag: "Home Page",
+    icon: "🏠",
+    color: "#4ade80",
+    colorRgb: "74, 222, 128",
+    img: "../images/expensemate/mockup/1_home.png",
+    subtitle: "Your financial command center at a single glance.",
+    description: "Instant net worth calculation, monthly spending burn rate, and a categorized breakdown of recent cash flows. Beautiful AMOLED card hierarchy puts essential numbers front and center.",
+    highlights: [
+      "Real-time Net Worth calculation & balance overview",
+      "Recent transaction stream with custom category avatars",
+      "Visual monthly budget meter and spending velocity"
+    ],
+    pill1: { icon: "⚡", text: "Instant Net Worth" },
+    pill2: { icon: "🔒", text: "100% Offline SQLite" }
+  },
+  {
+    id: 2,
+    title: "2. Add Page",
+    badge: "3-Second Fast Entry",
+    shortTag: "Add Page",
+    icon: "➕",
+    color: "#38bdf8",
+    colorRgb: "56, 189, 248",
+    img: "../images/expensemate/mockup/2_add.png",
+    subtitle: "Log transactions faster than opening your physical wallet.",
+    description: "Designed for speed: big tactile numpad, instant category chip selector, payment account switcher, and built-in AI Voice Assistant dictation (e.g. 'Spent 250 on coffee from HDFC').",
+    highlights: [
+      "Hands-free AI Voice Assistant dictation",
+      "Customizable emoji categories & payment source selector",
+      "One-tap split with friends directly from the entry screen"
+    ],
+    pill1: { icon: "🎙️", text: "AI Voice Dictation" },
+    pill2: { icon: "⚡", text: "3-Sec Quick Add" }
+  },
+  {
+    id: 3,
+    title: "3. Pie Chart",
+    badge: "Visual Spending Breakdown",
+    shortTag: "Pie Chart",
+    icon: "📊",
+    color: "#c084fc",
+    colorRgb: "192, 132, 252",
+    img: "../images/expensemate/mockup/3_stats.png",
+    subtitle: "Turn boring numbers into colorful, actionable insights.",
+    description: "Interactive donut and pie charts visualizing exactly where your hard-earned cash goes. Filter by week, month, year, or custom date ranges to spot money leaks effortlessly.",
+    highlights: [
+      "Interactive category slices with tap-to-inspect detail",
+      "Percentage vs absolute amount views",
+      "Weekly, monthly, and yearly historical trend comparisons"
+    ],
+    pill1: { icon: "🍩", text: "Interactive Donut" },
+    pill2: { icon: "🔥", text: "Top Spend Analysis" }
+  },
+  {
+    id: 4,
+    title: "4. Calendar Expense",
+    badge: "Day-by-Day Financial Heatmap",
+    shortTag: "Calendar Expense",
+    icon: "📅",
+    color: "#fb923c",
+    colorRgb: "251, 146, 60",
+    img: "../images/expensemate/mockup/4_calender.png",
+    subtitle: "Map your daily spending rhythm across the entire month.",
+    description: "An intuitive calendar view highlighting expense intensity on each day. Tap any date to inspect historical receipts, spot weekend spending spikes, and review previous days.",
+    highlights: [
+      "Color-coded spending intensity indicators per date",
+      "One-tap date inspection with itemized daily receipt list",
+      "Recurring bill marks and weekend expense tracking"
+    ],
+    pill1: { icon: "🗓️", text: "Expense Heatmap" },
+    pill2: { icon: "📍", text: "Daily Receipt History" }
+  },
+  {
+    id: 5,
+    title: "5. Budget",
+    badge: "Proactive Spending Limits",
+    shortTag: "Budget",
+    icon: "🎯",
+    color: "#22c55e",
+    colorRgb: "34, 197, 94",
+    img: "../images/expensemate/mockup/5_budget.png",
+    subtitle: "Take control of your cash flow before the month ends.",
+    description: "Set overall monthly budget limits or drill down into specific categories like Dining, Shopping, or Travel. Real-time visual progress bars warn you before you overspend.",
+    highlights: [
+      "Dynamic 80% & 100% threshold alert notifications",
+      "Category-level custom spending caps",
+      "Daily safe-to-spend allowance calculator"
+    ],
+    pill1: { icon: "🎯", text: "Custom Limits" },
+    pill2: { icon: "🛡️", text: "Overspend Shield" }
+  },
+  {
+    id: 6,
+    title: "6. All Account Dashboard",
+    badge: "Multi-Wallet Management",
+    shortTag: "All Account Dashboard",
+    icon: "💳",
+    color: "#60a5fa",
+    colorRgb: "96, 165, 250",
+    img: "../images/expensemate/mockup/6_account.png",
+    subtitle: "Consolidate bank accounts, credit cards, and cash jars.",
+    description: "Manage multiple payment sources seamlessly. Track cash on hand, savings accounts, credit card debt, and digital wallets. Transfer balances between accounts with zero friction.",
+    highlights: [
+      "Credit card debt balance vs available limit tracking",
+      "Inter-account balance transfers in 2 taps",
+      "Individual account transaction ledgers"
+    ],
+    pill1: { icon: "💳", text: "Multi-Account" },
+    pill2: { icon: "🔄", text: "Instant Transfers" }
+  },
+  {
+    id: 7,
+    title: "7. Split with Friends",
+    badge: "Shared Bills & Debt Settlement",
+    shortTag: "Split with Friends",
+    icon: "👥",
+    color: "#f43f5e",
+    colorRgb: "244, 63, 94",
+    img: "../images/expensemate/mockup/7_friends.png",
+    subtitle: "Group trips, flatmate groceries, and dinners made effortless.",
+    description: "Track shared expenditures, calculate who owes what, and settle debts with one tap. Zero awkward mental math and zero forgotten loans between friends.",
+    highlights: [
+      "Equal and custom split ratios for dining and trips",
+      "One-tap debt settlement record keeping",
+      "Friend-by-friend balance ledger and reminder sharing"
+    ],
+    pill1: { icon: "🤝", text: "Zero Awkward Math" },
+    pill2: { icon: "💰", text: "1-Tap Settle Up" }
+  },
+  {
+    id: 8,
+    title: "8. Recurring, Trash, Settings Page",
+    badge: "Subscriptions & Data Sovereignty",
+    shortTag: "Recurring, Trash, Settings Page",
+    icon: "⚙️",
+    color: "#f59e0b",
+    colorRgb: "245, 158, 11",
+    img: "../images/expensemate/mockup/8_reccuring.png",
+    subtitle: "Full control over recurring bills, deleted data, and privacy.",
+    description: "Automate recurring subscriptions like Netflix or gym memberships. Recover accidentally deleted expenses from the 30-day trash bin, and export encrypted Excel spreadsheets.",
+    highlights: [
+      "Automated subscription renewal reminders",
+      "30-day recycle bin safety net for deleted entries",
+      "1-click export to open Excel (.xlsx) and CSV spreadsheets"
+    ],
+    pill1: { icon: "💾", text: "Excel Export" },
+    pill2: { icon: "🗑️", text: "30-Day Trash Undo" }
+  }
+];
+
+class WalkthroughSoundFX {
+  constructor() {
+    this.ctx = null;
+  }
+  playPop() {
+    try {
+      if (!this.ctx) {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (AudioCtx) this.ctx = new AudioCtx();
+      }
+      if (this.ctx && this.ctx.state === 'suspended') this.ctx.resume();
+      if (!this.ctx) return;
+
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(440, this.ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(780, this.ctx.currentTime + 0.05);
+
+      gain.gain.setValueAtTime(0.12, this.ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.05);
+
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+      osc.start();
+      osc.stop(this.ctx.currentTime + 0.05);
+    } catch (_) {}
+  }
+}
+
 function initGalleryNavigation() {
-  const container = document.getElementById('screenshotsContainer');
-  const prevBtn = document.getElementById('galleryPrevBtn');
-  const nextBtn = document.getElementById('galleryNextBtn');
+  const tabs = document.querySelectorAll('.wt-tab-btn');
+  const stageImg = document.getElementById('stageActiveImg');
+  const stageFrame = document.getElementById('stagePhoneFrame');
+  const stagePhoneWrapper = document.getElementById('stagePhoneWrapper');
+  const stageCard = document.getElementById('walkthroughStageCard');
+  const stageGlow = document.getElementById('stageAmbientGlow');
+  const stepBadge = document.getElementById('stageStepBadge');
+  const tagBadge = document.getElementById('stageTagBadge');
+  const stageTitle = document.getElementById('stageTitle');
+  const stageSubtitle = document.getElementById('stageSubtitle');
+  const stageDesc = document.getElementById('stageDesc');
+  const highlightsList = document.getElementById('stageHighlightsList');
+  const progressBar = document.getElementById('stageProgressBar');
+  const prevBtn = document.getElementById('stagePrevBtn');
+  const nextBtn = document.getElementById('stageNextBtn');
+  const autoTourBtn = document.getElementById('autoTourBtn');
+  const autoTourIcon = document.getElementById('autoTourIcon');
+  const autoTourLabel = document.getElementById('autoTourLabel');
+  const shuffleBtn = document.getElementById('shuffleScreenBtn');
+  const zoomBtn = document.getElementById('stageZoomBtn');
+  const filmstripItems = document.querySelectorAll('.filmstrip-item');
+  const filmstripTrack = document.getElementById('filmstripTrack');
+  const fsLeftArrow = document.getElementById('filmstripLeftArrow');
+  const fsRightArrow = document.getElementById('filmstripRightArrow');
+  const floatPill1 = document.getElementById('floatPill1');
+  const floatPill2 = document.getElementById('floatPill2');
+  const floatPillIcon1 = document.getElementById('floatPillIcon1');
+  const floatPillText1 = document.getElementById('floatPillText1');
+  const floatPillIcon2 = document.getElementById('floatPillIcon2');
+  const floatPillText2 = document.getElementById('floatPillText2');
 
-  if (!container) return;
+  // Lightbox elements
+  const lightbox = document.getElementById('walkthroughLightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxTitle = document.getElementById('lightboxTitle');
+  const lightboxStep = document.getElementById('lightboxStep');
+  const lightboxCloseBtn = document.getElementById('lightboxCloseBtn');
+  const lightboxBackdrop = document.getElementById('lightboxBackdrop');
+  const lightboxPrevBtn = document.getElementById('lightboxPrevBtn');
+  const lightboxNextBtn = document.getElementById('lightboxNextBtn');
 
+  if (!tabs.length || !stageImg) return;
+
+  const sfx = new WalkthroughSoundFX();
+  let currentIndex = 0;
+  let autoTourInterval = null;
+
+  function setScreen(index, playSound = true) {
+    if (index < 0) index = walkthroughScreens.length - 1;
+    if (index >= walkthroughScreens.length) index = 0;
+    currentIndex = index;
+
+    const data = walkthroughScreens[index];
+    if (!data) return;
+
+    if (playSound) sfx.playPop();
+
+    // 1. Update Tabs
+    tabs.forEach((tab, i) => {
+      tab.classList.toggle('active', i === index);
+      tab.setAttribute('aria-selected', i === index ? 'true' : 'false');
+    });
+
+    // Scroll active tab into view if needed
+    const activeTab = tabs[index];
+    if (activeTab) {
+      activeTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+
+    // 2. Animate Image transition with quick scale & fade
+    stageImg.classList.add('fade-out');
+    setTimeout(() => {
+      stageImg.src = data.img;
+      stageImg.alt = data.title;
+      stageImg.classList.remove('fade-out');
+    }, 120);
+
+    // 3. Update Text Content
+    stepBadge.textContent = `SCREEN 0${data.id} OF 08`;
+    tagBadge.textContent = data.badge;
+    stageTitle.textContent = data.title;
+    stageSubtitle.textContent = data.subtitle;
+    stageDesc.textContent = data.description;
+
+    // 4. Update Highlights
+    highlightsList.innerHTML = data.highlights.map(h => `
+      <div class="stage-hl-item">
+        <span class="hl-check" style="color: ${data.color}; background: rgba(${data.colorRgb}, 0.18);">✓</span>
+        <span>${h}</span>
+      </div>
+    `).join('');
+
+    // 5. Update Floating Pills
+    if (floatPill1 && floatPill2) {
+      floatPillIcon1.textContent = data.pill1.icon;
+      floatPillText1.textContent = data.pill1.text;
+      floatPillIcon2.textContent = data.pill2.icon;
+      floatPillText2.textContent = data.pill2.text;
+
+      floatPill1.style.borderColor = `rgba(${data.colorRgb}, 0.4)`;
+      floatPill1.style.boxShadow = `0 12px 28px rgba(0, 0, 0, 0.6), 0 0 16px rgba(${data.colorRgb}, 0.25)`;
+      floatPill2.style.borderColor = `rgba(${data.colorRgb}, 0.4)`;
+      floatPill2.style.boxShadow = `0 12px 28px rgba(0, 0, 0, 0.6), 0 0 16px rgba(${data.colorRgb}, 0.25)`;
+    }
+
+    // 6. Update Color accents
+    tagBadge.style.color = data.color;
+    tagBadge.style.borderColor = `rgba(${data.colorRgb}, 0.35)`;
+    tagBadge.style.background = `rgba(${data.colorRgb}, 0.15)`;
+    stageSubtitle.style.color = data.color;
+    stageGlow.style.background = `radial-gradient(circle, rgba(${data.colorRgb}, 0.32) 0%, transparent 70%)`;
+    stageFrame.style.boxShadow = `0 25px 50px rgba(0, 0, 0, 0.8), 0 0 35px rgba(${data.colorRgb}, 0.25)`;
+    stageCard.style.borderColor = `rgba(${data.colorRgb}, 0.35)`;
+
+    // 7. Update Progress Bar
+    const pct = ((index + 1) / walkthroughScreens.length) * 100;
+    progressBar.style.width = `${pct}%`;
+    progressBar.style.background = `linear-gradient(90deg, #4ade80, ${data.color})`;
+
+    // 8. Update Filmstrip
+    filmstripItems.forEach((item, i) => {
+      item.classList.toggle('active', i === index);
+    });
+
+    const activeThumb = filmstripItems[index];
+    if (activeThumb && filmstripTrack) {
+      activeThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+
+    // 9. If Lightbox is open, update lightbox
+    if (lightbox.classList.contains('open')) {
+      updateLightboxContent();
+    }
+  }
+
+  // Tab button click
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      stopAutoTour();
+      setScreen(parseInt(tab.dataset.index, 10));
+    });
+  });
+
+  // Filmstrip click
+  filmstripItems.forEach(item => {
+    item.addEventListener('click', () => {
+      stopAutoTour();
+      setScreen(parseInt(item.dataset.index, 10));
+    });
+  });
+
+  // Prev / Next Buttons
   if (prevBtn) {
     prevBtn.addEventListener('click', () => {
-      container.scrollBy({ left: -280, behavior: 'smooth' });
+      stopAutoTour();
+      setScreen(currentIndex - 1);
     });
   }
 
   if (nextBtn) {
     nextBtn.addEventListener('click', () => {
-      container.scrollBy({ left: 280, behavior: 'smooth' });
+      stopAutoTour();
+      setScreen(currentIndex + 1);
     });
   }
 
-  // Mouse drag-to-scroll support for desktop
-  let isDown = false;
-  let startX = 0;
-  let scrollLeft = 0;
+  // Filmstrip Arrow buttons
+  if (fsLeftArrow && filmstripTrack) {
+    fsLeftArrow.addEventListener('click', () => {
+      filmstripTrack.scrollBy({ left: -220, behavior: 'smooth' });
+    });
+  }
+  if (fsRightArrow && filmstripTrack) {
+    fsRightArrow.addEventListener('click', () => {
+      filmstripTrack.scrollBy({ left: 220, behavior: 'smooth' });
+    });
+  }
 
-  container.addEventListener('mousedown', (e) => {
-    isDown = true;
-    container.classList.add('dragging');
-    startX = e.pageX - container.offsetLeft;
-    scrollLeft = container.scrollLeft;
+  // Shuffle / Surprise Me Button
+  if (shuffleBtn) {
+    shuffleBtn.addEventListener('click', () => {
+      stopAutoTour();
+      let rand = Math.floor(Math.random() * walkthroughScreens.length);
+      if (rand === currentIndex) rand = (rand + 1) % walkthroughScreens.length;
+
+      // Fun bouncy effect on phone
+      stagePhoneWrapper.style.transform = 'scale(0.92) rotate(4deg)';
+      setTimeout(() => {
+        setScreen(rand);
+        stagePhoneWrapper.style.transform = 'scale(1.05) rotate(-2deg)';
+        setTimeout(() => {
+          stagePhoneWrapper.style.transform = '';
+        }, 180);
+      }, 100);
+    });
+  }
+
+  // Auto Tour Functionality
+  function startAutoTour() {
+    autoTourBtn.classList.add('active');
+    autoTourIcon.textContent = '⏸';
+    autoTourLabel.textContent = 'Pause Tour';
+    autoTourInterval = setInterval(() => {
+      setScreen(currentIndex + 1);
+    }, 3800);
+  }
+
+  function stopAutoTour() {
+    if (autoTourInterval) {
+      clearInterval(autoTourInterval);
+      autoTourInterval = null;
+    }
+    autoTourBtn.classList.remove('active');
+    autoTourIcon.textContent = '▶';
+    autoTourLabel.textContent = 'Auto Tour';
+  }
+
+  if (autoTourBtn) {
+    autoTourBtn.addEventListener('click', () => {
+      if (autoTourInterval) {
+        stopAutoTour();
+      } else {
+        startAutoTour();
+      }
+    });
+  }
+
+  // 3D Tilt Effect on Smartphone Mockup
+  if (stagePhoneWrapper) {
+    stagePhoneWrapper.addEventListener('mousemove', (e) => {
+      const rect = stagePhoneWrapper.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+
+      const rotateX = -(y / (rect.height / 2)) * 14;
+      const rotateY = (x / (rect.width / 2)) * 14;
+
+      stagePhoneWrapper.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.03, 1.03, 1.03)`;
+    });
+
+    stagePhoneWrapper.addEventListener('mouseleave', () => {
+      stagePhoneWrapper.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+    });
+  }
+
+  // Lightbox Functionality
+  function updateLightboxContent() {
+    const data = walkthroughScreens[currentIndex];
+    if (!data) return;
+    lightboxImg.src = data.img;
+    lightboxImg.alt = data.title;
+    lightboxTitle.textContent = data.title;
+    lightboxStep.textContent = `Screen ${data.id} of 8`;
+  }
+
+  function openLightbox() {
+    stopAutoTour();
+    updateLightboxContent();
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  if (stageFrame) stageFrame.addEventListener('click', openLightbox);
+  if (zoomBtn) zoomBtn.addEventListener('click', openLightbox);
+  if (lightboxCloseBtn) lightboxCloseBtn.addEventListener('click', closeLightbox);
+  if (lightboxBackdrop) lightboxBackdrop.addEventListener('click', closeLightbox);
+
+  if (lightboxPrevBtn) {
+    lightboxPrevBtn.addEventListener('click', () => {
+      setScreen(currentIndex - 1);
+    });
+  }
+
+  if (lightboxNextBtn) {
+    lightboxNextBtn.addEventListener('click', () => {
+      setScreen(currentIndex + 1);
+    });
+  }
+
+  // Keyboard navigation
+  window.addEventListener('keydown', (e) => {
+    if (lightbox.classList.contains('open')) {
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') setScreen(currentIndex - 1);
+      if (e.key === 'ArrowRight') setScreen(currentIndex + 1);
+    }
   });
 
-  window.addEventListener('mouseup', () => {
-    isDown = false;
-    if (container) container.classList.remove('dragging');
-  });
+  // Touch Swipe for mobile stage
+  let touchStartX = 0;
+  stageCard.addEventListener('touchstart', (e) => {
+    if (e.touches && e.touches[0]) touchStartX = e.touches[0].clientX;
+  }, { passive: true });
 
-  container.addEventListener('mousemove', (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - container.offsetLeft;
-    const walk = (x - startX) * 1.5;
-    container.scrollLeft = scrollLeft - walk;
-  });
+  stageCard.addEventListener('touchend', (e) => {
+    if (e.changedTouches && e.changedTouches[0]) {
+      const touchEndX = e.changedTouches[0].clientX;
+      const diff = touchEndX - touchStartX;
+      if (Math.abs(diff) > 45) {
+        stopAutoTour();
+        if (diff > 0) {
+          setScreen(currentIndex - 1);
+        } else {
+          setScreen(currentIndex + 1);
+        }
+      }
+    }
+  }, { passive: true });
+
+  // Initial Screen Render
+  setScreen(0, false);
 }
+
