@@ -983,14 +983,22 @@ function initGalleryNavigation() {
   if (prevBtn) {
     prevBtn.addEventListener('click', () => {
       stopAutoTour();
-      setScreen(currentIndex - 1);
+      if (isOriginLightbox) {
+        window.openOriginPhoto((originPhotoIndex - 1 + originPhotos.length) % originPhotos.length);
+      } else {
+        setScreen(currentIndex - 1);
+      }
     });
   }
 
   if (nextBtn) {
     nextBtn.addEventListener('click', () => {
       stopAutoTour();
-      setScreen(currentIndex + 1);
+      if (isOriginLightbox) {
+        window.openOriginPhoto((originPhotoIndex + 1) % originPhotos.length);
+      } else {
+        setScreen(currentIndex + 1);
+      }
     });
   }
 
@@ -1073,6 +1081,39 @@ function initGalleryNavigation() {
     });
   }
 
+
+  // Origin Story Lightbox Integration
+  const originPhotos = [
+    {
+      img: '../images/expensemate/initalPlan/plan1.jpg',
+      title: 'Original Phone Idea Note ("Expenses calculator" · 4:20 AM)',
+      step: 'Origin Story: Phase 01 (Digital Note)'
+    },
+    {
+      img: '../images/expensemate/initalPlan/plan2.jpg',
+      title: 'July 2024 Handwritten Notebook Wireframe Blueprint',
+      step: 'Origin Story: Phase 02 (Notebook Wireframe)'
+    }
+  ];
+
+  let isOriginLightbox = false;
+  let originPhotoIndex = 0;
+
+  window.openOriginPhoto = function(index) {
+    if (index < 0 || index >= originPhotos.length) return;
+    stopAutoTour();
+    isOriginLightbox = true;
+    originPhotoIndex = index;
+    const item = originPhotos[originPhotoIndex];
+    lightboxImg.src = item.img;
+    lightboxImg.alt = item.title;
+    lightboxTitle.textContent = item.title;
+    lightboxStep.textContent = item.step;
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  };
+
   // Lightbox Functionality
   function updateLightboxContent() {
     const data = walkthroughScreens[currentIndex];
@@ -1092,6 +1133,7 @@ function initGalleryNavigation() {
   }
 
   function closeLightbox() {
+    isOriginLightbox = false;
     lightbox.classList.remove('open');
     lightbox.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';

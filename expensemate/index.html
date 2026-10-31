@@ -7,7 +7,7 @@
   <meta name="description" content="Master your money, effortlessly. ExpenseMate is an offline-first, private, and beautifully animated expense tracker with visual analytics, budgeting, split debts, and voice logging.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Caveat:wght@500;600;700&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="../images/expensemate/logo/finalexpensemateRound.png">
 </head>
@@ -45,6 +45,7 @@
         <a href="#tour">Onboarding Tour</a>
         <a href="#features">Features</a>
         <a href="#screenshots">Screenshots</a>
+        <a href="#origin-story">How It Started</a>
         <a href="#userguide">User Guide</a>
       </nav>
 
@@ -116,7 +117,7 @@
 
         <div class="hero-banner-wrap">
           <div class="hero-banner-frame">
-            <img src="../images/expensemate/logo/banner.png" alt="ExpenseMate Overview Banner" class="hero-banner-img">
+            <img src="../images/expensemate/logo/banner.png" srcset="../images/expensemate/logo/banner_small.png 1024w, ../images/expensemate/logo/banner.png 2048w" sizes="(max-width: 768px) 100vw, 1200px" alt="ExpenseMate Overview Banner - Track, Budget, Grow" class="hero-banner-img" width="2048" height="1000">
           </div>
         </div>
       </div>
@@ -969,6 +970,214 @@
     <!-- ====================================================================
          COMPLETE USER GUIDE WITH REAL-TIME SEARCH (From userguide.dart)
          ==================================================================== -->
+    
+    <!-- ====================================================================
+         HOW IT STARTED: THE ORIGIN STORY (Hand-Drawn Sketches & Raw Notes)
+         Featuring plan1.jpg & plan2.jpg with Aesthetic Hand-Drawn Scribbles
+         ==================================================================== -->
+    <section class="origin-story-section" id="origin-story">
+      <!-- Ambient Blueprint Glow Background -->
+      <div class="origin-ambient-glow" aria-hidden="true"></div>
+
+      <div class="container">
+        <div class="section-header origin-header">
+          <div class="origin-badge-wrap">
+            <span class="section-tag origin-tag">
+              <svg class="scribble-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/></svg>
+              The Origin Story
+            </span>
+            <span class="origin-handwritten-pill">Indie Dev Journey ✏️</span>
+          </div>
+          <h2>How It Started</h2>
+          <p class="origin-subheading">
+            ExpenseMate didn't begin in a corporate boardroom. It started in a late-night phone note at 4:20 AM, 
+            followed by ink on notebook paper, sketching out instant calculations, cash flow graphs, and zero-clutter privacy before writing a single line of Flutter code.
+          </p>
+        </div>
+
+        <!-- The Origin Story Board Container with Aesthetic Scribbles Layer -->
+        <div class="origin-board-wrapper">
+
+          <!-- Background Decorative Scribbles & Doodles SVG System -->
+          <svg class="origin-scribbles-canvas" viewBox="0 0 1200 680" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="scribbleGradGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#4ade80" stop-opacity="0.85"/>
+                <stop offset="100%" stop-color="#22c55e" stop-opacity="0.4"/>
+              </linearGradient>
+              <linearGradient id="scribbleGradGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.9"/>
+                <stop offset="100%" stop-color="#f59e0b" stop-opacity="0.4"/>
+              </linearGradient>
+              <linearGradient id="scribbleGradCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.85"/>
+                <stop offset="100%" stop-color="#0ea5e9" stop-opacity="0.35"/>
+              </linearGradient>
+              <filter id="scribbleGlow" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="3.5" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              </filter>
+            </defs>
+
+            <!-- Doodle 1: Wavy Highlighter Swirl behind Card 1 -->
+            <path class="scribble-path doodle-swirl-1" d="M 60,120 Q 90,80 140,110 T 220,105 T 310,135 T 390,95" stroke="url(#scribbleGradGold)" stroke-width="4" stroke-linecap="round" stroke-dasharray="8 6" filter="url(#scribbleGlow)"/>
+
+            <!-- Doodle 2: Hand-drawn Loop-de-loop around Card 1 Top Corner -->
+            <path class="scribble-path doodle-loop" d="M 280,60 C 330,30 350,90 320,110 C 290,130 320,160 360,140" stroke="url(#scribbleGradGold)" stroke-width="2.5" stroke-linecap="round"/>
+
+            <!-- Doodle 3: Hand-drawn Connecting Arrow from Card 1 to Card 2 -->
+            <path class="scribble-path doodle-arrow-main" d="M 430,160 C 490,110 560,100 620,130 C 660,150 680,180 710,210" stroke="url(#scribbleGradGreen)" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="6 4" filter="url(#scribbleGlow)"/>
+            <path class="scribble-arrowhead" d="M 695,200 L 712,212 L 715,190" stroke="url(#scribbleGradGreen)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+            <!-- Doodle 4: Hand-drawn Sparkles / Stars -->
+            <path class="scribble-star star-1" d="M 70,220 Q 80,220 80,210 Q 80,220 90,220 Q 80,220 80,230 Q 80,220 70,220 Z" fill="#fbbf24" opacity="0.85"/>
+            <path class="scribble-star star-2" d="M 1120,140 Q 1135,140 1135,125 Q 1135,140 1150,140 Q 1135,140 1135,155 Q 1135,140 1120,140 Z" fill="#4ade80" opacity="0.85"/>
+            <path class="scribble-star star-3" d="M 540,80 Q 550,80 550,70 Q 550,80 560,80 Q 550,80 550,90 Q 550,80 540,80 Z" fill="#38bdf8" opacity="0.75"/>
+
+            <!-- Doodle 5: Underline squiggle under Blueprint -->
+            <path class="scribble-path doodle-squiggle" d="M 730,590 Q 770,610 820,595 T 900,605 T 980,595 T 1060,605" stroke="url(#scribbleGradCyan)" stroke-width="3" stroke-linecap="round"/>
+
+            <!-- Doodle 6: Hand-drawn Circle highlight around wireframe detail -->
+            <ellipse class="scribble-ellipse" cx="1030" cy="380" rx="90" ry="70" stroke="url(#scribbleGradGreen)" stroke-width="2.5" stroke-dasharray="9 5" stroke-linecap="round" transform="rotate(-6 1030 380)"/>
+
+            <!-- Doodle 7: Curled spiral squiggle in corner -->
+            <path class="scribble-path doodle-spiral" d="M 1100,540 C 1130,530 1150,560 1135,585 C 1115,610 1080,590 1090,565 C 1100,545 1120,550 1115,565" stroke="url(#scribbleGradGold)" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+
+          <!-- Origin Cards Layout: 2 Columns with Organic Desk Rotation & Tape -->
+          <div class="origin-cards-grid">
+
+            <!-- Card 1: 4:20 AM Note (plan1.jpg) -->
+            <div class="origin-sketch-card origin-card-note" id="originCardNote">
+              <!-- Washi Tape Strip at Top -->
+              <div class="washi-tape tape-top-center tape-gold" aria-hidden="true"></div>
+
+              <!-- Doodle Floating Sticky Note Badge -->
+              <div class="origin-handwritten-note note-stick-top">
+                <span class="handwritten-icon">💡</span>
+                <span class="handwritten-text">4:20 AM · The First Spark!</span>
+              </div>
+
+              <!-- Photo Frame with Paper Drop Shadow -->
+              <div class="sketch-photo-frame" onclick="openOriginPhoto(0)" title="Click to inspect original note in full resolution">
+                <img src="../images/expensemate/initalPlan/plan1.jpg" alt="ExpenseMate original phone notes idea dated 4:20 AM" class="sketch-photo-img" loading="lazy">
+                <div class="sketch-photo-overlay">
+                  <span class="sketch-zoom-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
+                    <span>Click to Zoom Note</span>
+                  </span>
+                </div>
+              </div>
+
+              <!-- Card Caption & Context -->
+              <div class="origin-card-content">
+                <div class="origin-card-meta">
+                  <span class="origin-phase-badge phase-spark">Phase 01 · Conceptual Spark</span>
+                  <span class="origin-date">Phone Notes @ 4:20 AM</span>
+                </div>
+                <h3 class="origin-card-title">"App idea: Expenses calculator"</h3>
+                <p class="origin-card-desc">
+                  Born out of frustration with clunky expense apps burdened by full-screen ads and subscriptions. 
+                  Captured right before sleep: tracking simple everyday essentials like <em>"shawarma & biriyani"</em> and <em>"bus & uber"</em>, 
+                  plus split bills, category limits, and local privacy.
+                </p>
+
+                <!-- Hand-drawn style sticky excerpts -->
+                <div class="origin-excerpts-wrap">
+                  <span class="excerpt-chip">🌯 Shawarma, biriyani</span>
+                  <span class="excerpt-chip">🚌 Bus, uber</span>
+                  <span class="excerpt-chip">👥 Split with friends</span>
+                  <span class="excerpt-chip">🔒 100% Private & Ad-free</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Inter-card Hand-drawn Connector (Desktop view) -->
+            <div class="origin-connector-bridge" aria-hidden="true">
+              <div class="connector-scribble-label">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                <span>Then drawn into notebook wireframes</span>
+              </div>
+            </div>
+
+            <!-- Card 2: July 2024 Notebook Blueprint (plan2.jpg) -->
+            <div class="origin-sketch-card origin-card-blueprint" id="originCardBlueprint">
+              <!-- Washi Tape Strip at Corner -->
+              <div class="washi-tape tape-top-right tape-green" aria-hidden="true"></div>
+
+              <!-- Doodle Floating Sticky Note Badge -->
+              <div class="origin-handwritten-note note-stick-right">
+                <span class="handwritten-icon">📐</span>
+                <span class="handwritten-text">July 2024 · Ink & Paper</span>
+              </div>
+
+              <!-- Photo Frame with Paper Drop Shadow -->
+              <div class="sketch-photo-frame" onclick="openOriginPhoto(1)" title="Click to inspect notebook wireframes in full resolution">
+                <img src="../images/expensemate/initalPlan/plan2.jpg" alt="ExpenseMate handwritten pen-and-paper wireframe blueprint from July 2024" class="sketch-photo-img" loading="lazy">
+                <div class="sketch-photo-overlay">
+                  <span class="sketch-zoom-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
+                    <span>Click to Zoom Blueprint</span>
+                  </span>
+                </div>
+              </div>
+
+              <!-- Card Caption & Context -->
+              <div class="origin-card-content">
+                <div class="origin-card-meta">
+                  <span class="origin-phase-badge phase-blueprint">Phase 02 · Paper Blueprint</span>
+                  <span class="origin-date">Notebook Wireframe · July 2024</span>
+                </div>
+                <h3 class="origin-card-title">Architecting the Flow with Pen & Paper</h3>
+                <p class="origin-card-desc">
+                  Every signature feature was sketched out before writing code: the monthly balance curve, 
+                  the rapid custom numpad (so you don't fight system keyboards), and the live visual category limit bar with the note: <em>"update immediately"</em>.
+                </p>
+
+                <!-- Hand-drawn style sticky excerpts -->
+                <div class="origin-excerpts-wrap">
+                  <span class="excerpt-chip">📈 Cash Flow Curve</span>
+                  <span class="excerpt-chip">⌨️ Custom Instant Numpad</span>
+                  <span class="excerpt-chip">🎯 Live Budget Limit Gauge</span>
+                  <span class="excerpt-chip">⚡ "Update Immediately"</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Bottom Story Milestone Ribbon: "How It's Going" -->
+          <div class="origin-milestone-ribbon">
+            <div class="ribbon-glow" aria-hidden="true"></div>
+            <div class="ribbon-content">
+              <div class="ribbon-tag">
+                <span class="ribbon-dot"></span>
+                <span>The Culmination · v4.1 Today</span>
+              </div>
+              <h4 class="ribbon-title">From Notebook Lines to 120Hz Flutter Reality</h4>
+              <p class="ribbon-desc">
+                Today, ExpenseMate is a full-featured, zero-ad, offline-first personal financial operating system. 
+                What started as a 4:20 AM note now features 8 dedicated modules, visual analytics, subcategory hierarchies, 
+                biometric locks, and instant CSV/PDF exports.
+              </p>
+              <div class="ribbon-actions">
+                <a href="#screenshots" class="btn btn-secondary btn-sm">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m9 9 6 6m0-6-6 6"/></svg>
+                  <span>See Finished App Studio (8 Screens)</span>
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=neriquest.expensemate" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                  <span>Experience the App on Google Play</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
     <section class="userguide-section" id="userguide">
       <div class="container">
         <div class="section-header">
@@ -1105,6 +1314,7 @@
         <a href="#tour">Onboarding Tour</a>
         <a href="#features">Features</a>
         <a href="#screenshots">Screenshots</a>
+        <a href="#origin-story">How It Started</a>
         <a href="#userguide">User Guide</a>
         <a href="../privacypolicy/">Privacy Policy</a>
       </div>

@@ -1051,3 +1051,58 @@ a, button, [role="button"], .btn {
     text-align: center;
   }
 }
+
+
+/* ==========================================================================
+   ORIGIN STORY TEASER (HOMEPAGE APP CARD)
+   ========================================================================== */
+.origin-story-teaser {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.08);
+}
+
+.origin-story-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: var(--radius-md, 12px);
+  background: rgba(74, 222, 128, 0.06);
+  border: 1px dashed rgba(74, 222, 128, 0.3);
+  color: var(--text-primary, #fff);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: all 0.25s ease;
+}
+
+.origin-story-link:hover {
+  background: rgba(74, 222, 128, 0.12);
+  border-color: rgba(74, 222, 128, 0.5);
+  box-shadow: 0 0 16px rgba(74, 222, 128, 0.15);
+  transform: translateX(3px);
+}
+
+.origin-sparkle {
+  color: #fbbf24;
+  font-size: 1rem;
+}
+
+.origin-tag-text {
+  flex: 1;
+  color: #cbd5e1;
+}
+
+.origin-tag-text strong {
+  color: #fff;
+}
+
+.origin-arrow-icon {
+  color: var(--accent-green-bright, #4ade80);
+  font-weight: 700;
+  transition: transform 0.2s ease;
+}
+
+.origin-story-link:hover .origin-arrow-icon {
+  transform: translateX(3px);
+}

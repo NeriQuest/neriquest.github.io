@@ -3755,3 +3755,493 @@ mark.highlight {
   border-color: rgba(74, 222, 128, 0.35);
   box-shadow: 0 0 12px rgba(74, 222, 128, 0.2);
 }
+
+
+/* ==========================================================================
+   HOW IT STARTED: THE ORIGIN STORY (Hand-Drawn Sketches & Aesthetic Doodles)
+   ========================================================================== */
+
+.origin-story-section {
+  position: relative;
+  overflow: hidden;
+  padding: 100px 0 110px;
+  background-color: #080a0e;
+  /* Drafting Notebook Grid Texture Overlay */
+  background-image: 
+    radial-gradient(ellipse 70% 50% at 50% -15%, rgba(74, 222, 128, 0.07), transparent 70%),
+    radial-gradient(ellipse 50% 40% at 85% 55%, rgba(251, 191, 36, 0.05), transparent 60%),
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 36px 36px, 36px 36px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.origin-ambient-glow {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 650px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(74, 222, 128, 0.06) 0%, rgba(251, 191, 36, 0.04) 50%, transparent 80%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.origin-header {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 30px;
+}
+
+.origin-badge-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.origin-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(74, 222, 128, 0.1);
+  color: var(--accent-green-bright);
+  border: 1px solid rgba(74, 222, 128, 0.3);
+  padding: 4px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.scribble-icon {
+  stroke: var(--accent-green-bright);
+}
+
+.origin-handwritten-pill {
+  font-family: 'Caveat', cursive;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fbbf24;
+  padding: 3px 12px;
+  background: rgba(251, 191, 36, 0.12);
+  border: 1px dashed rgba(251, 191, 36, 0.4);
+  border-radius: 16px;
+  transform: rotate(-2deg);
+  display: inline-block;
+}
+
+.origin-subheading {
+  max-width: 760px;
+  margin: 0 auto;
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+/* Board Container & SVG Scribble Canvas */
+.origin-board-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1140px;
+  margin: 40px auto 0;
+  padding: 10px 10px 0;
+}
+
+.origin-scribbles-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: visible;
+}
+
+@keyframes scribbleTwinkle {
+  0% { transform: scale(0.9) rotate(0deg); opacity: 0.6; }
+  100% { transform: scale(1.15) rotate(8deg); opacity: 1; }
+}
+
+.scribble-star {
+  transform-origin: center;
+  animation: scribbleTwinkle 3.5s ease-in-out infinite alternate;
+}
+
+.star-1 { animation-delay: 0.2s; }
+.star-2 { animation-delay: 1.2s; }
+.star-3 { animation-delay: 2.1s; }
+
+/* Grid of Cards */
+.origin-cards-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: stretch;
+  margin-bottom: 50px;
+}
+
+/* Card Styling: Polaroid & Blueprint Framing */
+.origin-sketch-card {
+  position: relative;
+  background: rgba(14, 18, 24, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 24px;
+  padding: 26px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.4s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.origin-card-note {
+  transform: rotate(-1.5deg);
+}
+
+.origin-card-blueprint {
+  transform: rotate(1.5deg);
+}
+
+.origin-sketch-card:hover {
+  transform: rotate(0deg) translateY(-8px) scale(1.015);
+  box-shadow: 0 32px 70px rgba(0, 0, 0, 0.8), 0 0 35px rgba(74, 222, 128, 0.18);
+  border-color: rgba(74, 222, 128, 0.35);
+}
+
+/* Realistic Paper Tape (Washi Tape) */
+.washi-tape {
+  position: absolute;
+  width: 120px;
+  height: 32px;
+  z-index: 10;
+  pointer-events: none;
+  opacity: 0.88;
+}
+
+.tape-gold {
+  background: rgba(251, 191, 36, 0.38);
+  border-left: 3px dashed rgba(251, 191, 36, 0.7);
+  border-right: 3px dashed rgba(251, 191, 36, 0.7);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(2px);
+}
+
+.tape-green {
+  background: rgba(74, 222, 128, 0.35);
+  border-left: 3px dashed rgba(74, 222, 128, 0.7);
+  border-right: 3px dashed rgba(74, 222, 128, 0.7);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(2px);
+}
+
+.tape-top-center {
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-1deg);
+}
+
+.tape-top-right {
+  top: -16px;
+  right: 28px;
+  transform: rotate(3deg);
+}
+
+/* Handwritten Note Badges */
+.origin-handwritten-note {
+  font-family: 'Caveat', 'Kalam', cursive, sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.2;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  width: fit-content;
+}
+
+.note-stick-top {
+  background: rgba(251, 191, 36, 0.14);
+  color: #fde047;
+  border: 1px dashed rgba(251, 191, 36, 0.4);
+  transform: rotate(-1.5deg);
+}
+
+.note-stick-right {
+  background: rgba(74, 222, 128, 0.14);
+  color: #86efac;
+  border: 1px dashed rgba(74, 222, 128, 0.4);
+  transform: rotate(1deg);
+}
+
+/* Photo Frames with Paper Matting & Zoom Action */
+.sketch-photo-frame {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  background: #090c10;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  cursor: zoom-in;
+  margin-bottom: 20px;
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.sketch-photo-img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  transition: transform 0.35s ease;
+}
+
+.sketch-photo-frame:hover .sketch-photo-img {
+  transform: scale(1.02);
+}
+
+.sketch-photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+}
+
+.sketch-photo-frame:hover .sketch-photo-overlay {
+  opacity: 1;
+}
+
+.sketch-zoom-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  background: rgba(15, 23, 42, 0.9);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: var(--radius-pill);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* Card Content / Typography */
+.origin-card-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.origin-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.origin-phase-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+}
+
+.phase-spark {
+  background: rgba(251, 191, 36, 0.15);
+  color: #fbbf24;
+  border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+.phase-blueprint {
+  background: rgba(74, 222, 128, 0.15);
+  color: var(--accent-green-bright);
+  border: 1px solid rgba(74, 222, 128, 0.3);
+}
+
+.origin-date {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  color: var(--text-tertiary, #94a3b8);
+}
+
+.origin-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 10px;
+  line-height: 1.35;
+}
+
+.origin-card-desc {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0 0 16px;
+  flex: 1;
+}
+
+.origin-card-desc em {
+  color: #e2e8f0;
+  font-style: normal;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+.origin-excerpts-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.excerpt-chip {
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
+}
+
+/* Connector bridge between cards */
+.origin-connector-bridge {
+  display: none; /* Controlled on desktop */
+}
+
+/* Milestone Ribbon: "From Notebook to 120Hz Reality" */
+.origin-milestone-ribbon {
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(135deg, rgba(74, 222, 128, 0.08), rgba(56, 189, 248, 0.04) 50%, rgba(14, 18, 24, 0.8) 100%);
+  border: 1px solid rgba(74, 222, 128, 0.22);
+  border-radius: 20px;
+  padding: 32px 36px;
+  overflow: hidden;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+}
+
+.ribbon-glow {
+  position: absolute;
+  top: -50px;
+  left: 20%;
+  width: 300px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(74, 222, 128, 0.15), transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+.ribbon-content {
+  position: relative;
+  z-index: 1;
+}
+
+.ribbon-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-green-bright);
+  margin-bottom: 8px;
+}
+
+.ribbon-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-green-bright);
+  box-shadow: 0 0 8px var(--accent-green-bright);
+  animation: pulseDot 2s infinite;
+}
+
+.ribbon-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 10px;
+}
+
+.ribbon-desc {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  max-width: 850px;
+  margin: 0 0 22px;
+}
+
+.ribbon-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* Mobile & Tablet Adaptations */
+@media (max-width: 900px) {
+  .origin-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .origin-card-note,
+  .origin-card-blueprint {
+    transform: none !important;
+  }
+
+  .sketch-photo-frame {
+    height: 420px;
+  }
+
+  .origin-scribbles-canvas {
+    opacity: 0.6;
+  }
+
+  .origin-milestone-ribbon {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .sketch-photo-frame {
+    height: 340px;
+  }
+
+  .origin-handwritten-note {
+    font-size: 1.15rem;
+  }
+
+  .origin-card-title {
+    font-size: 1.15rem;
+  }
+}
