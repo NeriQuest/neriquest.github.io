@@ -975,7 +975,7 @@
          HOW IT STARTED: THE ORIGIN STORY (Hand-Drawn Sketches & Raw Notes)
          Featuring plan1.jpg & plan2.jpg with Aesthetic Hand-Drawn Scribbles
          ==================================================================== -->
-    <section class="origin-story-section" id="origin-story">
+        <section class="origin-story-section" id="origin-story">
       <!-- Ambient Blueprint Glow Background -->
       <div class="origin-ambient-glow" aria-hidden="true"></div>
 
@@ -989,181 +989,160 @@
             <span class="origin-handwritten-pill">Indie Dev Journey ✏️</span>
           </div>
           <h2>How It Started</h2>
+          <!-- Natural Hand-drawn Header Underline Doodle -->
+          <svg class="header-natural-underline" viewBox="0 0 200 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M 2,7 Q 35,2 70,6 T 135,7 T 198,6" stroke="#4ade80" stroke-width="2.4" stroke-linecap="round" stroke-opacity="0.75"/>
+          </svg>
           <p class="origin-subheading">
             ExpenseMate didn't begin in a corporate boardroom. It started in a late-night midnight phone note, 
             followed by ink on notebook paper, sketching out instant calculations, cash flow graphs, and zero-clutter privacy before writing a single line of Flutter code.
           </p>
         </div>
 
-        <!-- The Origin Story Board Container with Aesthetic Scribbles Layer -->
+        <!-- The Origin Story Board Container -->
         <div class="origin-board-wrapper">
 
-          <!-- Background Decorative Scribbles & Doodles SVG System -->
-          <svg class="origin-scribbles-canvas" viewBox="0 0 1200 680" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true">
-            <defs>
-              <linearGradient id="scribbleGradGreen" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#4ade80" stop-opacity="0.85"/>
-                <stop offset="100%" stop-color="#22c55e" stop-opacity="0.4"/>
-              </linearGradient>
-              <linearGradient id="scribbleGradGold" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.9"/>
-                <stop offset="100%" stop-color="#f59e0b" stop-opacity="0.4"/>
-              </linearGradient>
-              <linearGradient id="scribbleGradCyan" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.85"/>
-                <stop offset="100%" stop-color="#0ea5e9" stop-opacity="0.35"/>
-              </linearGradient>
-              <filter id="scribbleGlow" x="-20%" y="-20%" width="140%" height="140%">
-                <feGaussianBlur stdDeviation="3.5" result="blur" />
-                <feComposite in="SourceGraphic" in2="blur" operator="over" />
-              </filter>
-            </defs>
+          <!-- Origin Showcase: 2 Containers (Photo & Paragraph inside one box) -->
+          <div class="origin-direct-grid">
 
-            <!-- Doodle 1: Wavy Highlighter Swirl behind Card 1 -->
-            <path class="scribble-path doodle-swirl-1" d="M 60,120 Q 90,80 140,110 T 220,105 T 310,135 T 390,95" stroke="url(#scribbleGradGold)" stroke-width="4" stroke-linecap="round" stroke-dasharray="8 6" filter="url(#scribbleGlow)"/>
+            <!-- Item 1: Midnight Note Container -->
+            <div class="origin-main-box box-note" id="originItemNote">
+              <!-- Sticker placed right on top edge of the main box -->
+              <div class="origin-box-sticker sticker-gold">
+                <span class="sticker-icon">💡</span>
+                <span class="sticker-text">Midnight · The First Spark!</span>
+              </div>
 
-            <!-- Doodle 2: Hand-drawn Loop-de-loop around Card 1 Top Corner -->
-            <path class="scribble-path doodle-loop" d="M 280,60 C 330,30 350,90 320,110 C 290,130 320,160 360,140" stroke="url(#scribbleGradGold)" stroke-width="2.5" stroke-linecap="round"/>
+              <!-- Direct Standalone PNG Photo inside Container -->
+              <div class="origin-photo-standalone" onclick="openOriginPhoto(0)" title="Click to inspect original note in full resolution">
+                <!-- Washi Tape Strip directly pinned to photo -->
+                <div class="washi-tape tape-top-center tape-gold" aria-hidden="true"></div>
 
-            <!-- Doodle 3: Hand-drawn Connecting Arrow from Card 1 to Card 2 -->
-            <path class="scribble-path doodle-arrow-main" d="M 430,160 C 490,110 560,100 620,130 C 660,150 680,180 710,210" stroke="url(#scribbleGradGreen)" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="6 4" filter="url(#scribbleGlow)"/>
-            <path class="scribble-arrowhead" d="M 695,200 L 712,212 L 715,190" stroke="url(#scribbleGradGreen)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <!-- Natural Hand-drawn Margin Doodles Peeking Behind Photo 1 -->
+                <svg class="natural-photo-scribble scribble-note" viewBox="0 0 380 540" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <!-- Natural soft amber highlighter wash behind photo corner -->
+                  <path d="M 25,45 Q 110,25 210,35 T 350,30" stroke="#fbbf24" stroke-width="14" stroke-linecap="round" stroke-opacity="0.22"/>
+                  <!-- Natural hand-drawn curved pencil arrow pointing to note -->
+                  <path d="M 330,35 C 355,50 360,85 335,110 C 315,125 285,128 255,130" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 3" stroke-opacity="0.8"/>
+                  <path d="M 262,122 L 250,130 L 260,138" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.8"/>
+                  <!-- Little hand-written pencil note -->
+                  <text x="250" y="28" fill="#fde047" font-family="'Caveat', cursive" font-size="16" font-weight="600" opacity="0.9">"app idea..."</text>
+                  <!-- Natural pencil sparkle stars -->
+                  <path d="M 18,25 Q 24,25 24,18 Q 24,25 30,25 Q 24,25 24,32 Q 24,25 18,25 Z" fill="#fbbf24" opacity="0.85"/>
+                  <path d="M 350,160 Q 355,160 355,154 Q 355,160 360,160 Q 355,160 355,166 Q 355,160 350,160 Z" fill="#fbbf24" opacity="0.75"/>
+                </svg>
 
-            <!-- Doodle 4: Hand-drawn Sparkles / Stars -->
-            <path class="scribble-star star-1" d="M 70,220 Q 80,220 80,210 Q 80,220 90,220 Q 80,220 80,230 Q 80,220 70,220 Z" fill="#fbbf24" opacity="0.85"/>
-            <path class="scribble-star star-2" d="M 1120,140 Q 1135,140 1135,125 Q 1135,140 1150,140 Q 1135,140 1135,155 Q 1135,140 1120,140 Z" fill="#4ade80" opacity="0.85"/>
-            <path class="scribble-star star-3" d="M 540,80 Q 550,80 550,70 Q 550,80 560,80 Q 550,80 550,90 Q 550,80 540,80 Z" fill="#38bdf8" opacity="0.75"/>
+                <!-- Standalone PNG Image -->
+                <img src="../images/expensemate/initalPlan/plan1.png" alt="ExpenseMate original phone notes idea captured at midnight" class="origin-standalone-img img-portrait-note" loading="lazy">
 
-            <!-- Doodle 5: Underline squiggle under Blueprint -->
-            <path class="scribble-path doodle-squiggle" d="M 730,590 Q 770,610 820,595 T 900,605 T 980,595 T 1060,605" stroke="url(#scribbleGradCyan)" stroke-width="3" stroke-linecap="round"/>
+                <!-- Subtle Hover Zoom Indicator -->
+                <div class="origin-photo-zoom-hint">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
+                  <span>Click to Zoom</span>
+                </div>
+              </div>
 
-            <!-- Doodle 6: Hand-drawn Circle highlight around wireframe detail -->
-            <ellipse class="scribble-ellipse" cx="1030" cy="380" rx="90" ry="70" stroke="url(#scribbleGradGreen)" stroke-width="2.5" stroke-dasharray="9 5" stroke-linecap="round" transform="rotate(-6 1030 380)"/>
-
-            <!-- Doodle 7: Curled spiral squiggle in corner -->
-            <path class="scribble-path doodle-spiral" d="M 1100,540 C 1130,530 1150,560 1135,585 C 1115,610 1080,590 1090,565 C 1100,545 1120,550 1115,565" stroke="url(#scribbleGradGold)" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-
-          <!-- Origin Raw Showcase: Direct PNG Photos & Main Story Boxes with Top Stickers -->
-        <div class="origin-direct-grid">
-
-          <!-- Item 1: Midnight Note Container (Photo & Paragraph inside one box) -->
-          <div class="origin-main-box box-note" id="originItemNote">
-            <!-- Sticker placed right on top edge of the main box -->
-            <div class="origin-box-sticker sticker-gold">
-              <span class="sticker-icon">💡</span>
-              <span class="sticker-text">Midnight · The First Spark!</span>
-            </div>
-
-            <!-- Direct Standalone PNG Photo (Inside the container) -->
-            <div class="origin-photo-standalone" onclick="openOriginPhoto(0)" title="Click to inspect original note in full resolution">
-              <!-- Washi Tape Strip directly pinned to photo -->
-              <div class="washi-tape tape-top-center tape-gold" aria-hidden="true"></div>
-
-              <!-- Hand-drawn Scribbles Peeking Directly Behind Photo 1 -->
-              <svg class="photo-local-scribble scribble-note-behind" viewBox="0 0 400 600" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M 20,80 Q 5,140 30,220 T 15,360 T 35,480" stroke="#fbbf24" stroke-width="6" stroke-linecap="round" stroke-opacity="0.3" filter="drop-shadow(0 0 10px #fbbf24)"/>
-                <path d="M 60,30 Q 150,10 260,25 T 370,40" stroke="#fbbf24" stroke-width="4" stroke-linecap="round" stroke-dasharray="10 8" stroke-opacity="0.5"/>
-                <path d="M 340,30 C 370,10 395,45 375,70 C 360,85 340,95 315,100" stroke="#fbbf24" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="6 4" stroke-opacity="0.75"/>
-                <path d="M 315,90 L 310,102 L 324,106" stroke="#fbbf24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.75"/>
-                <path d="M 10,40 Q 20,40 20,30 Q 20,40 30,40 Q 20,40 20,50 Q 20,40 10,40 Z" fill="#fbbf24" opacity="0.85"/>
-              </svg>
-
-              <!-- Standalone PNG Image -->
-              <img src="../images/expensemate/initalPlan/plan1.png" alt="ExpenseMate original phone notes idea captured at midnight" class="origin-standalone-img img-portrait-note" loading="lazy">
-
-              <!-- Subtle Hover Zoom Indicator -->
-              <div class="origin-photo-zoom-hint">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
-                <span>Click to Zoom</span>
+              <!-- Paragraph Content inside the container -->
+              <div class="origin-box-content">
+                <div class="origin-card-meta">
+                  <span class="origin-phase-badge phase-spark">Phase 01 · Conceptual Spark</span>
+                  <span class="origin-date">Phone Notes @ Midnight</span>
+                </div>
+                <div class="origin-title-wrap">
+                  <h3 class="origin-direct-title">"App idea: Expenses calculator"</h3>
+                  <!-- Natural hand-drawn wavy underline under title -->
+                  <svg class="natural-title-underline" viewBox="0 0 230 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M 2,6 Q 30,2 60,6 T 120,6 T 180,6 T 226,5" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" stroke-opacity="0.75"/>
+                  </svg>
+                </div>
+                <p class="origin-direct-desc">
+                  Born out of frustration with clunky expense apps burdened by full-screen ads and subscriptions. 
+                  Captured late at night right before sleep: tracking simple everyday essentials like <em>"shawarma & biriyani"</em> and <em>"bus & uber"</em>, 
+                  plus split bills, category limits, and local privacy.
+                </p>
+                <div class="origin-excerpts-wrap">
+                  <span class="excerpt-chip">🌯 Shawarma, biriyani</span>
+                  <span class="excerpt-chip">🚌 Bus, uber</span>
+                  <span class="excerpt-chip">👥 Split with friends</span>
+                  <span class="excerpt-chip">🔒 100% Private & Ad-free</span>
+                </div>
               </div>
             </div>
 
-            <!-- Paragraph Content inside the container -->
-            <div class="origin-box-content">
-              <div class="origin-card-meta">
-                <span class="origin-phase-badge phase-spark">Phase 01 · Conceptual Spark</span>
-                <span class="origin-date">Phone Notes @ Midnight</span>
-              </div>
-              <h3 class="origin-direct-title">"App idea: Expenses calculator"</h3>
-              <p class="origin-direct-desc">
-                Born out of frustration with clunky expense apps burdened by full-screen ads and subscriptions. 
-                Captured late at night right before sleep: tracking simple everyday essentials like <em>"shawarma & biriyani"</em> and <em>"bus & uber"</em>, 
-                plus split bills, category limits, and local privacy.
-              </p>
-              <div class="origin-excerpts-wrap">
-                <span class="excerpt-chip">🌯 Shawarma, biriyani</span>
-                <span class="excerpt-chip">🚌 Bus, uber</span>
-                <span class="excerpt-chip">👥 Split with friends</span>
-                <span class="excerpt-chip">🔒 100% Private & Ad-free</span>
+            <!-- Inter-box Natural Connector -->
+            <div class="origin-connector-bridge" aria-hidden="true">
+              <div class="connector-scribble-label">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                <span>Then drawn into notebook wireframes</span>
               </div>
             </div>
+
+            <!-- Item 2: July 2024 Notebook Blueprint Container -->
+            <div class="origin-main-box box-blueprint" id="originItemBlueprint">
+              <!-- Sticker placed right on top edge of the main box -->
+              <div class="origin-box-sticker sticker-green">
+                <span class="sticker-icon">📐</span>
+                <span class="sticker-text">July 2024 · Ink & Paper</span>
+              </div>
+
+              <!-- Direct Standalone PNG Photo inside Container -->
+              <div class="origin-photo-standalone" onclick="openOriginPhoto(1)" title="Click to inspect notebook wireframes in full resolution">
+                <!-- Washi Tape Strip directly pinned to photo corner -->
+                <div class="washi-tape tape-top-right tape-green" aria-hidden="true"></div>
+
+                <!-- Natural Hand-drawn Margin Doodles Peeking Behind Photo 2 -->
+                <svg class="natural-photo-scribble scribble-blueprint" viewBox="0 0 540 440" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <!-- Natural soft mint green highlighter wash behind photo corner -->
+                  <path d="M 30,35 Q 160,20 300,30 T 500,25" stroke="#4ade80" stroke-width="14" stroke-linecap="round" stroke-opacity="0.2"/>
+                  <!-- Natural hand-drawn curved pencil arrow pointing to numpad -->
+                  <path d="M 480,240 C 510,265 515,310 485,335 C 460,350 425,345 390,340" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 3" stroke-opacity="0.8"/>
+                  <path d="M 398,348 L 388,339 L 396,330" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.8"/>
+                  <!-- Little hand-written pencil note -->
+                  <text x="400" y="325" fill="#86efac" font-family="'Caveat', cursive" font-size="16" font-weight="600" opacity="0.9">"instant numpad"</text>
+                  <!-- Natural pencil sparkle stars -->
+                  <path d="M 490,40 Q 496,40 496,34 Q 496,40 502,40 Q 496,40 496,46 Q 496,40 490,40 Z" fill="#4ade80" opacity="0.85"/>
+                  <path d="M 35,390 Q 40,390 40,385 Q 40,390 45,390 Q 40,390 40,395 Q 40,390 35,390 Z" fill="#38bdf8" opacity="0.75"/>
+                </svg>
+
+                <!-- Standalone PNG Image -->
+                <img src="../images/expensemate/initalPlan/plan2.png" alt="ExpenseMate handwritten pen-and-paper wireframe blueprint from July 2024" class="origin-standalone-img img-landscape-blueprint" loading="lazy">
+
+                <!-- Subtle Hover Zoom Indicator -->
+                <div class="origin-photo-zoom-hint">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
+                  <span>Click to Zoom</span>
+                </div>
+              </div>
+
+              <!-- Paragraph Content inside the container -->
+              <div class="origin-box-content">
+                <div class="origin-card-meta">
+                  <span class="origin-phase-badge phase-blueprint">Phase 02 · Paper Blueprint</span>
+                  <span class="origin-date">Notebook Wireframe · July 2024</span>
+                </div>
+                <div class="origin-title-wrap">
+                  <h3 class="origin-direct-title">Architecting the Flow with Pen & Paper</h3>
+                  <!-- Natural hand-drawn wavy underline under title -->
+                  <svg class="natural-title-underline" viewBox="0 0 290 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M 2,6 Q 35,2 70,6 T 140,6 T 210,6 T 286,5" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-opacity="0.75"/>
+                  </svg>
+                </div>
+                <p class="origin-direct-desc">
+                  Every signature feature was sketched out before writing code: the monthly balance curve, 
+                  the rapid custom numpad (so you don't fight system keyboards), and the live visual category limit bar with the note: <em>"update immediately"</em>.
+                </p>
+                <div class="origin-excerpts-wrap">
+                  <span class="excerpt-chip">📈 Cash Flow Curve</span>
+                  <span class="excerpt-chip">⌨️ Custom Instant Numpad</span>
+                  <span class="excerpt-chip">🎯 Live Budget Limit Gauge</span>
+                  <span class="excerpt-chip">⚡ "Update Immediately"</span>
+                </div>
+              </div>
+            </div>
+
           </div>
 
-          <!-- Inter-box Hand-drawn Connector -->
-          <div class="origin-connector-bridge" aria-hidden="true">
-            <div class="connector-scribble-label">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              <span>Then drawn into notebook wireframes</span>
-            </div>
-          </div>
-
-          <!-- Item 2: July 2024 Notebook Blueprint Container (Photo & Paragraph inside one box) -->
-          <div class="origin-main-box box-blueprint" id="originItemBlueprint">
-            <!-- Sticker placed right on top edge of the main box -->
-            <div class="origin-box-sticker sticker-green">
-              <span class="sticker-icon">📐</span>
-              <span class="sticker-text">July 2024 · Ink & Paper</span>
-            </div>
-
-            <!-- Direct Standalone PNG Photo (Inside the container) -->
-            <div class="origin-photo-standalone" onclick="openOriginPhoto(1)" title="Click to inspect notebook wireframes in full resolution">
-              <!-- Washi Tape Strip directly pinned to photo corner -->
-              <div class="washi-tape tape-top-right tape-green" aria-hidden="true"></div>
-
-              <!-- Hand-drawn Scribbles Peeking Directly Behind Photo 2 -->
-              <svg class="photo-local-scribble scribble-blueprint-behind" viewBox="0 0 600 480" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M 40,20 Q 200,-5 420,15 T 580,30" stroke="#4ade80" stroke-width="5" stroke-linecap="round" stroke-dasharray="12 8" stroke-opacity="0.45" filter="drop-shadow(0 0 10px #4ade80)"/>
-                <path d="M 570,80 Q 590,180 565,280 T 585,420" stroke="#38bdf8" stroke-width="5" stroke-linecap="round" stroke-opacity="0.35"/>
-                <path d="M 530,340 C 570,360 580,410 540,430 C 510,445 470,430 430,420" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="5 4" stroke-opacity="0.8"/>
-                <path d="M 440,430 L 426,420 L 436,410" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.8"/>
-                <path d="M 560,50 Q 570,50 570,40 Q 570,50 580,50 Q 570,50 570,60 Q 570,50 560,50 Z" fill="#4ade80" opacity="0.85"/>
-                <path d="M 50,440 Q 60,440 60,430 Q 60,440 70,440 Q 60,440 60,450 Q 60,440 50,440 Z" fill="#38bdf8" opacity="0.85"/>
-              </svg>
-
-              <!-- Standalone PNG Image -->
-              <img src="../images/expensemate/initalPlan/plan2.png" alt="ExpenseMate handwritten pen-and-paper wireframe blueprint from July 2024" class="origin-standalone-img img-landscape-blueprint" loading="lazy">
-
-              <!-- Subtle Hover Zoom Indicator -->
-              <div class="origin-photo-zoom-hint">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
-                <span>Click to Zoom</span>
-              </div>
-            </div>
-
-            <!-- Paragraph Content inside the container -->
-            <div class="origin-box-content">
-              <div class="origin-card-meta">
-                <span class="origin-phase-badge phase-blueprint">Phase 02 · Paper Blueprint</span>
-                <span class="origin-date">Notebook Wireframe · July 2024</span>
-              </div>
-              <h3 class="origin-direct-title">Architecting the Flow with Pen & Paper</h3>
-              <p class="origin-direct-desc">
-                Every signature feature was sketched out before writing code: the monthly balance curve, 
-                the rapid custom numpad (so you don't fight system keyboards), and the live visual category limit bar with the note: <em>"update immediately"</em>.
-              </p>
-              <div class="origin-excerpts-wrap">
-                <span class="excerpt-chip">📈 Cash Flow Curve</span>
-                <span class="excerpt-chip">⌨️ Custom Instant Numpad</span>
-                <span class="excerpt-chip">🎯 Live Budget Limit Gauge</span>
-                <span class="excerpt-chip">⚡ "Update Immediately"</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Bottom Story Milestone Ribbon: "How It's Going" -->
+          <!-- Bottom Story Milestone Ribbon: "How It's Going" -->
           <div class="origin-milestone-ribbon">
             <div class="ribbon-glow" aria-hidden="true"></div>
             <div class="ribbon-content">

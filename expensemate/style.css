@@ -3763,7 +3763,8 @@ mark.highlight {
 
 
 /* ==========================================================================
-   HOW IT STARTED: THE ORIGIN STORY (Direct Floating PNGs & Aesthetic Doodles)
+   HOW IT STARTED: THE ORIGIN STORY (Natural Sketchbook Doodles & Unified Cards)
+   Identical aesthetic rendering on Desktop & Android mobile
    ========================================================================== */
 
 .origin-story-section {
@@ -3774,7 +3775,7 @@ mark.highlight {
   width: 100%;
   padding: 90px 0 100px;
   background-color: #080a0e;
-  /* Drafting Notebook Grid Texture Overlay */
+  /* Natural Drafting Notebook Grid Texture Overlay */
   background-image: 
     radial-gradient(ellipse 70% 50% at 50% -15%, rgba(74, 222, 128, 0.07), transparent 70%),
     radial-gradient(ellipse 50% 40% at 85% 55%, rgba(251, 191, 36, 0.05), transparent 60%),
@@ -3811,7 +3812,7 @@ mark.highlight {
   align-items: center;
   justify-content: center;
   gap: 12px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   flex-wrap: wrap;
 }
 
@@ -3847,6 +3848,14 @@ mark.highlight {
   display: inline-block;
 }
 
+.header-natural-underline {
+  display: block;
+  width: 140px;
+  height: 10px;
+  margin: 6px auto 14px;
+  overflow: visible;
+}
+
 .origin-subheading {
   max-width: 760px;
   margin: 0 auto;
@@ -3855,59 +3864,108 @@ mark.highlight {
   line-height: 1.7;
 }
 
-/* Board Container & SVG Scribble Canvas */
+/* Board Container */
 .origin-board-wrapper {
   position: relative;
   width: 100%;
   max-width: 1140px;
-  margin: 35px auto 0;
+  margin: 30px auto 0;
   padding: 10px 0 0;
   overflow: hidden;
 }
 
-.origin-scribbles-canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-  overflow: hidden;
-}
-
-@keyframes scribbleTwinkle {
-  0% { transform: scale(0.9) rotate(0deg); opacity: 0.6; }
-  100% { transform: scale(1.15) rotate(8deg); opacity: 1; }
-}
-
-.scribble-star {
-  transform-origin: center;
-  animation: scribbleTwinkle 3.5s ease-in-out infinite alternate;
-}
-
-.star-1 { animation-delay: 0.2s; }
-.star-2 { animation-delay: 1.2s; }
-.star-3 { animation-delay: 2.1s; }
-
-/* ==========================================================================
-   ORIGIN RAW SHOWCASE: DIRECT PNG PHOTOS (NO CONTAINER BOXES)
-   ========================================================================== */
-
+/* 2-Column Grid Layout (Identical behaviour on Desktop & Android) */
 .origin-direct-grid {
   position: relative;
   z-index: 2;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  gap: 36px;
   align-items: stretch;
-  margin-bottom: 50px;
+  margin-bottom: 45px;
   width: 100%;
   max-width: 100%;
-  overflow: hidden;
 }
 
-/* Standalone Floating Photo System (Inside Container with Paragraph) */
+/* ==========================================================================
+   UNIFIED MAIN STORY BOX (Photo & Paragraph Inside Container)
+   ========================================================================== */
+
+.origin-main-box {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  margin-top: 15px;
+  padding: 36px 24px 26px;
+  background: rgba(14, 18, 26, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 24px;
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.35s ease, box-shadow 0.35s ease;
+  text-align: left;
+}
+
+.box-note {
+  border-top: 2px solid rgba(251, 191, 36, 0.45);
+}
+
+.box-blueprint {
+  border-top: 2px solid rgba(74, 222, 128, 0.45);
+}
+
+.origin-main-box:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75);
+  transform: translateY(-6px);
+}
+
+/* Sticker on Top Edge of Main Box */
+.origin-box-sticker {
+  position: absolute;
+  top: -18px;
+  left: 24px;
+  font-family: 'Caveat', 'Kalam', cursive, sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.2;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 18px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+  z-index: 5;
+  user-select: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sticker-gold {
+  background: #1e1b10;
+  color: #fde047;
+  border: 1.5px dashed rgba(251, 191, 36, 0.65);
+  transform: rotate(-2deg);
+}
+
+.sticker-green {
+  background: #0d1e16;
+  color: #86efac;
+  border: 1.5px dashed rgba(74, 222, 128, 0.65);
+  transform: rotate(2deg);
+}
+
+.box-note:hover .sticker-gold {
+  transform: rotate(-3deg) scale(1.04);
+  box-shadow: 0 8px 24px rgba(251, 191, 36, 0.3);
+}
+
+.box-blueprint:hover .sticker-green {
+  transform: rotate(3deg) scale(1.04);
+  box-shadow: 0 8px 24px rgba(74, 222, 128, 0.3);
+}
+
+/* Standalone Floating Photo System (Inside Main Box) */
 .origin-photo-standalone {
   position: relative;
   cursor: zoom-in;
@@ -3919,7 +3977,7 @@ mark.highlight {
   width: 100%;
   max-width: 100%;
   margin-bottom: 22px;
-  padding: 8px 0;
+  padding: 6px 0;
   overflow: visible;
 }
 
@@ -3935,7 +3993,7 @@ mark.highlight {
   transform: rotate(0deg) translateY(-6px) scale(1.015);
 }
 
-/* Direct Standalone PNG Images */
+/* Standalone PNG Images */
 .origin-standalone-img {
   display: block;
   width: auto;
@@ -3947,54 +4005,60 @@ mark.highlight {
 }
 
 .img-portrait-note {
-  max-height: 520px;
-  border-radius: 20px;
+  max-height: 480px;
+  border-radius: 18px;
   box-shadow: 
-    0 22px 50px rgba(0, 0, 0, 0.85),
-    0 0 25px rgba(251, 191, 36, 0.15),
+    0 20px 45px rgba(0, 0, 0, 0.85),
+    0 0 25px rgba(251, 191, 36, 0.12),
     0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
 .img-landscape-blueprint {
-  max-height: 480px;
+  max-height: 440px;
   border-radius: 12px;
   box-shadow: 
-    0 22px 50px rgba(0, 0, 0, 0.85),
-    0 0 25px rgba(74, 222, 128, 0.15),
+    0 20px 45px rgba(0, 0, 0, 0.85),
+    0 0 25px rgba(74, 222, 128, 0.12),
     0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
 .origin-photo-standalone:hover .img-portrait-note {
   box-shadow: 
-    0 32px 65px rgba(0, 0, 0, 0.95),
-    0 0 35px rgba(251, 191, 36, 0.35),
-    0 0 0 1px rgba(251, 191, 36, 0.5);
+    0 28px 55px rgba(0, 0, 0, 0.95),
+    0 0 32px rgba(251, 191, 36, 0.28),
+    0 0 0 1px rgba(251, 191, 36, 0.45);
 }
 
 .origin-photo-standalone:hover .img-landscape-blueprint {
   box-shadow: 
-    0 32px 65px rgba(0, 0, 0, 0.95),
-    0 0 35px rgba(74, 222, 128, 0.35),
-    0 0 0 1px rgba(74, 222, 128, 0.5);
+    0 28px 55px rgba(0, 0, 0, 0.95),
+    0 0 32px rgba(74, 222, 128, 0.28),
+    0 0 0 1px rgba(74, 222, 128, 0.45);
 }
 
-/* Local Scribbles SVG Peeking Directly Behind Each Photo */
-.photo-local-scribble {
+/* ==========================================================================
+   NATURAL HAND-DRAWN SKETCHBOOK SCRIBBLES (Same on Android & Desktop)
+   ========================================================================== */
+
+.natural-photo-scribble {
   position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
   z-index: 1;
-  overflow: hidden;
-  max-width: 100%;
+  overflow: visible;
 }
 
-.scribble-note-behind {
+.scribble-note {
   top: -10px;
   left: 0;
   width: 100%;
   height: calc(100% + 20px);
 }
 
-.scribble-blueprint-behind {
+.scribble-blueprint {
   top: -10px;
   right: 0;
   width: 100%;
@@ -4004,7 +4068,7 @@ mark.highlight {
 /* Subtle Hover Zoom Hint */
 .origin-photo-zoom-hint {
   position: absolute;
-  bottom: 24px;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%) translateY(8px);
   opacity: 0;
@@ -4068,90 +4132,13 @@ mark.highlight {
   transform: rotate(3deg);
 }
 
-/* ==========================================================================
-   THE MAIN STORY BOX (With Top Sticker Badge & Glassmorphic Finish)
-   ========================================================================== */
-
-.origin-main-box {
-  position: relative;
-  width: 100%;
-  max-width: 100%;
-  margin-top: 15px;
-  padding: 36px 24px 26px;
-  background: rgba(14, 18, 26, 0.94);
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  border-radius: 24px;
-  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.35s ease, box-shadow 0.35s ease;
-  text-align: left;
-}
-
-.box-note {
-  border-top: 2px solid rgba(251, 191, 36, 0.45);
-}
-
-.box-blueprint {
-  border-top: 2px solid rgba(74, 222, 128, 0.45);
-}
-
-.origin-main-box:hover {
-  border-color: rgba(255, 255, 255, 0.18);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75);
-  transform: translateY(-6px);
-}
-
+/* Paragraph Content (Inside Container) */
 .origin-box-content {
   display: flex;
   flex-direction: column;
   flex: 1;
   width: 100%;
   margin-top: auto;
-}
-
-/* Sticker on Top Edge of Main Box */
-.origin-box-sticker {
-  position: absolute;
-  top: -18px;
-  left: 24px;
-  font-family: 'Caveat', 'Kalam', cursive, sans-serif;
-  font-size: 1.35rem;
-  font-weight: 700;
-  line-height: 1.2;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 18px;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
-  z-index: 5;
-  user-select: none;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.sticker-gold {
-  background: #1e1b10;
-  color: #fde047;
-  border: 1.5px dashed rgba(251, 191, 36, 0.65);
-  transform: rotate(-2deg);
-}
-
-.sticker-green {
-  background: #0d1e16;
-  color: #86efac;
-  border: 1.5px dashed rgba(74, 222, 128, 0.65);
-  transform: rotate(2deg);
-}
-
-.box-note:hover .sticker-gold {
-  transform: rotate(-3deg) scale(1.04);
-  box-shadow: 0 8px 24px rgba(251, 191, 36, 0.3);
-}
-
-.box-blueprint:hover .sticker-green {
-  transform: rotate(3deg) scale(1.04);
-  box-shadow: 0 8px 24px rgba(74, 222, 128, 0.3);
 }
 
 .origin-card-meta {
@@ -4190,12 +4177,26 @@ mark.highlight {
   color: var(--text-tertiary, #94a3b8);
 }
 
+.origin-title-wrap {
+  position: relative;
+  margin-bottom: 12px;
+}
+
 .origin-direct-title {
   font-size: 1.25rem;
   font-weight: 700;
   color: #fff;
-  margin: 0 0 10px;
+  margin: 0;
   line-height: 1.35;
+}
+
+/* Natural Hand-drawn Squiggly Underline */
+.natural-title-underline {
+  display: block;
+  width: 170px;
+  height: 8px;
+  margin-top: 4px;
+  overflow: visible;
 }
 
 .origin-direct-desc {
@@ -4229,7 +4230,7 @@ mark.highlight {
   color: #cbd5e1;
 }
 
-/* Connector bridge between photos */
+/* Connector bridge between boxes */
 .origin-connector-bridge {
   display: none;
 }
@@ -4308,55 +4309,56 @@ mark.highlight {
 }
 
 /* ==========================================================================
-   MOBILE & ANDROID OPTIMIZED BREAKPOINTS (PREVENTS ACCIDENTAL ZOOMING OUT)
+   MOBILE & ANDROID OPTIMIZED BREAKPOINTS (IDENTICAL NATURAL SCRIBBLES)
    ========================================================================== */
 @media (max-width: 900px) {
-  /* Hide the 1200px wide background SVG canvas on mobile so it never leaks horizontal overflow */
-  .origin-scribbles-canvas {
-    display: none !important;
-  }
-
   .origin-board-wrapper {
     padding: 0;
-    margin: 25px auto 0;
-    overflow: hidden;
+    margin: 20px auto 0;
   }
 
   .origin-direct-grid {
     grid-template-columns: 1fr;
-    gap: 48px;
-    margin-bottom: 40px;
+    gap: 40px;
+    margin-bottom: 35px;
   }
 
-  /* Reset all desktop tilts so rotated edges never expand beyond viewport */
-  .origin-item-note .origin-photo-standalone,
-  .origin-item-blueprint .origin-photo-standalone {
+  .origin-main-box {
+    margin-top: 15px;
+    padding: 30px 18px 20px;
+  }
+
+  .origin-box-sticker {
+    top: -16px;
+    left: 16px;
+    font-size: 1.15rem;
+    padding: 4px 14px;
+    max-width: calc(100% - 32px);
     transform: none !important;
-    padding: 5px 0;
+  }
+
+  .box-note .origin-photo-standalone,
+  .box-blueprint .origin-photo-standalone {
+    transform: none !important;
+    padding: 4px 0;
   }
 
   .origin-photo-standalone:hover {
     transform: none !important;
   }
 
-  /* Keep local scribbles safely within bounds */
-  .photo-local-scribble {
-    left: 0 !important;
-    right: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    max-width: 100% !important;
-    opacity: 0.7;
+  .natural-photo-scribble {
+    opacity: 0.85;
   }
 
   .img-portrait-note {
-    max-height: 420px;
+    max-height: 400px;
     width: auto;
     max-width: 100% !important;
   }
 
   .img-landscape-blueprint {
-    max-height: 360px;
+    max-height: 340px;
     width: 100% !important;
     object-fit: contain;
   }
@@ -4373,20 +4375,6 @@ mark.highlight {
 
   .tape-top-center {
     transform: translateX(-50%) rotate(0deg);
-  }
-
-  .origin-main-box {
-    margin-top: 24px;
-    padding: 28px 18px 20px;
-  }
-
-  .origin-box-sticker {
-    top: -16px;
-    left: 16px;
-    font-size: 1.15rem;
-    padding: 4px 14px;
-    max-width: calc(100% - 32px);
-    transform: none !important;
   }
 
   .origin-milestone-ribbon {
@@ -4419,11 +4407,11 @@ mark.highlight {
   }
 
   .img-portrait-note {
-    max-height: 350px;
+    max-height: 340px;
   }
 
   .img-landscape-blueprint {
-    max-height: 280px;
+    max-height: 260px;
   }
 
   .origin-direct-title {
