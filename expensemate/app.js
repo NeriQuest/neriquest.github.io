@@ -1086,7 +1086,7 @@ function initGalleryNavigation() {
   const originPhotos = [
     {
       img: '../images/expensemate/initalPlan/plan1.png',
-      title: 'Original Phone Idea Note ("Expenses calculator" · 4:20 AM)',
+      title: 'Original Phone Idea Note ("Expenses calculator" · Midnight Spark)',
       step: 'Origin Story: Phase 01 (Digital Note)'
     },
     {

@@ -4075,8 +4075,43 @@ mark.highlight {
   transform: rotate(3deg);
 }
 
-/* Handwritten Note Badges */
-.origin-handwritten-note {
+/* ==========================================================================
+   THE MAIN STORY BOX (With Top Sticker Badge & Glassmorphic Finish)
+   ========================================================================== */
+
+.origin-main-box {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  margin-top: 30px;
+  padding: 34px 26px 24px;
+  background: rgba(14, 18, 26, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 22px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+  text-align: left;
+}
+
+.box-note {
+  border-top: 2px solid rgba(251, 191, 36, 0.4);
+}
+
+.box-blueprint {
+  border-top: 2px solid rgba(74, 222, 128, 0.4);
+}
+
+.origin-direct-item:hover .origin-main-box {
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.7);
+  transform: translateY(-4px);
+}
+
+/* Sticker on Top Edge of Main Box */
+.origin-box-sticker {
+  position: absolute;
+  top: -18px;
+  left: 24px;
   font-family: 'Caveat', 'Kalam', cursive, sans-serif;
   font-size: 1.35rem;
   font-weight: 700;
@@ -4084,36 +4119,36 @@ mark.highlight {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 14px;
+  padding: 6px 18px;
   border-radius: 12px;
-  margin-bottom: 12px;
-  width: fit-content;
-  max-width: 100%;
-  position: relative;
-  z-index: 4;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+  z-index: 5;
+  user-select: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.note-stick-top {
-  background: rgba(251, 191, 36, 0.14);
+.sticker-gold {
+  background: #1e1b10;
   color: #fde047;
-  border: 1px dashed rgba(251, 191, 36, 0.4);
-  transform: rotate(-1.5deg);
+  border: 1.5px dashed rgba(251, 191, 36, 0.65);
+  transform: rotate(-2deg);
 }
 
-.note-stick-right {
-  background: rgba(74, 222, 128, 0.14);
+.sticker-green {
+  background: #0d1e16;
   color: #86efac;
-  border: 1px dashed rgba(74, 222, 128, 0.4);
-  transform: rotate(1deg);
+  border: 1.5px dashed rgba(74, 222, 128, 0.65);
+  transform: rotate(2deg);
 }
 
-/* Direct Captions (Clean Editorial Layout, No Container Box) */
-.origin-direct-caption {
-  width: 100%;
-  max-width: 100%;
-  margin-top: 20px;
-  padding: 0 4px;
-  text-align: left;
+.origin-direct-item:hover .sticker-gold {
+  transform: rotate(-3deg) scale(1.04);
+  box-shadow: 0 8px 24px rgba(251, 191, 36, 0.3);
+}
+
+.origin-direct-item:hover .sticker-green {
+  transform: rotate(3deg) scale(1.04);
+  box-shadow: 0 8px 24px rgba(74, 222, 128, 0.3);
 }
 
 .origin-card-meta {
@@ -4337,9 +4372,17 @@ mark.highlight {
     transform: translateX(-50%) rotate(0deg);
   }
 
-  .origin-handwritten-note {
+  .origin-main-box {
+    margin-top: 24px;
+    padding: 28px 18px 20px;
+  }
+
+  .origin-box-sticker {
+    top: -16px;
+    left: 16px;
     font-size: 1.15rem;
-    padding: 5px 12px;
+    padding: 4px 14px;
+    max-width: calc(100% - 32px);
     transform: none !important;
   }
 
