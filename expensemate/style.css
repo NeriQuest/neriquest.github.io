@@ -3758,7 +3758,7 @@ mark.highlight {
 
 
 /* ==========================================================================
-   HOW IT STARTED: THE ORIGIN STORY (Hand-Drawn Sketches & Aesthetic Doodles)
+   HOW IT STARTED: THE ORIGIN STORY (Direct Floating PNGs & Aesthetic Doodles)
    ========================================================================== */
 
 .origin-story-section {
@@ -3880,78 +3880,179 @@ mark.highlight {
 .star-2 { animation-delay: 1.2s; }
 .star-3 { animation-delay: 2.1s; }
 
-/* Grid of Cards */
-.origin-cards-grid {
+/* ==========================================================================
+   ORIGIN RAW SHOWCASE: DIRECT PNG PHOTOS (NO CONTAINER BOXES)
+   ========================================================================== */
+
+.origin-direct-grid {
   position: relative;
   z-index: 2;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  align-items: stretch;
-  margin-bottom: 50px;
+  gap: 50px;
+  align-items: start;
+  margin-bottom: 55px;
 }
 
-/* Card Styling: Polaroid & Blueprint Framing */
-.origin-sketch-card {
+.origin-direct-item {
   position: relative;
-  background: rgba(14, 18, 24, 0.94);
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  border-radius: 24px;
-  padding: 26px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.4s ease;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
-.origin-card-note {
+/* Standalone Floating Photo System (No Box Background, No Card Border) */
+.origin-photo-standalone {
+  position: relative;
+  cursor: zoom-in;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.origin-item-note .origin-photo-standalone {
   transform: rotate(-1.5deg);
 }
 
-.origin-card-blueprint {
+.origin-item-blueprint .origin-photo-standalone {
   transform: rotate(1.5deg);
 }
 
-.origin-sketch-card:hover {
-  transform: rotate(0deg) translateY(-8px) scale(1.015);
-  box-shadow: 0 32px 70px rgba(0, 0, 0, 0.8), 0 0 35px rgba(74, 222, 128, 0.18);
-  border-color: rgba(74, 222, 128, 0.35);
+.origin-photo-standalone:hover {
+  transform: rotate(0deg) translateY(-8px) scale(1.02);
 }
 
-/* Realistic Paper Tape (Washi Tape) */
+/* Direct Standalone PNG Images */
+.origin-standalone-img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 3;
+  transition: all 0.35s ease;
+}
+
+.img-portrait-note {
+  max-height: 520px;
+  border-radius: 20px;
+  box-shadow: 
+    0 22px 50px rgba(0, 0, 0, 0.85),
+    0 0 25px rgba(251, 191, 36, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.img-landscape-blueprint {
+  max-height: 480px;
+  border-radius: 12px;
+  box-shadow: 
+    0 22px 50px rgba(0, 0, 0, 0.85),
+    0 0 25px rgba(74, 222, 128, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.origin-photo-standalone:hover .img-portrait-note {
+  box-shadow: 
+    0 32px 65px rgba(0, 0, 0, 0.95),
+    0 0 35px rgba(251, 191, 36, 0.35),
+    0 0 0 1px rgba(251, 191, 36, 0.5);
+}
+
+.origin-photo-standalone:hover .img-landscape-blueprint {
+  box-shadow: 
+    0 32px 65px rgba(0, 0, 0, 0.95),
+    0 0 35px rgba(74, 222, 128, 0.35),
+    0 0 0 1px rgba(74, 222, 128, 0.5);
+}
+
+/* Local Scribbles SVG Peeking Directly Behind Each Photo */
+.photo-local-scribble {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  overflow: visible;
+}
+
+.scribble-note-behind {
+  top: -20px;
+  left: -20px;
+  width: calc(100% + 40px);
+  height: calc(100% + 40px);
+}
+
+.scribble-blueprint-behind {
+  top: -20px;
+  right: -20px;
+  width: calc(100% + 40px);
+  height: calc(100% + 40px);
+}
+
+/* Subtle Hover Zoom Hint */
+.origin-photo-zoom-hint {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  opacity: 0;
+  transition: all 0.25s ease;
+  z-index: 6;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: rgba(15, 23, 42, 0.88);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: var(--radius-pill);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #fff;
+  pointer-events: none;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+}
+
+.origin-photo-standalone:hover .origin-photo-zoom-hint {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Realistic Paper Tape (Washi Tape) Directly Sticking to Photo */
 .washi-tape {
   position: absolute;
   width: 120px;
   height: 32px;
   z-index: 10;
   pointer-events: none;
-  opacity: 0.88;
+  opacity: 0.9;
 }
 
 .tape-gold {
-  background: rgba(251, 191, 36, 0.38);
-  border-left: 3px dashed rgba(251, 191, 36, 0.7);
-  border-right: 3px dashed rgba(251, 191, 36, 0.7);
+  background: rgba(251, 191, 36, 0.42);
+  border-left: 3px dashed rgba(251, 191, 36, 0.75);
+  border-right: 3px dashed rgba(251, 191, 36, 0.75);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(2px);
 }
 
 .tape-green {
-  background: rgba(74, 222, 128, 0.35);
-  border-left: 3px dashed rgba(74, 222, 128, 0.7);
-  border-right: 3px dashed rgba(74, 222, 128, 0.7);
+  background: rgba(74, 222, 128, 0.38);
+  border-left: 3px dashed rgba(74, 222, 128, 0.75);
+  border-right: 3px dashed rgba(74, 222, 128, 0.75);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(2px);
 }
 
 .tape-top-center {
-  top: -16px;
+  top: -4px;
   left: 50%;
   transform: translateX(-50%) rotate(-1deg);
 }
 
 .tape-top-right {
-  top: -16px;
+  top: -4px;
   right: 28px;
   transform: rotate(3deg);
 }
@@ -3967,8 +4068,10 @@ mark.highlight {
   gap: 8px;
   padding: 6px 14px;
   border-radius: 12px;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   width: fit-content;
+  position: relative;
+  z-index: 4;
 }
 
 .note-stick-top {
@@ -3985,74 +4088,12 @@ mark.highlight {
   transform: rotate(1deg);
 }
 
-/* Photo Frames with Paper Matting & Zoom Action */
-.sketch-photo-frame {
-  position: relative;
+/* Direct Captions (Clean Editorial Layout, No Container Box) */
+.origin-direct-caption {
   width: 100%;
-  height: 480px;
-  background: #090c10;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px;
-  cursor: zoom-in;
-  margin-bottom: 20px;
-  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5);
-}
-
-.sketch-photo-img {
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  border-radius: 8px;
-  transition: transform 0.35s ease;
-}
-
-.sketch-photo-frame:hover .sketch-photo-img {
-  transform: scale(1.02);
-}
-
-.sketch-photo-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.3);
-  opacity: 0;
-  transition: opacity 0.25s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 16px;
-}
-
-.sketch-photo-frame:hover .sketch-photo-overlay {
-  opacity: 1;
-}
-
-.sketch-zoom-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 18px;
-  background: rgba(15, 23, 42, 0.9);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: var(--radius-pill);
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: #fff;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-}
-
-/* Card Content / Typography */
-.origin-card-content {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
+  margin-top: 24px;
+  padding: 0 8px;
+  text-align: left;
 }
 
 .origin-card-meta {
@@ -4091,26 +4132,25 @@ mark.highlight {
   color: var(--text-tertiary, #94a3b8);
 }
 
-.origin-card-title {
-  font-size: 1.25rem;
+.origin-direct-title {
+  font-size: 1.28rem;
   font-weight: 700;
   color: #fff;
   margin: 0 0 10px;
   line-height: 1.35;
 }
 
-.origin-card-desc {
-  font-size: 0.9rem;
-  line-height: 1.6;
+.origin-direct-desc {
+  font-size: 0.92rem;
+  line-height: 1.65;
   color: var(--text-secondary);
   margin: 0 0 16px;
-  flex: 1;
 }
 
-.origin-card-desc em {
-  color: #e2e8f0;
+.origin-direct-desc em {
+  color: #f1f5f9;
   font-style: normal;
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.08);
   padding: 1px 6px;
   border-radius: 4px;
 }
@@ -4131,9 +4171,9 @@ mark.highlight {
   color: #cbd5e1;
 }
 
-/* Connector bridge between cards */
+/* Connector bridge between photos */
 .origin-connector-bridge {
-  display: none; /* Controlled on desktop */
+  display: none;
 }
 
 /* Milestone Ribbon: "From Notebook to 120Hz Reality" */
@@ -4209,18 +4249,19 @@ mark.highlight {
 
 /* Mobile & Tablet Adaptations */
 @media (max-width: 900px) {
-  .origin-cards-grid {
+  .origin-direct-grid {
     grid-template-columns: 1fr;
-    gap: 36px;
+    gap: 48px;
   }
 
-  .origin-card-note,
-  .origin-card-blueprint {
+  .origin-item-note .origin-photo-standalone,
+  .origin-item-blueprint .origin-photo-standalone {
     transform: none !important;
   }
 
-  .sketch-photo-frame {
-    height: 420px;
+  .img-portrait-note,
+  .img-landscape-blueprint {
+    max-height: 420px;
   }
 
   .origin-scribbles-canvas {
@@ -4233,15 +4274,16 @@ mark.highlight {
 }
 
 @media (max-width: 600px) {
-  .sketch-photo-frame {
-    height: 340px;
+  .img-portrait-note,
+  .img-landscape-blueprint {
+    max-height: 340px;
   }
 
   .origin-handwritten-note {
     font-size: 1.15rem;
   }
 
-  .origin-card-title {
+  .origin-direct-title {
     font-size: 1.15rem;
   }
 }

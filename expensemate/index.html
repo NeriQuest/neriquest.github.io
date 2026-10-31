@@ -1044,109 +1044,128 @@
             <path class="scribble-path doodle-spiral" d="M 1100,540 C 1130,530 1150,560 1135,585 C 1115,610 1080,590 1090,565 C 1100,545 1120,550 1115,565" stroke="url(#scribbleGradGold)" stroke-width="2" stroke-linecap="round"/>
           </svg>
 
-          <!-- Origin Cards Layout: 2 Columns with Organic Desk Rotation & Tape -->
-          <div class="origin-cards-grid">
+          <!-- Origin Raw Showcase: Direct PNG Photos without container boxes -->
+        <div class="origin-direct-grid">
 
-            <!-- Card 1: 4:20 AM Note (plan1.jpg) -->
-            <div class="origin-sketch-card origin-card-note" id="originCardNote">
-              <!-- Washi Tape Strip at Top -->
+          <!-- Item 1: 4:20 AM Note (Direct PNG, no container box) -->
+          <div class="origin-direct-item origin-item-note" id="originItemNote">
+            
+            <!-- Direct Floating Photo System -->
+            <div class="origin-photo-standalone" onclick="openOriginPhoto(0)" title="Click to inspect original note in full resolution">
+              <!-- Washi Tape Strip directly pinned to photo -->
               <div class="washi-tape tape-top-center tape-gold" aria-hidden="true"></div>
 
-              <!-- Doodle Floating Sticky Note Badge -->
+              <!-- Floating Sticky Note Badge -->
               <div class="origin-handwritten-note note-stick-top">
                 <span class="handwritten-icon">💡</span>
                 <span class="handwritten-text">4:20 AM · The First Spark!</span>
               </div>
 
-              <!-- Photo Frame with Paper Drop Shadow -->
-              <div class="sketch-photo-frame" onclick="openOriginPhoto(0)" title="Click to inspect original note in full resolution">
-                <img src="../images/expensemate/initalPlan/plan1.jpg" alt="ExpenseMate original phone notes idea dated 4:20 AM" class="sketch-photo-img" loading="lazy">
-                <div class="sketch-photo-overlay">
-                  <span class="sketch-zoom-btn">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
-                    <span>Click to Zoom Note</span>
-                  </span>
-                </div>
-              </div>
+              <!-- Hand-drawn Scribbles Peeking Directly Behind Photo 1 -->
+              <svg class="photo-local-scribble scribble-note-behind" viewBox="0 0 400 600" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M 20,80 Q 5,140 30,220 T 15,360 T 35,480" stroke="#fbbf24" stroke-width="6" stroke-linecap="round" stroke-opacity="0.3" filter="drop-shadow(0 0 10px #fbbf24)"/>
+                <path d="M 60,30 Q 150,10 260,25 T 370,40" stroke="#fbbf24" stroke-width="4" stroke-linecap="round" stroke-dasharray="10 8" stroke-opacity="0.5"/>
+                <path d="M 340,30 C 370,10 395,45 375,70 C 360,85 340,95 315,100" stroke="#fbbf24" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="6 4" stroke-opacity="0.75"/>
+                <path d="M 315,90 L 310,102 L 324,106" stroke="#fbbf24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.75"/>
+                <path d="M 10,40 Q 20,40 20,30 Q 20,40 30,40 Q 20,40 20,50 Q 20,40 10,40 Z" fill="#fbbf24" opacity="0.85"/>
+              </svg>
 
-              <!-- Card Caption & Context -->
-              <div class="origin-card-content">
-                <div class="origin-card-meta">
-                  <span class="origin-phase-badge phase-spark">Phase 01 · Conceptual Spark</span>
-                  <span class="origin-date">Phone Notes @ 4:20 AM</span>
-                </div>
-                <h3 class="origin-card-title">"App idea: Expenses calculator"</h3>
-                <p class="origin-card-desc">
-                  Born out of frustration with clunky expense apps burdened by full-screen ads and subscriptions. 
-                  Captured right before sleep: tracking simple everyday essentials like <em>"shawarma & biriyani"</em> and <em>"bus & uber"</em>, 
-                  plus split bills, category limits, and local privacy.
-                </p>
+              <!-- Direct PNG Image (No container box, raw photo) -->
+              <img src="../images/expensemate/initalPlan/plan1.png" alt="ExpenseMate original phone notes idea dated 4:20 AM" class="origin-standalone-img img-portrait-note" loading="lazy">
 
-                <!-- Hand-drawn style sticky excerpts -->
-                <div class="origin-excerpts-wrap">
-                  <span class="excerpt-chip">🌯 Shawarma, biriyani</span>
-                  <span class="excerpt-chip">🚌 Bus, uber</span>
-                  <span class="excerpt-chip">👥 Split with friends</span>
-                  <span class="excerpt-chip">🔒 100% Private & Ad-free</span>
-                </div>
+              <!-- Subtle Hover Zoom Indicator -->
+              <div class="origin-photo-zoom-hint">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
+                <span>Click to Zoom</span>
               </div>
             </div>
 
-            <!-- Inter-card Hand-drawn Connector (Desktop view) -->
-            <div class="origin-connector-bridge" aria-hidden="true">
-              <div class="connector-scribble-label">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                <span>Then drawn into notebook wireframes</span>
+            <!-- Direct Caption / Story without box container -->
+            <div class="origin-direct-caption">
+              <div class="origin-card-meta">
+                <span class="origin-phase-badge phase-spark">Phase 01 · Conceptual Spark</span>
+                <span class="origin-date">Phone Notes @ 4:20 AM</span>
+              </div>
+              <h3 class="origin-direct-title">"App idea: Expenses calculator"</h3>
+              <p class="origin-direct-desc">
+                Born out of frustration with clunky expense apps burdened by full-screen ads and subscriptions. 
+                Captured right before sleep: tracking simple everyday essentials like <em>"shawarma & biriyani"</em> and <em>"bus & uber"</em>, 
+                plus split bills, category limits, and local privacy.
+              </p>
+              <div class="origin-excerpts-wrap">
+                <span class="excerpt-chip">🌯 Shawarma, biriyani</span>
+                <span class="excerpt-chip">🚌 Bus, uber</span>
+                <span class="excerpt-chip">👥 Split with friends</span>
+                <span class="excerpt-chip">🔒 100% Private & Ad-free</span>
               </div>
             </div>
+          </div>
 
-            <!-- Card 2: July 2024 Notebook Blueprint (plan2.jpg) -->
-            <div class="origin-sketch-card origin-card-blueprint" id="originCardBlueprint">
-              <!-- Washi Tape Strip at Corner -->
+          <!-- Inter-photo Hand-drawn Connector -->
+          <div class="origin-connector-bridge" aria-hidden="true">
+            <div class="connector-scribble-label">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <span>Then drawn into notebook wireframes</span>
+            </div>
+          </div>
+
+          <!-- Item 2: July 2024 Notebook Blueprint (Direct PNG, no container box) -->
+          <div class="origin-direct-item origin-item-blueprint" id="originItemBlueprint">
+            
+            <!-- Direct Floating Photo System -->
+            <div class="origin-photo-standalone" onclick="openOriginPhoto(1)" title="Click to inspect notebook wireframes in full resolution">
+              <!-- Washi Tape Strip directly pinned to photo corner -->
               <div class="washi-tape tape-top-right tape-green" aria-hidden="true"></div>
 
-              <!-- Doodle Floating Sticky Note Badge -->
+              <!-- Floating Sticky Note Badge -->
               <div class="origin-handwritten-note note-stick-right">
                 <span class="handwritten-icon">📐</span>
                 <span class="handwritten-text">July 2024 · Ink & Paper</span>
               </div>
 
-              <!-- Photo Frame with Paper Drop Shadow -->
-              <div class="sketch-photo-frame" onclick="openOriginPhoto(1)" title="Click to inspect notebook wireframes in full resolution">
-                <img src="../images/expensemate/initalPlan/plan2.jpg" alt="ExpenseMate handwritten pen-and-paper wireframe blueprint from July 2024" class="sketch-photo-img" loading="lazy">
-                <div class="sketch-photo-overlay">
-                  <span class="sketch-zoom-btn">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
-                    <span>Click to Zoom Blueprint</span>
-                  </span>
-                </div>
-              </div>
+              <!-- Hand-drawn Scribbles Peeking Directly Behind Photo 2 -->
+              <svg class="photo-local-scribble scribble-blueprint-behind" viewBox="0 0 600 480" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M 40,20 Q 200,-5 420,15 T 580,30" stroke="#4ade80" stroke-width="5" stroke-linecap="round" stroke-dasharray="12 8" stroke-opacity="0.45" filter="drop-shadow(0 0 10px #4ade80)"/>
+                <path d="M 570,80 Q 590,180 565,280 T 585,420" stroke="#38bdf8" stroke-width="5" stroke-linecap="round" stroke-opacity="0.35"/>
+                <path d="M 530,340 C 570,360 580,410 540,430 C 510,445 470,430 430,420" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="5 4" stroke-opacity="0.8"/>
+                <path d="M 440,430 L 426,420 L 436,410" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.8"/>
+                <path d="M 560,50 Q 570,50 570,40 Q 570,50 580,50 Q 570,50 570,60 Q 570,50 560,50 Z" fill="#4ade80" opacity="0.85"/>
+                <path d="M 50,440 Q 60,440 60,430 Q 60,440 70,440 Q 60,440 60,450 Q 60,440 50,440 Z" fill="#38bdf8" opacity="0.85"/>
+              </svg>
 
-              <!-- Card Caption & Context -->
-              <div class="origin-card-content">
-                <div class="origin-card-meta">
-                  <span class="origin-phase-badge phase-blueprint">Phase 02 · Paper Blueprint</span>
-                  <span class="origin-date">Notebook Wireframe · July 2024</span>
-                </div>
-                <h3 class="origin-card-title">Architecting the Flow with Pen & Paper</h3>
-                <p class="origin-card-desc">
-                  Every signature feature was sketched out before writing code: the monthly balance curve, 
-                  the rapid custom numpad (so you don't fight system keyboards), and the live visual category limit bar with the note: <em>"update immediately"</em>.
-                </p>
+              <!-- Direct PNG Image (No container box, raw notebook sketch) -->
+              <img src="../images/expensemate/initalPlan/plan2.png" alt="ExpenseMate handwritten pen-and-paper wireframe blueprint from July 2024" class="origin-standalone-img img-landscape-blueprint" loading="lazy">
 
-                <!-- Hand-drawn style sticky excerpts -->
-                <div class="origin-excerpts-wrap">
-                  <span class="excerpt-chip">📈 Cash Flow Curve</span>
-                  <span class="excerpt-chip">⌨️ Custom Instant Numpad</span>
-                  <span class="excerpt-chip">🎯 Live Budget Limit Gauge</span>
-                  <span class="excerpt-chip">⚡ "Update Immediately"</span>
-                </div>
+              <!-- Subtle Hover Zoom Indicator -->
+              <div class="origin-photo-zoom-hint">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
+                <span>Click to Zoom</span>
               </div>
             </div>
 
+            <!-- Direct Caption / Story without box container -->
+            <div class="origin-direct-caption">
+              <div class="origin-card-meta">
+                <span class="origin-phase-badge phase-blueprint">Phase 02 · Paper Blueprint</span>
+                <span class="origin-date">Notebook Wireframe · July 2024</span>
+              </div>
+              <h3 class="origin-direct-title">Architecting the Flow with Pen & Paper</h3>
+              <p class="origin-direct-desc">
+                Every signature feature was sketched out before writing code: the monthly balance curve, 
+                the rapid custom numpad (so you don't fight system keyboards), and the live visual category limit bar with the note: <em>"update immediately"</em>.
+              </p>
+              <div class="origin-excerpts-wrap">
+                <span class="excerpt-chip">📈 Cash Flow Curve</span>
+                <span class="excerpt-chip">⌨️ Custom Instant Numpad</span>
+                <span class="excerpt-chip">🎯 Live Budget Limit Gauge</span>
+                <span class="excerpt-chip">⚡ "Update Immediately"</span>
+              </div>
+            </div>
           </div>
 
-          <!-- Bottom Story Milestone Ribbon: "How It's Going" -->
+        </div>
+
+        <!-- Bottom Story Milestone Ribbon: "How It's Going" -->
           <div class="origin-milestone-ribbon">
             <div class="ribbon-glow" aria-hidden="true"></div>
             <div class="ribbon-content">

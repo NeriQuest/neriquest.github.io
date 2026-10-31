@@ -1085,12 +1085,12 @@ function initGalleryNavigation() {
   // Origin Story Lightbox Integration
   const originPhotos = [
     {
-      img: '../images/expensemate/initalPlan/plan1.jpg',
+      img: '../images/expensemate/initalPlan/plan1.png',
       title: 'Original Phone Idea Note ("Expenses calculator" · 4:20 AM)',
       step: 'Origin Story: Phase 01 (Digital Note)'
     },
     {
-      img: '../images/expensemate/initalPlan/plan2.jpg',
+      img: '../images/expensemate/initalPlan/plan2.png',
       title: 'July 2024 Handwritten Notebook Wireframe Blueprint',
       step: 'Origin Story: Phase 02 (Notebook Wireframe)'
     }
