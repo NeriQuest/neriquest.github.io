@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>PasswordDiary - 100% Offline, Zero-Knowledge Private Vault by NeriQuest</title>
+  <meta name="description" content="Fortified personal credentials manager built for Android. 100% on-device SQLite storage, biometric hardware unlock, auto-lock on app switch, 9 structured vault categories, and cryptographic password generator.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="../images/passworddiary/icon.png">
+</head>
+<body>
+
+  <!-- Dynamic Floating Blurred Frosted Aurora Glows -->
+  <div class="ambient-glow-wrapper" aria-hidden="true">
+    <div class="ambient-glow glow-1" id="glowOrb1"></div>
+    <div class="ambient-glow glow-2" id="glowOrb2"></div>
+    <div class="ambient-glow glow-3" id="glowOrb3"></div>
+    <div class="ambient-glow glow-4" id="glowOrb4"></div>
+    <div class="ambient-frosted-diffuser"></div>
+  </div>
+
+  <!-- Top Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="../" class="back-link" title="Back to NeriQuest Studio">
+        <svg class="back-link-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m15 18-6-6 6-6"/></svg>
+        <span class="back-link-text">NeriQuest Apps</span>
+      </a>
+
+      <div class="brand">
+        <div class="nav-logo-box">
+          <img src="../images/passworddiary/icon.png" alt="PasswordDiary Icon" class="nav-logo">
+        </div>
+        <div class="brand-info">
+          <span class="brand-name">PasswordDiary</span>
+          <span class="brand-version">v1.0</span>
+        </div>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#simulator">Vault Simulator</a>
+        <a href="#generator">Password Generator</a>
+        <a href="#categories">9 Vault Modules</a>
+        <a href="#security">Zero-Knowledge Security</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <a href="https://play.google.com/store/apps/details?id=neriquest.passwordDiary" target="_blank" rel="noopener noreferrer" class="btn-topbar-cta" title="Download PasswordDiary on Google Play">
+        <span class="topbar-cta-glow"></span>
+        <svg class="topbar-cta-icon" viewBox="0 0 466 512" aria-hidden="true">
+          <path fill="#EA4335" d="M199.9 237.8 1.4 470.17c7.22 24.57 30.16 41.81 55.8 41.81 11.16 0 20.93-2.79 29.3-8.37l244.16-139.46L199.9 237.8z"/>
+          <path fill="#FBBC04" d="m433.91 205.1-104.65-60-111.61 110.22 113.01 108.83 104.64-58.6c18.14-9.77 30.7-29.3 30.7-50.23-1.4-20.93-13.95-40.46-32.09-50.22z"/>
+          <path fill="#34A853" d="M199.42 273.45 329.27 145.1 87.9 8.37C79.53 2.79 68.36 0 57.2 0 30.7 0 6.98 18.14 1.4 41.86l198.02 231.59z"/>
+          <path fill="#4285F4" d="M1.39 41.86C0 46.04 0 51.63 0 57.2v397.64c0 5.57 0 9.76 1.4 15.34l216.27-214.86L1.39 41.86z"/>
+        </svg>
+        <span class="topbar-cta-text">Get App</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main class="main-content">
+    <section class="hero-section">
+      <div class="container hero-content">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          <span>100% On-Device • Hardware Biometrics • Zero Cloud Sync</span>
+        </div>
+
+        <h1 class="hero-title">
+          Your Private Vault.<br>
+          <span class="gradient-text">100% On-Device, Zero Cloud.</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          PasswordDiary is an uncompromising personal credentials and secret manager for Android. 
+          Engineered with on-device SQLite storage, biometric hardware authentication, instantaneous background auto-lock, 
+          9 structured vault categories, and built-in cryptographic password generation.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#generator" class="btn btn-primary">
+            <span>Try Live Password Generator</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m9 18 6-6-6-6"/></svg>
+          </a>
+          <a href="#simulator" class="btn btn-secondary">
+            <span>Interactive Vault Simulator</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg>
+          </a>
+          <a href="https://play.google.com/store/apps/details?id=neriquest.passwordDiary" target="_blank" rel="noopener noreferrer" class="btn btn-store-hero">
+            <svg class="store-svg" viewBox="0 0 466 512" aria-hidden="true">
+              <path fill="#EA4335" d="M199.9 237.8 1.4 470.17c7.22 24.57 30.16 41.81 55.8 41.81 11.16 0 20.93-2.79 29.3-8.37l244.16-139.46L199.9 237.8z"/>
+              <path fill="#FBBC04" d="m433.91 205.1-104.65-60-111.61 110.22 113.01 108.83 104.64-58.6c18.14-9.77 30.7-29.3 30.7-50.23-1.4-20.93-13.95-40.46-32.09-50.22z"/>
+              <path fill="#34A853" d="M199.42 273.45 329.27 145.1 87.9 8.37C79.53 2.79 68.36 0 57.2 0 30.7 0 6.98 18.14 1.4 41.86l198.02 231.59z"/>
+              <path fill="#4285F4" d="M1.39 41.86C0 46.04 0 51.63 0 57.2v397.64c0 5.57 0 9.76 1.4 15.34l216.27-214.86L1.39 41.86z"/>
+            </svg>
+            <span>Google Play</span>
+          </a>
+        </div>
+
+        <div class="hero-chips">
+          <span class="hero-chip-item">🔒 100% Local SQLite Vault</span>
+          <span class="hero-chip-item">🛡️ Hardware Biometrics &amp; PIN</span>
+          <span class="hero-chip-item">⏱️ Instant Auto-Lock on Switch</span>
+          <span class="hero-chip-item">💳 9 Structured Categories</span>
+          <span class="hero-chip-item">⚡ Dynamic Custom Fields</span>
+          <span class="hero-chip-item">🚫 Zero Ads &amp; Zero Tracking</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Vault Simulator Section -->
+    <section class="simulator-section" id="simulator">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Interactive Preview</span>
+          <h2>Experience the PasswordDiary Vault</h2>
+          <p>Explore the native Flutter interface with real category filtering, masked secret inspection, and dual AMOLED themes.</p>
+        </div>
+
+        <div class="simulator-wrapper">
+          <!-- Controls Bar -->
+          <div class="simulator-toolbar">
+            <div class="toolbar-theme-toggle">
+              <span class="theme-label">App Theme:</span>
+              <button class="theme-toggle-btn active" id="themeMidnightBtn" data-theme="midnight">
+                <span class="theme-dot midnight-dot"></span>
+                <span>Midnight Slate</span>
+              </button>
+              <button class="theme-toggle-btn" id="themeBwBtn" data-theme="bw">
+                <span class="theme-dot bw-dot"></span>
+                <span>Black &amp; White</span>
+              </button>
+            </div>
+
+            <div class="toolbar-lock-status">
+              <span class="lock-indicator" id="lockIndicator">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span id="lockStatusText">Vault Unlocked</span>
+              </span>
+              <button class="btn-lock-toggle" id="btnToggleLock" title="Test Auto-Lock Simulation">
+                <span>Simulate Auto-Lock</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Phone Mockup Frame -->
+          <div class="phone-stage">
+            <div class="phone-frame theme-midnight" id="phoneMockupFrame">
+              <!-- Android Status Bar -->
+              <div class="phone-status-bar">
+                <span class="status-time">9:41</span>
+                <div class="status-icons">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="10" x="2" y="7" rx="2" ry="2"/><line x1="22" y1="11" x2="22" y2="13"/></svg>
+                </div>
+              </div>
+
+              <!-- Phone App Bar -->
+              <div class="phone-app-bar">
+                <div class="phone-app-brand">
+                  <div class="app-mini-icon">
+                    <img src="../images/passworddiary/icon.png" alt="Logo">
+                  </div>
+                  <div>
+                    <h3 class="app-display-title">Password Diary</h3>
+                    <span class="app-vault-count" id="simVaultCount">9 Protected Items</span>
+                  </div>
+                </div>
+
+                <div class="app-bar-actions">
+                  <button class="app-bar-icon-btn" id="simSearchIconBtn" title="Search Vault">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                  </button>
+                  <button class="app-bar-icon-btn" id="simSettingsIconBtn" title="Settings">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Filter Carousel Bar -->
+              <div class="phone-filter-track">
+                <button class="sim-chip-btn active" data-category="all">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
+                  <span>All</span>
+                </button>
+                <button class="sim-chip-btn" data-category="card">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+                  <span>Cards</span>
+                </button>
+                <button class="sim-chip-btn" data-category="login">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                  <span>Logins</span>
+                </button>
+                <button class="sim-chip-btn" data-category="bank">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="21" x2="21" y2="21"/><line x1="3" y1="10" x2="21" y2="10"/><polyline points="5 6 12 3 19 6"/><line x1="4" y1="10" x2="4" y2="21"/><line x1="20" y1="10" x2="20" y2="21"/><line x1="8" y1="14" x2="8" y2="17"/><line x1="12" y1="14" x2="12" y2="17"/><line x1="16" y1="14" x2="16" y2="17"/></svg>
+                  <span>Banking</span>
+                </button>
+                <button class="sim-chip-btn" data-category="crypto">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="9"/><path d="M9.5 9h5a2 2 0 1 1 0 4h-5m0 0h5a2 2 0 1 1 0 4h-5"/><path d="M12 7v10"/></svg>
+                  <span>Crypto</span>
+                </button>
+                <button class="sim-chip-btn" data-category="wifi">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+                  <span>Wi-Fi</span>
+                </button>
+              </div>
+
+              <!-- Vault Cards List -->
+              <div class="phone-vault-list" id="phoneVaultList">
+                <!-- Cards dynamically populated via JS -->
+              </div>
+
+              <!-- Bottom FAB Floating Button -->
+              <div class="phone-fab-wrap">
+                <button class="phone-fab-btn" id="simFabBtn" title="Add New Item">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </button>
+              </div>
+
+              <!-- Overlay: Auto-Lock Screen (Toggled on lock) -->
+              <div class="phone-lock-overlay" id="phoneLockOverlay">
+                <div class="lock-overlay-content">
+                  <div class="lock-shield-icon">
+                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                  </div>
+                  <h4>Vault Secured</h4>
+                  <p>App was backgrounded. Biometric authentication required to unlock.</p>
+                  <button class="btn-unlock-sim" id="btnUnlockSim">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04A11.003 11.003 0 0 0 12 21a11.003 11.003 0 0 0 6.193-2.469M8 7a4 4 0 0 1 8 0v4"/><circle cx="12" cy="7" r="1"/></svg>
+                    <span>Touch Fingerprint to Unlock</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Live Interactive Password Generator Section -->
+    <section class="generator-section" id="generator">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Security Utility</span>
+          <h2>Cryptographic Password Generator</h2>
+          <p>Generate entropy-dense, uncrackable passwords directly in your browser using the exact algorithm built into PasswordDiary.</p>
+        </div>
+
+        <div class="generator-card">
+          <!-- Password Output Display -->
+          <div class="gen-output-box">
+            <div class="gen-password-display" id="genPasswordDisplay">
+              <!-- Password characters injected via JS -->
+            </div>
+            <div class="gen-output-actions">
+              <button class="btn-gen-action" id="btnRegenerate" title="Generate New Password">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                <span>New</span>
+              </button>
+              <button class="btn-gen-action btn-copy" id="btnCopyPassword" title="Copy to Clipboard">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                <span id="copyBtnText">Copy</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Password Strength Meter (Exact Flutter implementation) -->
+          <div class="strength-meter-wrap">
+            <div class="strength-bars">
+              <div class="strength-bar-seg" id="seg1"></div>
+              <div class="strength-bar-seg" id="seg2"></div>
+              <div class="strength-bar-seg" id="seg3"></div>
+              <div class="strength-bar-seg" id="seg4"></div>
+            </div>
+            <div class="strength-meta">
+              <span class="strength-label-text">Strength: <strong id="strengthLabel">Very Strong</strong></span>
+              <span class="char-count-text"><strong id="charCountLabel">16</strong> characters</span>
+            </div>
+          </div>
+
+          <!-- Controls Grid -->
+          <div class="generator-controls-grid">
+            <!-- Length Slider -->
+            <div class="control-row slider-control-row">
+              <div class="control-header">
+                <label for="lengthSlider" class="control-title">Password Length</label>
+                <span class="slider-val-badge" id="sliderValBadge">16</span>
+              </div>
+              <input type="range" min="4" max="64" value="16" id="lengthSlider" class="modern-range">
+              <div class="slider-marks">
+                <span>4</span>
+                <span>16</span>
+                <span>32</span>
+                <span>48</span>
+                <span>64</span>
+              </div>
+            </div>
+
+            <!-- Character Set Toggles -->
+            <div class="toggles-grid">
+              <label class="toggle-pill">
+                <input type="checkbox" id="toggleUpper" checked>
+                <span class="toggle-track"></span>
+                <span class="toggle-name">Uppercase (A-Z)</span>
+              </label>
+
+              <label class="toggle-pill">
+                <input type="checkbox" id="toggleLower" checked>
+                <span class="toggle-track"></span>
+                <span class="toggle-name">Lowercase (a-z)</span>
+              </label>
+
+              <label class="toggle-pill">
+                <input type="checkbox" id="toggleNumbers" checked>
+                <span class="toggle-track"></span>
+                <span class="toggle-name">Numbers (0-9)</span>
+              </label>
+
+              <label class="toggle-pill">
+                <input type="checkbox" id="toggleSymbols" checked>
+                <span class="toggle-track"></span>
+                <span class="toggle-name">Symbols (!@#$%^&amp;*)</span>
+              </label>
+
+              <label class="toggle-pill">
+                <input type="checkbox" id="toggleAmbiguous">
+                <span class="toggle-track"></span>
+                <span class="toggle-name">Exclude Ambiguous (Il1O0)</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9 Structured Vault Categories Section -->
+    <section class="categories-section" id="categories">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Modular Architecture</span>
+          <h2>9 Specialized Vault Modules</h2>
+          <p>PasswordDiary provides purpose-built fields and sensitive masking tailored for every essential aspect of your digital and physical life.</p>
+        </div>
+
+        <div class="categories-explorer">
+          <!-- Category Selector Grid -->
+          <div class="category-tabs-grid" id="categoryTabsGrid">
+            <!-- Populated via JS -->
+          </div>
+
+          <!-- Dynamic Category Detail Card -->
+          <div class="category-detail-panel" id="categoryDetailPanel">
+            <!-- Dynamic Category Details injected via JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Zero-Knowledge Security Architecture Section -->
+    <section class="security-section" id="security">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Zero-Knowledge Guarantee</span>
+          <h2>Built for Uncompromising Privacy</h2>
+          <p>We believe your personal credentials belong solely on your hardware—never on external cloud servers or marketing databases.</p>
+        </div>
+
+        <div class="security-grid">
+          <div class="security-card">
+            <div class="security-icon-box">💾</div>
+            <h3>100% On-Device SQLite</h3>
+            <p>Your entire vault resides strictly inside an encrypted SQLite database stored on your physical Android device. There are zero remote servers, zero cloud backups, and zero tracking endpoints.</p>
+          </div>
+
+          <div class="security-card">
+            <div class="security-icon-box">🛡️</div>
+            <h3>Hardware Biometrics &amp; PIN</h3>
+            <p>Protected by Android's native BiometricPrompt API (Fingerprint and Face Unlock) backed by an encrypted fallback Master PIN. Passwords never reside in unencrypted RAM when the app is locked.</p>
+          </div>
+
+          <div class="security-card">
+            <div class="security-icon-box">⏱️</div>
+            <h3>Instant Background Auto-Lock</h3>
+            <p>The instant PasswordDiary is minimized, switched, or backgrounded, the vault locks immediately. Prying eyes cannot access your secrets even if your phone is unlocked.</p>
+          </div>
+
+          <div class="security-card">
+            <div class="security-icon-box">🚫</div>
+            <h3>Zero Ads &amp; Zero Telemetry</h3>
+            <p>Unlike commercial password managers that monetize through subscriptions or analytics trackers, PasswordDiary is completely ad-free and contains no user profiling libraries.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technical Specifications Matrix -->
+    <section class="specs-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Technical Specs</span>
+          <h2>Engineered With Precision</h2>
+        </div>
+
+        <div class="specs-table-wrap">
+          <table class="specs-table">
+            <tbody>
+              <tr>
+                <th>Framework &amp; Language</th>
+                <td>Flutter 3.x • Dart 3 • Native Material You Design</td>
+              </tr>
+              <tr>
+                <th>Storage Engine</th>
+                <td>On-Device SQLite (via <code>sqflite</code> &amp; <code>sqflite_common_ffi</code>)</td>
+              </tr>
+              <tr>
+                <th>Authentication Hardware</th>
+                <td>Android BiometricPrompt (Fingerprint &amp; Face Recognition) + Master PIN</td>
+              </tr>
+              <tr>
+                <th>Cloud Architecture</th>
+                <td><strong>0% Cloud</strong> • 100% Offline-First Self-Contained Sandbox</td>
+              </tr>
+              <tr>
+                <th>Dynamic Fields</th>
+                <td>Custom Field Engine supporting Text, Masked Passwords, Card Numbers, Dates, and Notes</td>
+              </tr>
+              <tr>
+                <th>Theme Engine</th>
+                <td>Dual AMOLED Theming: <strong>Midnight Slate</strong> &amp; <strong>Black &amp; White</strong> with Metropolis Font</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Frequently Asked Questions (FAQ) Section -->
+    <section class="faq-section" id="faq">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Frequently Asked Questions</span>
+          <h2>Everything You Need to Know</h2>
+          <p>Clear, direct answers about PasswordDiary security and functionality.</p>
+        </div>
+
+        <div class="faq-accordion">
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>Where are my passwords and bank details stored?</span>
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>Everything is stored 100% locally on your phone in an isolated SQLite database file. PasswordDiary does not send your data to any cloud service, external server, or third-party company.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>Can NeriQuest or anyone else view my stored secrets?</span>
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>No. We operate on a strict Zero-Knowledge model. We do not have user accounts, telemetry, or remote servers. Only someone with your physical device and your biometric fingerprint or Master PIN can unlock your vault.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>What happens if I forget my Master PIN?</span>
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>Because there is no cloud account or master reset backdoor, if you lose both your Master PIN and biometric access, your data cannot be recovered by anyone. We recommend noting down your Master PIN in a safe, offline location.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>How does Auto-Lock protect my vault?</span>
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>PasswordDiary hooks into Android's application lifecycle. The moment you switch apps, receive a phone call, or lock your phone screen, the app immediately locks the vault. Returning to the app requires instant biometric or PIN verification.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>Can I add custom fields to my entries?</span>
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>Yes! Every item in PasswordDiary supports unlimited custom dynamic fields. You can add extra card PINs, CVVs, recovery questions, server ports, or private notes tailored exactly to your needs.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom CTA Banner -->
+    <section class="bottom-cta-section">
+      <div class="container">
+        <div class="bottom-cta-card">
+          <div class="cta-logo-wrap">
+            <img src="../images/passworddiary/icon.png" alt="PasswordDiary" class="cta-logo">
+          </div>
+          <h2>Reclaim Total Ownership of Your Secrets</h2>
+          <p>Join privacy-conscious users who trust PasswordDiary for their passwords, cards, bank accounts, and crypto seeds.</p>
+          <div class="cta-btn-wrap">
+            <a href="https://play.google.com/store/apps/details?id=neriquest.passwordDiary" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">
+              <svg class="store-svg" viewBox="0 0 466 512" aria-hidden="true">
+                <path fill="#EA4335" d="M199.9 237.8 1.4 470.17c7.22 24.57 30.16 41.81 55.8 41.81 11.16 0 20.93-2.79 29.3-8.37l244.16-139.46L199.9 237.8z"/>
+                <path fill="#FBBC04" d="m433.91 205.1-104.65-60-111.61 110.22 113.01 108.83 104.64-58.6c18.14-9.77 30.7-29.3 30.7-50.23-1.4-20.93-13.95-40.46-32.09-50.22z"/>
+                <path fill="#34A853" d="M199.42 273.45 329.27 145.1 87.9 8.37C79.53 2.79 68.36 0 57.2 0 30.7 0 6.98 18.14 1.4 41.86l198.02 231.59z"/>
+                <path fill="#4285F4" d="M1.39 41.86C0 46.04 0 51.63 0 57.2v397.64c0 5.57 0 9.76 1.4 15.34l216.27-214.86L1.39 41.86z"/>
+              </svg>
+              <span>Download PasswordDiary on Google Play</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <div class="brand">
+            <div class="nav-logo-box">
+              <img src="../images/neriquest/logo.png" alt="NeriQuest Logo" class="nav-logo">
+            </div>
+            <span>NeriQuest Studio</span>
+          </div>
+          <p class="footer-desc">
+            Independent mobile app studio building private, beautiful, and distraction-free software for Android.
+          </p>
+        </div>
+
+        <div class="footer-nav-col">
+          <div class="footer-links-group">
+            <span class="footer-group-title">Applications</span>
+            <a href="../expensemate/">ExpenseMate v4.1</a>
+            <a href="../chesstimer/">ChessTimer v1.0.9</a>
+            <a href="../calculator/">Calculator v1.0.0</a>
+            <a href="../passworddiary/">PasswordDiary v1.0</a>
+          </div>
+
+          <div class="footer-links-group">
+            <span class="footer-group-title">Resources</span>
+            <a href="../privacypolicy/">Privacy Policy</a>
+            <a href="#security">Security Specs</a>
+            <a href="#faq">FAQ</a>
+            <a href="https://play.google.com/store/apps/details?id=neriquest.passwordDiary" target="_blank" rel="noopener noreferrer">Google Play Store</a>
+          </div>
+
+          <div class="footer-links-group">
+            <span class="footer-group-title">Contact</span>
+            <a href="mailto:neriquest@gmail.com">neriquest@gmail.com</a>
+            <a href="https://github.com/NeriQuest" target="_blank" rel="noopener noreferrer">GitHub Profile</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 NeriQuest. All rights reserved.</span>
+        <span>Crafted with Flutter &amp; 100% On-Device Privacy</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

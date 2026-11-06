@@ -572,6 +572,16 @@ a, button, [role="button"], .btn {
   --card-chip-color: #bae6fd;
 }
 
+.app-card[data-theme="indigo"] {
+  --card-accent: #818cf8;
+  --card-accent-bg: rgba(129, 140, 248, 0.12);
+  --card-accent-border: rgba(129, 140, 248, 0.32);
+  --card-glow: rgba(129, 140, 248, 0.22);
+  --card-chip-bg: rgba(129, 140, 248, 0.08);
+  --card-chip-border: rgba(129, 140, 248, 0.20);
+  --card-chip-color: #c7d2fe;
+}
+
 /* Subtle corner halo behind the card */
 .app-card-glow {
   position: absolute;
