@@ -1236,29 +1236,70 @@ body {
 
 .gen-output-box {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
   background: #090d16;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 18px;
-  padding: 16px 20px;
+  padding: 20px 22px;
   margin-bottom: 18px;
-  gap: 16px;
-  flex-wrap: wrap;
+  gap: 14px;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.4);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.gen-output-box:hover {
+  border-color: rgba(129, 140, 248, 0.35);
 }
 
 .gen-password-display {
+  width: 100%;
+  box-sizing: border-box;
   font-family: var(--font-mono);
-  font-size: clamp(1.1rem, 2.8vw, 1.45rem);
+  font-size: clamp(1.05rem, 2.5vw, 1.4rem);
   font-weight: 700;
-  letter-spacing: 0.08em;
-  color: #e2e8f0;
+  letter-spacing: 0.05em;
+  line-height: 1.5;
+  color: #f1f5f9;
   word-break: break-all;
-  flex: 1;
+  overflow-wrap: anywhere;
+  user-select: all;
+  cursor: pointer;
+  padding: 4px 2px;
+  min-height: 2.2em;
+  display: flex;
+  align-items: center;
+  transition: color var(--transition-fast);
+}
+
+.gen-password-display:hover {
+  color: #ffffff;
 }
 
 .gen-output-actions {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  flex-wrap: wrap;
+}
+
+.gen-hint-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: var(--text-dim);
+}
+
+.gen-hint-text svg {
+  color: var(--accent-indigo);
+  flex-shrink: 0;
+}
+
+.gen-action-btns {
+  display: inline-flex;
   align-items: center;
   gap: 10px;
 }
@@ -1266,6 +1307,7 @@ body {
 .btn-gen-action {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 7px;
   padding: 10px 18px;
   border-radius: var(--radius-pill);
@@ -2224,7 +2266,44 @@ body {
   }
 
   .generator-card {
-    padding: 22px 18px;
+    padding: 20px 14px;
+    border-radius: 20px;
+  }
+
+  .gen-output-box {
+    padding: 16px 14px;
+    gap: 12px;
+  }
+
+  .gen-password-display {
+    font-size: 1.05rem;
+    letter-spacing: 0.04em;
+    line-height: 1.45;
+  }
+
+  .gen-output-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding-top: 12px;
+  }
+
+  .gen-hint-text {
+    justify-content: center;
+    font-size: 0.76rem;
+  }
+
+  .gen-action-btns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .btn-gen-action {
+    width: 100%;
+    padding: 11px 12px;
+    font-size: 0.88rem;
   }
 
   .encryption-grid {
@@ -2313,5 +2392,18 @@ body {
   .btn-topbar-cta .topbar-cta-icon {
     width: 14px;
     height: 14px;
+  }
+
+  .generator-card {
+    padding: 16px 10px;
+  }
+
+  .gen-output-box {
+    padding: 14px 10px;
+  }
+
+  .gen-password-display {
+    font-size: 0.98rem;
+    letter-spacing: 0.03em;
   }
 }

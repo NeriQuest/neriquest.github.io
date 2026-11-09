@@ -235,6 +235,10 @@ function initPasswordGenerator() {
     }
   });
 
+  display.addEventListener('click', () => {
+    btnCopy.click();
+  });
+
   // Initial generation
   runGenerate();
 }
