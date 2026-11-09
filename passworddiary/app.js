@@ -362,7 +362,218 @@ function initVaultSimulator() {
   const lockIndicator = document.getElementById('lockIndicator');
   const vaultCountLabel = document.getElementById('simVaultCount');
 
+  // App Bar Interactive Elements
+  const syncBtn = document.getElementById('simSyncIconBtn');
+  const searchBtn = document.getElementById('simSearchIconBtn');
+  const settingsBtn = document.getElementById('simSettingsIconBtn');
+  const searchBar = document.getElementById('phoneSearchBar');
+  const searchInput = document.getElementById('phoneSearchInput');
+  const searchClear = document.getElementById('btnSearchClear');
+  const auditPill = document.getElementById('simAuditPill');
+  const fabBtn = document.getElementById('simFabBtn');
+
+  // Modal Sheet Elements
+  const dialogOverlay = document.getElementById('phoneDialogOverlay');
+  const dialogIcon = document.getElementById('dialogIcon');
+  const dialogTitle = document.getElementById('dialogTitle');
+  const dialogBody = document.getElementById('dialogBody');
+  const btnDialogClose = document.getElementById('btnDialogClose');
+
   if (!frame || !vaultList) return;
+
+  function openDialog(icon, title, bodyHtml) {
+    if (!dialogOverlay) return;
+    dialogIcon.textContent = icon;
+    dialogTitle.textContent = title;
+    dialogBody.innerHTML = bodyHtml;
+    dialogOverlay.style.display = 'flex';
+  }
+
+  function closeDialog() {
+    if (!dialogOverlay) return;
+    dialogOverlay.style.display = 'none';
+  }
+
+  if (btnDialogClose) {
+    btnDialogClose.addEventListener('click', closeDialog);
+  }
+  if (dialogOverlay) {
+    dialogOverlay.addEventListener('click', (e) => {
+      if (e.target === dialogOverlay) closeDialog();
+    });
+  }
+
+  // App Bar Action 1: Google Drive Two-Way Sync
+  if (syncBtn) {
+    syncBtn.addEventListener('click', () => {
+      syncBtn.style.transform = 'rotate(360deg)';
+      syncBtn.style.transition = 'transform 0.5s ease';
+      setTimeout(() => {
+        syncBtn.style.transform = 'none';
+        syncBtn.style.transition = '';
+      }, 500);
+
+      openDialog('☁️', 'Encrypted Google Drive Sync', `
+        <div class="dialog-row">
+          <span>Connection Status:</span>
+          <span style="color:#34d399;">Connected &amp; Verified</span>
+        </div>
+        <div class="dialog-row">
+          <span>Encryption Protocol:</span>
+          <span>AES-256 Envelope Cipher</span>
+        </div>
+        <div class="dialog-row">
+          <span>Startup Difference Check:</span>
+          <span>8 Items Local • 0 Conflicts</span>
+        </div>
+        <div class="dialog-row">
+          <span>Remote Storage:</span>
+          <span>Google Drive AppData Folder</span>
+        </div>
+        <p style="margin-top:12px; font-size:0.8rem; color:var(--text-muted);">
+          Your credentials are encrypted locally on your phone hardware before transmission. Google never sees your plain-text passwords or Master PIN.
+        </p>
+        <button class="dialog-action-btn" id="btnTriggerSyncAction">Trigger Instant Sync</button>
+      `);
+
+      const triggerSync = document.getElementById('btnTriggerSyncAction');
+      if (triggerSync) {
+        triggerSync.addEventListener('click', () => {
+          triggerSync.textContent = 'Syncing Vault (AES-256)...';
+          triggerSync.style.background = '#38bdf8';
+          setTimeout(() => {
+            triggerSync.textContent = '✓ Sync Complete • All 8 Items Up to Date';
+            triggerSync.style.background = '#34d399';
+            setTimeout(closeDialog, 1200);
+          }, 600);
+        });
+      }
+    });
+  }
+
+  // App Bar Action 2: Interactive Vault Search
+  let searchQuery = '';
+  if (searchBtn && searchBar && searchInput) {
+    searchBtn.addEventListener('click', () => {
+      const isVisible = searchBar.style.display !== 'none';
+      if (isVisible) {
+        searchBar.style.display = 'none';
+        searchBtn.classList.remove('active');
+        searchQuery = '';
+        searchInput.value = '';
+        renderVaultCards();
+      } else {
+        searchBar.style.display = 'block';
+        searchBtn.classList.add('active');
+        searchInput.focus();
+      }
+    });
+
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value;
+      renderVaultCards();
+    });
+
+    if (searchClear) {
+      searchClear.addEventListener('click', () => {
+        if (searchInput.value) {
+          searchInput.value = '';
+          searchQuery = '';
+          searchInput.focus();
+          renderVaultCards();
+        } else {
+          searchBar.style.display = 'none';
+          searchBtn.classList.remove('active');
+          searchQuery = '';
+          renderVaultCards();
+        }
+      });
+    }
+  }
+
+  // App Bar Action 3: Settings Sheet
+  if (settingsBtn) {
+    settingsBtn.addEventListener('click', () => {
+      openDialog('⚙️', 'Vault & Security Settings', `
+        <div class="dialog-row">
+          <span>Master PIN Protection:</span>
+          <span style="color:#818cf8;">4–6 Digits (Configured)</span>
+        </div>
+        <div class="dialog-row">
+          <span>Key Wrapping Engine:</span>
+          <span>AES-256 PBKDF2 Salted</span>
+        </div>
+        <div class="dialog-row">
+          <span>Biometric Authentication:</span>
+          <span style="color:#34d399;">Enabled (Fingerprint / Face)</span>
+        </div>
+        <div class="dialog-row">
+          <span>Auto-Lock Delay:</span>
+          <span>Instant on App Switch</span>
+        </div>
+        <div class="dialog-row">
+          <span>Weak Password Audit:</span>
+          <span style="color:#f87171;">Active (1 Weak Item)</span>
+        </div>
+        <div class="dialog-row">
+          <span>Cloud Purge Option:</span>
+          <span>Permanent Wipe Supported</span>
+        </div>
+        <button class="dialog-action-btn" id="btnCloseSettingsDialog">Done</button>
+      `);
+
+      const btnClose = document.getElementById('btnCloseSettingsDialog');
+      if (btnClose) btnClose.addEventListener('click', closeDialog);
+    });
+  }
+
+  // Weak Password Audit Pill
+  if (auditPill) {
+    auditPill.addEventListener('click', () => {
+      openDialog('⚠️', 'Security Entropy Audit', `
+        <p style="margin-bottom:10px;">The live entropy scanner found <strong>1 vulnerable credential</strong> in your vault:</p>
+        <div style="background:rgba(248,113,113,0.1); border:1px solid rgba(248,113,113,0.25); border-radius:10px; padding:10px; margin-bottom:12px;">
+          <div style="font-weight:700; color:#fca5a5; font-size:0.88rem;">Old Forum Account</div>
+          <div style="font-size:0.78rem; opacity:0.8; margin-top:2px;">Password: <code>pass1234</code> (8 chars, 0 symbols)</div>
+          <div style="font-size:0.75rem; color:#f87171; margin-top:4px;">Risk: Highly susceptible to brute-force dictionary attacks.</div>
+        </div>
+        <p style="font-size:0.8rem; color:var(--text-muted);">
+          Use our Cryptographic Generator below to replace it with a 16+ character high-entropy key.
+        </p>
+        <button class="dialog-action-btn" id="btnGoToGenerator">Open Password Generator</button>
+      `);
+
+      const btnGen = document.getElementById('btnGoToGenerator');
+      if (btnGen) {
+        btnGen.addEventListener('click', () => {
+          closeDialog();
+          const genSec = document.getElementById('generator');
+          if (genSec) genSec.scrollIntoView({ behavior: 'smooth' });
+        });
+      }
+    });
+  }
+
+  // Floating Action Button (+)
+  if (fabBtn) {
+    fabBtn.addEventListener('click', () => {
+      openDialog('➕', 'Create New Vault Entry', `
+        <p style="margin-bottom:12px;">Select an item template from 9 purpose-built modules:</p>
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; text-align:center; margin-bottom:14px;">
+          <div style="background:rgba(255,255,255,0.05); padding:8px 4px; border-radius:8px; font-size:0.78rem;">💳 Cards</div>
+          <div style="background:rgba(255,255,255,0.05); padding:8px 4px; border-radius:8px; font-size:0.78rem;">🌐 Logins</div>
+          <div style="background:rgba(255,255,255,0.05); padding:8px 4px; border-radius:8px; font-size:0.78rem;">🏦 Bank</div>
+          <div style="background:rgba(255,255,255,0.05); padding:8px 4px; border-radius:8px; font-size:0.78rem;">🪙 Crypto</div>
+          <div style="background:rgba(255,255,255,0.05); padding:8px 4px; border-radius:8px; font-size:0.78rem;">📶 Wi-Fi</div>
+          <div style="background:rgba(255,255,255,0.05); padding:8px 4px; border-radius:8px; font-size:0.78rem;">📝 Notes</div>
+        </div>
+        <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;">
+          PasswordDiary encrypts every field with military-grade AES-256 before saving to local SQLite.
+        </p>
+        <a href="https://play.google.com/store/apps/details?id=neriquest.passwordDiary" target="_blank" rel="noopener noreferrer" class="dialog-action-btn" style="display:block; text-align:center; text-decoration:none;">Download PasswordDiary on Google Play</a>
+      `);
+    });
+  }
 
   // Theme Switching
   midnightBtn.addEventListener('click', () => {
@@ -382,11 +593,31 @@ function initVaultSimulator() {
 
   function renderVaultCards() {
     vaultList.innerHTML = '';
-    const filtered = currentCategory === 'all'
+    let filtered = currentCategory === 'all'
       ? SIM_VAULT_ITEMS
       : SIM_VAULT_ITEMS.filter(item => item.category === currentCategory);
 
+    if (searchQuery.trim().length > 0) {
+      const q = searchQuery.toLowerCase().trim();
+      filtered = filtered.filter(item => {
+        const titleMatch = item.title.toLowerCase().includes(q);
+        const catMatch = item.categoryName.toLowerCase().includes(q);
+        const fieldsMatch = item.fields.some(f => f.toLowerCase().includes(q));
+        return titleMatch || catMatch || fieldsMatch;
+      });
+    }
+
     vaultCountLabel.textContent = `${filtered.length} Protected Item${filtered.length === 1 ? '' : 's'}`;
+
+    if (filtered.length === 0) {
+      vaultList.innerHTML = `
+        <div style="text-align:center; padding:36px 16px; color:var(--text-muted); font-size:0.88rem;">
+          <div style="font-size:1.8rem; margin-bottom:8px;">🔍</div>
+          <div>No items found matching "${searchQuery}"</div>
+        </div>
+      `;
+      return;
+    }
 
     filtered.forEach(item => {
       const card = document.createElement('div');
@@ -477,206 +708,3 @@ function initVaultSimulator() {
   renderVaultCards();
 }
 
-/* ==========================================================================
-   4. The 9 Structured Categories Explorer
-   ========================================================================== */
-const CATEGORIES_DATA = [
-  {
-    id: 'card',
-    name: 'Payment Cards',
-    icon: '💳',
-    hint: 'Credit, Debit, Virtual & Prepaid Cards',
-    secretLabel: 'CVV / CVC',
-    secretMasked: '•••',
-    secretReal: '419',
-    tier1: ['Card Number (16 Digits)', 'Expiration Date (MM/YY)', 'Cardholder Name', 'Card Type'],
-    tier2: ['Card Nickname', 'Issuer Bank (Chase, HDFC, Amex)', 'ATM / POS Chip PIN', 'Card Network', 'Notes']
-  },
-  {
-    id: 'login',
-    name: 'Website & Logins',
-    icon: '🌐',
-    hint: 'Credentials, Portals & Accounts',
-    secretLabel: 'Master Password',
-    secretMasked: '••••••••••••••••',
-    secretReal: 'k7$L9@qW2!vM4#xZ',
-    tier1: ['Username / Email', 'Service Title', 'Primary Password', 'URL / Domain'],
-    tier2: ['Password History', 'One-Time Recovery Codes', 'Security Questions', 'Rotation Expiration', 'Personal Note']
-  },
-  {
-    id: 'bank',
-    name: 'Bank & Banking',
-    icon: '🏦',
-    hint: 'Accounts, Routing, IFSC & NetBanking',
-    secretLabel: 'Account Number',
-    secretMasked: '••••••••5819',
-    secretReal: '849102945819',
-    tier1: ['Bank Name', 'Account Holder Name', 'Customer ID / CIF', 'IFSC / Routing / Sort Code'],
-    tier2: ['Account Type (Savings, Checking)', 'UPI ID / VPA', 'ATM PIN', 'NetBanking Password', 'Branch Phone']
-  },
-  {
-    id: 'id',
-    name: 'Identity & IDs',
-    icon: '🪪',
-    hint: 'Passports, Driving Licenses & SSN',
-    secretLabel: 'Document / ID Number',
-    secretMasked: '••••••••••',
-    secretReal: 'Z89410294B',
-    tier1: ['Full Legal Name', 'Issuing Authority / Country', 'Issue Date', 'Expiry Date'],
-    tier2: ['Place of Birth', 'Document Class', 'Emergency Contact', 'Secure Document Copy Notes']
-  },
-  {
-    id: 'note',
-    name: 'Secure Notes',
-    icon: '📝',
-    hint: 'Private Memos & Confidential Text',
-    secretLabel: 'Confidential Payload',
-    secretMasked: '••••••••••••••••••••••••',
-    secretReal: 'Server emergency recovery procedures & root SSH access instructions',
-    tier1: ['Note Subject', 'Last Modified Date', 'Confidential Content'],
-    tier2: ['Tags / Labels', 'Sensitivity Flag', 'Offline Markdown Formatting']
-  },
-  {
-    id: 'software',
-    name: 'Software Keys',
-    icon: '🔑',
-    hint: 'Licenses, Serials & Product Keys',
-    secretLabel: 'License Key / Serial',
-    secretMasked: 'XXXXX-XXXXX-XXXXX-XXXXX',
-    secretReal: 'VK7JG-NPHTM-C97JM-9MPGT',
-    tier1: ['Product Name', 'License Key / Serial', 'Version Number', 'Purchase Date'],
-    tier2: ['Registered Email', 'Order / Invoice Number', 'Seats / Machine Count', 'Activation Web Link']
-  },
-  {
-    id: 'safe',
-    name: 'Safes & Lockers',
-    icon: '🔒',
-    hint: 'Physical Safes, Keypads & Lockers',
-    secretLabel: 'Combination / Passcode',
-    secretMasked: '••-••-••',
-    secretReal: '24-18-36',
-    tier1: ['Locker Location / Description', 'Primary Passcode / PIN', 'Physical Key ID'],
-    tier2: ['Locker Box Number', 'Bank Branch / Home Location', 'Master Override Code', 'Key Holder Details']
-  },
-  {
-    id: 'crypto',
-    name: 'Crypto & Web3',
-    icon: '🪙',
-    hint: 'Seed Phrases & Hardware Wallets',
-    secretLabel: '12 / 24-Word Seed Phrase',
-    secretMasked: '•••• •••• •••• •••• •••• ••••',
-    secretReal: 'witch collapse practice feed shame open despair creek road again ice leap',
-    tier1: ['Wallet Name', 'Cryptocurrency / Network', '12/24 Word Seed Phrase', 'Public Wallet Address'],
-    tier2: ['Derivation Path', 'Passphrase / 25th Word', 'Hardware Device Model', 'Recovery Contact']
-  },
-  {
-    id: 'wifi',
-    name: 'Wi-Fi Networks',
-    icon: '📶',
-    hint: 'Home, Office & Router Credentials',
-    secretLabel: 'Wi-Fi Password',
-    secretMasked: '••••••••••••••',
-    secretReal: 'AtlasFiber_Secure@2026',
-    tier1: ['Network SSID', 'Wi-Fi Password', 'Encryption Type (WPA3/WPA2)', 'Location'],
-    tier2: ['Router Gateway IP (192.168.1.1)', 'Router Admin Username', 'Router Admin Password', 'MAC Whitelist']
-  }
-];
-
-function initCategoriesExplorer() {
-  const grid = document.getElementById('categoryTabsGrid');
-  const panel = document.getElementById('categoryDetailPanel');
-  if (!grid || !panel) return;
-
-  let activeIndex = 0;
-
-  function renderExplorer() {
-    grid.innerHTML = '';
-    CATEGORIES_DATA.forEach((cat, idx) => {
-      const card = document.createElement('div');
-      card.className = `category-tab-card ${idx === activeIndex ? 'active' : ''}`;
-      card.innerHTML = `
-        <div class="tab-icon-wrap">${cat.icon}</div>
-        <div class="tab-title">${cat.name}</div>
-        <div class="tab-hint">${cat.hint}</div>
-      `;
-      card.addEventListener('click', () => {
-        activeIndex = idx;
-        renderExplorer();
-      });
-      grid.appendChild(card);
-    });
-
-    const activeCat = CATEGORIES_DATA[activeIndex];
-    panel.innerHTML = `
-      <div class="panel-header">
-        <div class="panel-icon-box">${activeCat.icon}</div>
-        <div class="panel-title-group">
-          <h3>${activeCat.name}</h3>
-          <p>${activeCat.hint}</p>
-        </div>
-      </div>
-
-      <div class="panel-secret-preview">
-        <div class="secret-preview-label">
-          <span>Primary Masked Secret (${activeCat.secretLabel})</span>
-          <button class="btn-toggle-secret-view" id="btnTogglePanelSecret" title="Toggle Secret Visibility">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
-          </button>
-        </div>
-        <div class="secret-value-row">
-          <span id="panelSecretText">${activeCat.secretMasked}</span>
-          <span style="font-size:0.75rem; color:#818cf8; font-family:var(--font-family); font-weight:700;">Protected Field</span>
-        </div>
-      </div>
-
-      <div class="panel-field-group">
-        <h4>Default Tier-1 Essential Fields</h4>
-        <div class="field-chips-list">
-          ${activeCat.tier1.map(f => `<span class="field-pill">✓ ${f}</span>`).join('')}
-        </div>
-      </div>
-
-      <div class="panel-field-group">
-        <h4>Suggested Tier-2 Custom Fields</h4>
-        <div class="field-chips-list">
-          ${activeCat.tier2.map(f => `<span class="field-pill">+ ${f}</span>`).join('')}
-        </div>
-      </div>
-    `;
-
-    const toggleSecretBtn = panel.querySelector('#btnTogglePanelSecret');
-    const secretText = panel.querySelector('#panelSecretText');
-    if (toggleSecretBtn && secretText) {
-      toggleSecretBtn.addEventListener('click', () => {
-        if (secretText.textContent === activeCat.secretMasked) {
-          secretText.textContent = activeCat.secretReal;
-          secretText.style.color = '#34d399';
-          toggleSecretBtn.innerHTML = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/><path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/><line x1="2" y1="2" x2="22" y2="22"/></svg>`;
-        } else {
-          secretText.textContent = activeCat.secretMasked;
-          secretText.style.color = '';
-          toggleSecretBtn.innerHTML = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>`;
-        }
-      });
-    }
-  }
-
-  renderExplorer();
-}
-
-/* ==========================================================================
-   5. FAQ Accordion Handler
-   ========================================================================== */
-function initFAQAccordion() {
-  const faqItems = document.querySelectorAll('.faq-item');
-  faqItems.forEach(item => {
-    const question = item.querySelector('.faq-question');
-    question.addEventListener('click', () => {
-      const isActive = item.classList.contains('active');
-      faqItems.forEach(other => other.classList.remove('active'));
-      if (!isActive) {
-        item.classList.add('active');
-      }
-    });
-  });
-}
