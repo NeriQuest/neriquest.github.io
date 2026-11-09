@@ -2260,3 +2260,58 @@ body {
     gap: 30px;
   }
 }
+
+/* Responsive Top Navbar (Matches ExpenseMate) */
+.back-link,
+.brand,
+.btn-topbar-cta {
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 10px 0;
+  }
+
+  .nav-container {
+    padding: 0 16px;
+    gap: 10px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .back-link-text {
+    display: none;
+  }
+
+  .back-link {
+    padding: 7px 10px;
+  }
+}
+
+@media (max-width: 420px) {
+  .brand-version {
+    display: none;
+  }
+
+  .nav-logo-box {
+    width: 34px;
+    height: 34px;
+  }
+
+  .brand-name {
+    font-size: 1.05rem;
+  }
+
+  .btn-topbar-cta {
+    padding: 7px 12px;
+    font-size: 0.82rem;
+  }
+
+  .btn-topbar-cta .topbar-cta-icon {
+    width: 14px;
+    height: 14px;
+  }
+}

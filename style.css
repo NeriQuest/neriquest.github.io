@@ -1138,3 +1138,57 @@ a, button, [role="button"], .btn {
 .origin-story-link:hover .origin-arrow-icon {
   transform: translateX(3px);
 }
+
+/* Responsive Navbar Helpers */
+.topbar-cta-text-full {
+  display: inline;
+}
+
+.topbar-cta-text-short {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 10px 0;
+  }
+
+  .nav-container {
+    padding: 0 16px;
+    gap: 10px;
+  }
+
+  .topbar-cta-text-full {
+    display: none;
+  }
+
+  .topbar-cta-text-short {
+    display: inline;
+  }
+
+  .btn-topbar-cta {
+    padding: 7px 12px;
+    font-size: 0.82rem;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 400px) {
+  .brand-badge {
+    display: none;
+  }
+
+  .nav-logo-box {
+    width: 34px;
+    height: 34px;
+  }
+
+  .brand-name {
+    font-size: 1.05rem;
+  }
+
+  .btn-topbar-cta {
+    padding: 6px 10px;
+    font-size: 0.78rem;
+  }
+}
