@@ -252,6 +252,8 @@ const SIM_VAULT_ITEMS = [
     secretLabel: 'CVV',
     secretMasked: '•••',
     secretReal: '742',
+    isSynced: true,
+    isWeak: false,
     fields: ['Cardholder: John Doe', 'Exp: 09/28', 'Type: Credit', 'Network: Visa']
   },
   {
@@ -263,6 +265,8 @@ const SIM_VAULT_ITEMS = [
     secretLabel: 'Password',
     secretMasked: '••••••••••••••••',
     secretReal: 'G9#kL2$vM8!xP4@z',
+    isSynced: true,
+    isWeak: false,
     fields: ['user@gmail.com', 'https://accounts.google.com', '2FA Backup Codes: 8 Saved']
   },
   {
@@ -274,6 +278,8 @@ const SIM_VAULT_ITEMS = [
     secretLabel: 'Account Number',
     secretMasked: '••••••••8912',
     secretReal: '984321768912',
+    isSynced: false,
+    isWeak: false,
     fields: ['Routing: 021000021', 'CIF: 4892019', 'Branch: Manhattan NYC']
   },
   {
@@ -285,10 +291,25 @@ const SIM_VAULT_ITEMS = [
     secretLabel: '24-Word Recovery Seed',
     secretMasked: '•••• •••• •••• •••• (24 Words)',
     secretReal: 'abandon amount liar ... ocean wisdom',
+    isSynced: true,
+    isWeak: false,
     fields: ['Network: Ethereum / Bitcoin', 'Hardware: Ledger Nano X']
   },
   {
     id: 5,
+    category: 'login',
+    categoryName: 'Website & Logins',
+    icon: '🌐',
+    title: 'Old Forum Account',
+    secretLabel: 'Password',
+    secretMasked: '••••••••',
+    secretReal: 'pass1234',
+    isSynced: true,
+    isWeak: true,
+    fields: ['forum_user@mail.com', 'Audit: 8 Chars, No Symbols', 'Action: Update Needed']
+  },
+  {
+    id: 6,
     category: 'wifi',
     categoryName: 'Wi-Fi Networks',
     icon: '📶',
@@ -296,10 +317,12 @@ const SIM_VAULT_ITEMS = [
     secretLabel: 'WPA3 Password',
     secretMasked: '••••••••••••',
     secretReal: 'Quantum_Shield#99',
+    isSynced: true,
+    isWeak: false,
     fields: ['SSID: NeriHome_5G', 'Router IP: 192.168.1.1', 'Security: WPA3-Personal']
   },
   {
-    id: 6,
+    id: 7,
     category: 'card',
     categoryName: 'Payment Cards',
     icon: '💳',
@@ -307,10 +330,12 @@ const SIM_VAULT_ITEMS = [
     secretLabel: 'CVV',
     secretMasked: '•••',
     secretReal: '318',
+    isSynced: false,
+    isWeak: false,
     fields: ['Cardholder: John Doe', 'Exp: 11/29', 'Type: Metal Card']
   },
   {
-    id: 7,
+    id: 8,
     category: 'login',
     categoryName: 'Website & Logins',
     icon: '🌐',
@@ -318,6 +343,8 @@ const SIM_VAULT_ITEMS = [
     secretLabel: 'Personal Access Token',
     secretMasked: 'ghp_••••••••••••••••••••••••',
     secretReal: 'ghp_k9sL2q9d8a1Bv4N7m6c0',
+    isSynced: true,
+    isWeak: false,
     fields: ['Scope: repo, workflow, read:org']
   }
 ];
@@ -365,6 +392,14 @@ function initVaultSimulator() {
       const card = document.createElement('div');
       card.className = 'sim-vault-card';
 
+      const syncBadge = item.isSynced
+        ? `<span class="sim-badge-synced" title="Synchronized with encrypted Google Drive">☁️ Drive Synced</span>`
+        : `<span class="sim-badge-local" title="Stored exclusively on local SQLite">📱 Local Device</span>`;
+
+      const weakBadge = item.isWeak
+        ? `<span class="sim-badge-weak" title="Flagged by Security Audit Scanner">⚠️ Weak Password</span>`
+        : '';
+
       card.innerHTML = `
         <div class="sim-card-top">
           <span class="sim-card-category-tag">
@@ -374,6 +409,10 @@ function initVaultSimulator() {
           <button class="btn-card-reveal" title="Toggle Secret Visibility" data-id="${item.id}">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
           </button>
+        </div>
+        <div class="sim-card-status-row">
+          ${syncBadge}
+          ${weakBadge}
         </div>
         <div class="sim-card-title">${item.title}</div>
         <div class="sim-card-secret-box">
