@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initAmbientGlow();
   initPasswordGenerator();
   initVaultSimulator();
-  initCategoriesExplorer();
+  initCategoriesGrid();
   initFAQAccordion();
 });
 
@@ -708,3 +708,73 @@ function initVaultSimulator() {
   renderVaultCards();
 }
 
+/* ==========================================================================
+   4. 9 Specialized Vault Modules Interactive Grid
+   ========================================================================== */
+function initCategoriesGrid() {
+  const cards = document.querySelectorAll('.module-card');
+  if (!cards.length) return;
+
+  cards.forEach(card => {
+    // Reveal secret toggle on each card
+    const toggleBtn = card.querySelector('.module-secret-toggle');
+    const secretVal = card.querySelector('.module-secret-value');
+
+    if (toggleBtn && secretVal) {
+      toggleBtn.addEventListener('click', () => {
+        const masked = secretVal.getAttribute('data-masked');
+        const real = secretVal.getAttribute('data-real');
+        const isRevealed = secretVal.textContent !== masked;
+
+        if (isRevealed) {
+          secretVal.textContent = masked;
+          secretVal.style.color = '#a5b4fc';
+          toggleBtn.innerHTML = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>`;
+        } else {
+          secretVal.textContent = real;
+          secretVal.style.color = '#34d399';
+          toggleBtn.innerHTML = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/><path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/><line x1="2" y1="2" x2="22" y2="22"/></svg>`;
+        }
+      });
+    }
+
+    // Filter simulator button on each card
+    const filterBtn = card.querySelector('.btn-filter-simulator');
+    if (filterBtn) {
+      filterBtn.addEventListener('click', () => {
+        const cat = filterBtn.getAttribute('data-category');
+        const targetChip = document.querySelector(`.sim-chip-btn[data-category="${cat}"]`);
+        if (targetChip) {
+          targetChip.click();
+        }
+        const simSection = document.getElementById('simulator');
+        if (simSection) {
+          simSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    }
+  });
+}
+
+/* ==========================================================================
+   5. In-App FAQ Accordion Handler
+   ========================================================================== */
+function initFAQAccordion() {
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    if (!question) return;
+    question.addEventListener('click', () => {
+      const isExpanded = question.getAttribute('aria-expanded') === 'true';
+      faqItems.forEach(other => {
+        const q = other.querySelector('.faq-question');
+        if (q) q.setAttribute('aria-expanded', 'false');
+        other.classList.remove('active');
+      });
+      if (!isExpanded) {
+        question.setAttribute('aria-expanded', 'true');
+        item.classList.add('active');
+      }
+    });
+  });
+}

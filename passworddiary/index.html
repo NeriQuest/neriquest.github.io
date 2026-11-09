@@ -483,15 +483,303 @@
           <p>PasswordDiary provides purpose-built templates and sensitive masking tailored for every essential aspect of your digital and physical life.</p>
         </div>
 
-        <div class="categories-explorer">
-          <!-- Category Selector Grid -->
-          <div class="category-tabs-grid" id="categoryTabsGrid">
-            <!-- Populated via JS -->
-          </div>
+        <div class="categories-grid" id="categoriesGrid">
+          <div class="module-card" data-category="card">
+            <div class="module-card-header">
+              <div class="module-card-icon">💳</div>
+              <div>
+                <h3 class="module-card-title">Payment Cards</h3>
+                <span class="module-card-hint">Credit, Debit, Virtual & Prepaid Cards</span>
+              </div>
+            </div>
 
-          <!-- Dynamic Category Detail Card -->
-          <div class="category-detail-panel" id="categoryDetailPanel">
-            <!-- Dynamic Category Details injected via JS -->
+            <div class="module-secret-box">
+              <div>
+                <div class="module-secret-label">CVV / CVC</div>
+                <div class="module-secret-value" data-masked="•••" data-real="419">•••</div>
+              </div>
+              <button class="module-secret-toggle" title="Reveal / Hide secret demo value">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+
+            <div class="module-fields-title">Purpose-Built Schema Fields</div>
+            <div class="module-field-chips">
+              <span class="module-field-chip">✓ Card Number (16 Digits)</span><span class="module-field-chip">✓ Expiration Date (MM/YY)</span><span class="module-field-chip">✓ Cardholder Name</span><span class="module-field-chip">✓ Card Type</span>
+              <span class="module-field-chip custom">+ Card Nickname</span><span class="module-field-chip custom">+ Issuer Bank</span><span class="module-field-chip custom">+ ATM / POS Chip PIN</span><span class="module-field-chip custom">+ Card Network</span>
+            </div>
+
+            <div class="module-card-footer">
+              <span style="font-size:0.72rem; color:#94a3b8; font-weight:600;">AES-256 Encrypted</span>
+              <button class="btn-filter-simulator" data-category="card">
+                <span>Test in Simulator</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="module-card" data-category="login">
+            <div class="module-card-header">
+              <div class="module-card-icon">🌐</div>
+              <div>
+                <h3 class="module-card-title">Website & Logins</h3>
+                <span class="module-card-hint">Credentials, Portals & Web Accounts</span>
+              </div>
+            </div>
+
+            <div class="module-secret-box">
+              <div>
+                <div class="module-secret-label">Master Password</div>
+                <div class="module-secret-value" data-masked="••••••••••••••••" data-real="k7$L9@qW2!vM4#xZ">••••••••••••••••</div>
+              </div>
+              <button class="module-secret-toggle" title="Reveal / Hide secret demo value">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+
+            <div class="module-fields-title">Purpose-Built Schema Fields</div>
+            <div class="module-field-chips">
+              <span class="module-field-chip">✓ Username / Email</span><span class="module-field-chip">✓ Service Title</span><span class="module-field-chip">✓ Primary Password</span><span class="module-field-chip">✓ URL / Domain</span>
+              <span class="module-field-chip custom">+ 2FA Backup Codes</span><span class="module-field-chip custom">+ Security Questions</span><span class="module-field-chip custom">+ Password Rotation Date</span><span class="module-field-chip custom">+ Personal Note</span>
+            </div>
+
+            <div class="module-card-footer">
+              <span style="font-size:0.72rem; color:#94a3b8; font-weight:600;">AES-256 Encrypted</span>
+              <button class="btn-filter-simulator" data-category="login">
+                <span>Test in Simulator</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="module-card" data-category="bank">
+            <div class="module-card-header">
+              <div class="module-card-icon">🏦</div>
+              <div>
+                <h3 class="module-card-title">Bank & Banking</h3>
+                <span class="module-card-hint">Accounts, Routing, IFSC & NetBanking</span>
+              </div>
+            </div>
+
+            <div class="module-secret-box">
+              <div>
+                <div class="module-secret-label">Account Number</div>
+                <div class="module-secret-value" data-masked="••••••••5819" data-real="849102945819">••••••••5819</div>
+              </div>
+              <button class="module-secret-toggle" title="Reveal / Hide secret demo value">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+
+            <div class="module-fields-title">Purpose-Built Schema Fields</div>
+            <div class="module-field-chips">
+              <span class="module-field-chip">✓ Bank Name</span><span class="module-field-chip">✓ Account Holder Name</span><span class="module-field-chip">✓ Customer ID / CIF</span><span class="module-field-chip">✓ IFSC / Routing Code</span>
+              <span class="module-field-chip custom">+ Account Type</span><span class="module-field-chip custom">+ UPI ID / VPA</span><span class="module-field-chip custom">+ ATM PIN</span><span class="module-field-chip custom">+ NetBanking Password</span>
+            </div>
+
+            <div class="module-card-footer">
+              <span style="font-size:0.72rem; color:#94a3b8; font-weight:600;">AES-256 Encrypted</span>
+              <button class="btn-filter-simulator" data-category="bank">
+                <span>Test in Simulator</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="module-card" data-category="id">
+            <div class="module-card-header">
+              <div class="module-card-icon">🆔</div>
+              <div>
+                <h3 class="module-card-title">Identity & IDs</h3>
+                <span class="module-card-hint">Passports, Driving Licenses & SSN</span>
+              </div>
+            </div>
+
+            <div class="module-secret-box">
+              <div>
+                <div class="module-secret-label">Document / ID Number</div>
+                <div class="module-secret-value" data-masked="••••••••••" data-real="Z89410294B">••••••••••</div>
+              </div>
+              <button class="module-secret-toggle" title="Reveal / Hide secret demo value">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+
+            <div class="module-fields-title">Purpose-Built Schema Fields</div>
+            <div class="module-field-chips">
+              <span class="module-field-chip">✓ Full Legal Name</span><span class="module-field-chip">✓ Issuing Authority</span><span class="module-field-chip">✓ Issue Date</span><span class="module-field-chip">✓ Expiry Date</span>
+              <span class="module-field-chip custom">+ Place of Birth</span><span class="module-field-chip custom">+ Document Class</span><span class="module-field-chip custom">+ Emergency Contact</span><span class="module-field-chip custom">+ Verification Notes</span>
+            </div>
+
+            <div class="module-card-footer">
+              <span style="font-size:0.72rem; color:#94a3b8; font-weight:600;">AES-256 Encrypted</span>
+              <button class="btn-filter-simulator" data-category="id">
+                <span>Test in Simulator</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="module-card" data-category="note">
+            <div class="module-card-header">
+              <div class="module-card-icon">📝</div>
+              <div>
+                <h3 class="module-card-title">Secure Notes</h3>
+                <span class="module-card-hint">Private Memos & Confidential Text</span>
+              </div>
+            </div>
+
+            <div class="module-secret-box">
+              <div>
+                <div class="module-secret-label">Confidential Content</div>
+                <div class="module-secret-value" data-masked="••••••••••••••••••••••••" data-real="Server emergency recovery keys & root SSH config">••••••••••••••••••••••••</div>
+              </div>
+              <button class="module-secret-toggle" title="Reveal / Hide secret demo value">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+
+            <div class="module-fields-title">Purpose-Built Schema Fields</div>
+            <div class="module-field-chips">
+              <span class="module-field-chip">✓ Note Subject</span><span class="module-field-chip">✓ Last Modified Date</span><span class="module-field-chip">✓ Protected Payload</span>
+              <span class="module-field-chip custom">+ Tags / Labels</span><span class="module-field-chip custom">+ Sensitivity Level</span><span class="module-field-chip custom">+ Markdown Formatting</span>
+            </div>
+
+            <div class="module-card-footer">
+              <span style="font-size:0.72rem; color:#94a3b8; font-weight:600;">AES-256 Encrypted</span>
+              <button class="btn-filter-simulator" data-category="note">
+                <span>Test in Simulator</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="module-card" data-category="software">
+            <div class="module-card-header">
+              <div class="module-card-icon">🔑</div>
+              <div>
+                <h3 class="module-card-title">Software Keys</h3>
+                <span class="module-card-hint">Licenses, Serials & Product Keys</span>
+              </div>
+            </div>
+
+            <div class="module-secret-box">
+              <div>
+                <div class="module-secret-label">License Key / Serial</div>
+                <div class="module-secret-value" data-masked="XXXXX-XXXXX-XXXXX-XXXXX" data-real="VK7JG-NPHTM-C97JM-9MPGT">XXXXX-XXXXX-XXXXX-XXXXX</div>
+              </div>
+              <button class="module-secret-toggle" title="Reveal / Hide secret demo value">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+
+            <div class="module-fields-title">Purpose-Built Schema Fields</div>
+            <div class="module-field-chips">
+              <span class="module-field-chip">✓ Product Name</span><span class="module-field-chip">✓ License Key / Serial</span><span class="module-field-chip">✓ Version Number</span><span class="module-field-chip">✓ Purchase Date</span>
+              <span class="module-field-chip custom">+ Registered Email</span><span class="module-field-chip custom">+ Order / Invoice ID</span><span class="module-field-chip custom">+ Seats Count</span><span class="module-field-chip custom">+ Activation Link</span>
+            </div>
+
+            <div class="module-card-footer">
+              <span style="font-size:0.72rem; color:#94a3b8; font-weight:600;">AES-256 Encrypted</span>
+              <button class="btn-filter-simulator" data-category="software">
+                <span>Test in Simulator</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="module-card" data-category="safe">
+            <div class="module-card-header">
+              <div class="module-card-icon">🔒</div>
+              <div>
+                <h3 class="module-card-title">Safes & Lockers</h3>
+                <span class="module-card-hint">Physical Safes, Keypads & Lockers</span>
+              </div>
+            </div>
+
+            <div class="module-secret-box">
+              <div>
+                <div class="module-secret-label">Combination / Passcode</div>
+                <div class="module-secret-value" data-masked="••-••-••" data-real="24-18-36">••-••-••</div>
+              </div>
+              <button class="module-secret-toggle" title="Reveal / Hide secret demo value">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+
+            <div class="module-fields-title">Purpose-Built Schema Fields</div>
+            <div class="module-field-chips">
+              <span class="module-field-chip">✓ Locker Location</span><span class="module-field-chip">✓ Primary Passcode / PIN</span><span class="module-field-chip">✓ Physical Key ID</span>
+              <span class="module-field-chip custom">+ Locker Box Number</span><span class="module-field-chip custom">+ Branch / Room Location</span><span class="module-field-chip custom">+ Master Override Code</span>
+            </div>
+
+            <div class="module-card-footer">
+              <span style="font-size:0.72rem; color:#94a3b8; font-weight:600;">AES-256 Encrypted</span>
+              <button class="btn-filter-simulator" data-category="safe">
+                <span>Test in Simulator</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="module-card" data-category="crypto">
+            <div class="module-card-header">
+              <div class="module-card-icon">🪙</div>
+              <div>
+                <h3 class="module-card-title">Crypto & Web3</h3>
+                <span class="module-card-hint">Seed Phrases & Hardware Wallets</span>
+              </div>
+            </div>
+
+            <div class="module-secret-box">
+              <div>
+                <div class="module-secret-label">12 / 24-Word Seed</div>
+                <div class="module-secret-value" data-masked="•••• •••• •••• •••• (24 Words)" data-real="witch collapse practice feed shame open ...">•••• •••• •••• •••• (24 Words)</div>
+              </div>
+              <button class="module-secret-toggle" title="Reveal / Hide secret demo value">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+
+            <div class="module-fields-title">Purpose-Built Schema Fields</div>
+            <div class="module-field-chips">
+              <span class="module-field-chip">✓ Wallet Name</span><span class="module-field-chip">✓ Cryptocurrency / Network</span><span class="module-field-chip">✓ Recovery Seed</span><span class="module-field-chip">✓ Public Address</span>
+              <span class="module-field-chip custom">+ Derivation Path</span><span class="module-field-chip custom">+ Passphrase (25th Word)</span><span class="module-field-chip custom">+ Hardware Device</span><span class="module-field-chip custom">+ Backup Contact</span>
+            </div>
+
+            <div class="module-card-footer">
+              <span style="font-size:0.72rem; color:#94a3b8; font-weight:600;">AES-256 Encrypted</span>
+              <button class="btn-filter-simulator" data-category="crypto">
+                <span>Test in Simulator</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="module-card" data-category="wifi">
+            <div class="module-card-header">
+              <div class="module-card-icon">📶</div>
+              <div>
+                <h3 class="module-card-title">Wi-Fi Networks</h3>
+                <span class="module-card-hint">Home, Office & Router Credentials</span>
+              </div>
+            </div>
+
+            <div class="module-secret-box">
+              <div>
+                <div class="module-secret-label">Wi-Fi Password</div>
+                <div class="module-secret-value" data-masked="••••••••••••••" data-real="AtlasFiber_Secure@2026">••••••••••••••</div>
+              </div>
+              <button class="module-secret-toggle" title="Reveal / Hide secret demo value">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+
+            <div class="module-fields-title">Purpose-Built Schema Fields</div>
+            <div class="module-field-chips">
+              <span class="module-field-chip">✓ Network SSID</span><span class="module-field-chip">✓ Wi-Fi Password</span><span class="module-field-chip">✓ Encryption (WPA3)</span><span class="module-field-chip">✓ Location</span>
+              <span class="module-field-chip custom">+ Router Gateway IP</span><span class="module-field-chip custom">+ Admin Username</span><span class="module-field-chip custom">+ Admin Password</span><span class="module-field-chip custom">+ MAC Whitelist</span>
+            </div>
+
+            <div class="module-card-footer">
+              <span style="font-size:0.72rem; color:#94a3b8; font-weight:600;">AES-256 Encrypted</span>
+              <button class="btn-filter-simulator" data-category="wifi">
+                <span>Test in Simulator</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+              </button>
+            </div>
           </div>
         </div>
       </div>
