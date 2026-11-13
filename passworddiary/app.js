@@ -252,6 +252,7 @@ const SIM_VAULT_ITEMS = [
     category: 'card',
     categoryName: 'Payment Cards',
     icon: '💳',
+    brandBadge: 'Visa',
     title: 'HDFC Millennia Credit Card',
     secretLabel: 'CVV',
     secretMasked: '•••',
@@ -265,6 +266,7 @@ const SIM_VAULT_ITEMS = [
     category: 'login',
     categoryName: 'Website & Logins',
     icon: '🌐',
+    brandDomain: 'google.com',
     title: 'Google Account (Primary)',
     secretLabel: 'Password',
     secretMasked: '••••••••••••••••',
@@ -304,19 +306,21 @@ const SIM_VAULT_ITEMS = [
     category: 'login',
     categoryName: 'Website & Logins',
     icon: '🌐',
-    title: 'Old Forum Account',
+    brandDomain: 'netflix.com',
+    title: 'Netflix Premium Family',
     secretLabel: 'Password',
-    secretMasked: '••••••••',
-    secretReal: 'pass1234',
+    secretMasked: '••••••••••••',
+    secretReal: 'N3tfl!x_Str3am#26',
     isSynced: true,
-    isWeak: true,
-    fields: ['forum_user@mail.com', 'Audit: 8 Chars, No Symbols', 'Action: Update Needed']
+    isWeak: false,
+    fields: ['family@stream.tv', 'Profiles: 4 Active', 'Billing: Auto-Renew']
   },
   {
     id: 6,
     category: 'wifi',
     categoryName: 'Wi-Fi Networks',
     icon: '📶',
+    hasWifiQr: true,
     title: 'NeriHome 5G Fiber',
     secretLabel: 'WPA3 Password',
     secretMasked: '••••••••••••',
@@ -330,6 +334,7 @@ const SIM_VAULT_ITEMS = [
     category: 'card',
     categoryName: 'Payment Cards',
     icon: '💳',
+    brandBadge: 'Mastercard',
     title: 'Chase Sapphire Preferred',
     secretLabel: 'CVV',
     secretMasked: '•••',
@@ -343,6 +348,7 @@ const SIM_VAULT_ITEMS = [
     category: 'login',
     categoryName: 'Website & Logins',
     icon: '🌐',
+    brandDomain: 'github.com',
     title: 'GitHub Developer Account',
     secretLabel: 'Personal Access Token',
     secretMasked: 'ghp_••••••••••••••••••••••••',
@@ -350,6 +356,19 @@ const SIM_VAULT_ITEMS = [
     isSynced: true,
     isWeak: false,
     fields: ['Scope: repo, workflow, read:org']
+  },
+  {
+    id: 9,
+    category: 'id',
+    categoryName: 'Identity & IDs',
+    icon: '🆔',
+    title: 'National Passport & ID',
+    secretLabel: 'Document Number',
+    secretMasked: 'Z••••••••B',
+    secretReal: 'Z89410294B',
+    isSynced: true,
+    isWeak: false,
+    fields: ['Jurisdiction: India', 'Exp: 2034', 'Status: Active • Not Expired']
   }
 ];
 
@@ -500,16 +519,24 @@ function initVaultSimulator() {
     settingsBtn.addEventListener('click', () => {
       openDialog('⚙️', 'Vault & Security Settings', `
         <div class="dialog-row">
+          <span>App Version:</span>
+          <span style="color:#818cf8; font-weight:700;">v1.0.43 (Build 45)</span>
+        </div>
+        <div class="dialog-row">
           <span>Master PIN Protection:</span>
           <span style="color:#818cf8;">4–6 Digits (Configured)</span>
         </div>
         <div class="dialog-row">
-          <span>Key Wrapping Engine:</span>
-          <span>AES-256 PBKDF2 Salted</span>
+          <span>Biometric Authentication:</span>
+          <span style="color:#34d399;">Fingerprint &amp; Face Unlock</span>
         </div>
         <div class="dialog-row">
-          <span>Biometric Authentication:</span>
-          <span style="color:#34d399;">Enabled (Fingerprint / Face)</span>
+          <span>Trash &amp; Recovery Vault:</span>
+          <span style="color:#38bdf8;">Soft-Delete Ready</span>
+        </div>
+        <div class="dialog-row">
+          <span>Website Brand Favicons:</span>
+          <span style="color:#34d399;">Auto Domain-Aware Cache</span>
         </div>
         <div class="dialog-row">
           <span>Auto-Lock Delay:</span>
@@ -561,8 +588,13 @@ function initVaultSimulator() {
   // Floating Action Button (+)
   if (fabBtn) {
     fabBtn.addEventListener('click', () => {
+      const activeCat = currentCategory === 'all' ? 'All Items' : currentCategory.toUpperCase();
       openDialog('➕', 'Create New Vault Entry', `
-        <p style="margin-bottom:12px;">Select an item template from 9 purpose-built modules:</p>
+        <div style="background:rgba(129,140,248,0.12); border:1px solid rgba(129,140,248,0.25); border-radius:10px; padding:10px; margin-bottom:12px; font-size:0.82rem;">
+          <span style="color:#c7d2fe; font-weight:700;">Smart Category Pre-selection:</span>
+          <span style="color:#ffffff;">${currentCategory === 'all' ? 'Choose Template Below' : activeCat + ' Module Preset'}</span>
+        </div>
+        <p style="margin-bottom:12px; font-size:0.82rem;">Select an item template from 9 purpose-built modules:</p>
         <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; text-align:center; margin-bottom:14px;">
           <div style="background:rgba(255,255,255,0.05); padding:8px 4px; border-radius:8px; font-size:0.78rem;">💳 Cards</div>
           <div style="background:rgba(255,255,255,0.05); padding:8px 4px; border-radius:8px; font-size:0.78rem;">🌐 Logins</div>
@@ -635,6 +667,18 @@ function initVaultSimulator() {
         ? `<span class="sim-badge-weak" title="Flagged by Security Audit Scanner">⚠️ Weak Password</span>`
         : '';
 
+      const brandLogo = item.brandDomain
+        ? `<img src="https://www.google.com/s2/favicons?domain=${item.brandDomain}&sz=64" class="sim-brand-favicon" alt="${item.brandDomain}">`
+        : '';
+
+      const brandBadge = item.brandBadge
+        ? `<span class="sim-brand-badge">${item.brandBadge}</span>`
+        : '';
+
+      const wifiQrBtn = item.hasWifiQr
+        ? `<button class="btn-sim-qr" data-ssid="${item.title}" data-pass="${item.secretReal}">📶 Instant Wi-Fi QR</button>`
+        : '';
+
       card.innerHTML = `
         <div class="sim-card-top">
           <span class="sim-card-category-tag">
@@ -649,17 +693,47 @@ function initVaultSimulator() {
           ${syncBadge}
           ${weakBadge}
         </div>
-        <div class="sim-card-title">${item.title}</div>
+        <div class="sim-card-title">
+          ${brandLogo}
+          <span>${item.title}</span>
+          ${brandBadge}
+        </div>
         <div class="sim-card-secret-box">
           <span style="font-size:0.75rem; opacity:0.65; text-transform:uppercase;">${item.secretLabel}:</span>
           <span class="secret-text" data-id="${item.id}">${item.secretMasked}</span>
         </div>
         <div class="sim-card-fields">
           ${item.fields.map(f => `<span class="sim-field-chip">${f}</span>`).join('')}
+          ${wifiQrBtn}
         </div>
       `;
 
       vaultList.appendChild(card);
+    });
+
+    // Attach Wi-Fi QR Listeners
+    vaultList.querySelectorAll('.btn-sim-qr').forEach(qrBtn => {
+      qrBtn.addEventListener('click', () => {
+        const ssid = qrBtn.getAttribute('data-ssid');
+        const pass = qrBtn.getAttribute('data-pass');
+        openDialog('📶', 'Instant Wi-Fi Connection QR', `
+          <div style="text-align:center; padding:10px 0;">
+            <p style="font-size:0.88rem; margin-bottom:12px;">Scan with any phone camera to connect to <strong>${ssid}</strong>:</p>
+            <div style="background:#ffffff; padding:16px; border-radius:16px; display:inline-block; margin-bottom:12px; box-shadow:0 4px 18px rgba(0,0,0,0.5);">
+              <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=WIFI%3AS%3A${encodeURIComponent(ssid)}%3BT%3AWPA%3BP%3A${encodeURIComponent(pass)}%3B%3B" width="160" height="160" alt="Wi-Fi QR Code" style="display:block;">
+            </div>
+            <div style="font-size:0.78rem; color:var(--text-muted);">
+              Protocol: <code>WPA/WPA2/WPA3</code> • Password: <code>${pass}</code>
+            </div>
+            <p style="font-size:0.75rem; color:#34d399; margin-top:8px;">
+              ✓ Generated on-device with zero internet dependency (qr_flutter).
+            </p>
+          </div>
+          <button class="dialog-action-btn" id="btnCloseQrDialog">Done</button>
+        `);
+        const btnClose = document.getElementById('btnCloseQrDialog');
+        if (btnClose) btnClose.addEventListener('click', closeDialog);
+      });
     });
 
     // Attach reveal listeners

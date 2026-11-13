@@ -36,7 +36,7 @@
         </div>
         <div class="brand-info">
           <span class="brand-name">PasswordDiary</span>
-          <span class="brand-version">v1.0.37</span>
+          <span class="brand-version">v1.0.43</span>
         </div>
       </div>
 
@@ -221,6 +221,10 @@
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="9"/><path d="M9.5 9h5a2 2 0 1 1 0 4h-5m0 0h5a2 2 0 1 1 0 4h-5"/><path d="M12 7v10"/></svg>
                   <span>Crypto</span>
                 </button>
+                <button class="sim-chip-btn" data-category="id">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="18" height="14" x="3" y="5" rx="2"/><circle cx="9" cy="11" r="2"/><line x1="13" y1="10" x2="17" y2="10"/><line x1="13" y1="13" x2="16" y2="13"/></svg>
+                  <span>IDs</span>
+                </button>
                 <button class="sim-chip-btn" data-category="wifi">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
                   <span>Wi-Fi</span>
@@ -374,6 +378,51 @@
               <span>Biometric Re-entry</span>
             </div>
           </div>
+
+          <!-- Pillar 7 -->
+          <div class="encryption-card">
+            <div class="enc-card-header">
+              <span class="enc-num">07</span>
+              <div class="enc-icon-wrap">🗑️</div>
+            </div>
+            <h3>Trash &amp; Recovery Vault</h3>
+            <p>Accidental deletion protection keeps deleted credentials in an encrypted, recoverable Trash bin with exact timestamps. Restore any item back to its active category with all fields intact, or permanently purge with one tap.</p>
+            <div class="enc-perk-pills">
+              <span>Soft-Delete Safety</span>
+              <span>1-Tap Restore</span>
+              <span>Permanent Purge</span>
+            </div>
+          </div>
+
+          <!-- Pillar 8 -->
+          <div class="encryption-card">
+            <div class="enc-card-header">
+              <span class="enc-num">08</span>
+              <div class="enc-icon-wrap">🌐</div>
+            </div>
+            <h3>Live Website Brand Favicons</h3>
+            <p>Integrated domain extraction automatically fetches and caches high-definition website favicons (Google, Netflix, GitHub, Amazon, Spotify, etc.) directly inside vault cards and detail sheets, backed by cryptographic monogram fallbacks.</p>
+            <div class="enc-perk-pills">
+              <span>Domain Extraction</span>
+              <span>HD Brand Badges</span>
+              <span>Monogram Fallbacks</span>
+            </div>
+          </div>
+
+          <!-- Pillar 9 -->
+          <div class="encryption-card">
+            <div class="enc-card-header">
+              <span class="enc-num">09</span>
+              <div class="enc-icon-wrap">📶</div>
+            </div>
+            <h3>Instant Wi-Fi QR Code (Scan to Connect)</h3>
+            <p>On-the-fly Wi-Fi QR code generator renders standard Wi-Fi configuration codes directly on your screen. Family and guests can scan with their phone camera to connect immediately without ever typing complex 30-character WPA3 passwords.</p>
+            <div class="enc-perk-pills">
+              <span>100% Offline QR</span>
+              <span>Scan to Connect</span>
+              <span>WPA2/WPA3 Support</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -511,8 +560,8 @@
 
             <div class="module-fields-title">Purpose-Built Schema Fields</div>
             <div class="module-field-chips">
-              <span class="module-field-chip">✓ Card Number (16 Digits)</span><span class="module-field-chip">✓ Expiration Date (MM/YY)</span><span class="module-field-chip">✓ Cardholder Name</span><span class="module-field-chip">✓ Card Type</span>
-              <span class="module-field-chip custom">+ Card Nickname</span><span class="module-field-chip custom">+ Issuer Bank</span><span class="module-field-chip custom">+ ATM / POS Chip PIN</span><span class="module-field-chip custom">+ Card Network</span>
+              <span class="module-field-chip">✓ 3D Visual Flipping Card</span><span class="module-field-chip">✓ Card Number (16 Digits)</span><span class="module-field-chip">✓ Expiration Date (MM/YY)</span><span class="module-field-chip">✓ Cardholder Name</span>
+              <span class="module-field-chip custom">+ Card Nickname</span><span class="module-field-chip custom">+ Issuer Bank</span><span class="module-field-chip custom">+ ATM / POS Chip PIN</span><span class="module-field-chip custom">+ Network (Visa/MC/RuPay)</span>
             </div>
 
             <div class="module-card-footer">
@@ -544,8 +593,8 @@
 
             <div class="module-fields-title">Purpose-Built Schema Fields</div>
             <div class="module-field-chips">
-              <span class="module-field-chip">✓ Username / Email</span><span class="module-field-chip">✓ Service Title</span><span class="module-field-chip">✓ Primary Password</span><span class="module-field-chip">✓ URL / Domain</span>
-              <span class="module-field-chip custom">+ 2FA Backup Codes</span><span class="module-field-chip custom">+ Security Questions</span><span class="module-field-chip custom">+ Password Rotation Date</span><span class="module-field-chip custom">+ Personal Note</span>
+              <span class="module-field-chip">✓ Live Brand Favicon</span><span class="module-field-chip">✓ Username / Email</span><span class="module-field-chip">✓ Service Title</span><span class="module-field-chip">✓ Primary Password</span>
+              <span class="module-field-chip custom">+ URL / Domain</span><span class="module-field-chip custom">+ 2FA Backup Codes</span><span class="module-field-chip custom">+ Security Questions</span><span class="module-field-chip custom">+ Password Rotation Date</span>
             </div>
 
             <div class="module-card-footer">
@@ -610,8 +659,8 @@
 
             <div class="module-fields-title">Purpose-Built Schema Fields</div>
             <div class="module-field-chips">
-              <span class="module-field-chip">✓ Full Legal Name</span><span class="module-field-chip">✓ Issuing Authority</span><span class="module-field-chip">✓ Issue Date</span><span class="module-field-chip">✓ Expiry Date</span>
-              <span class="module-field-chip custom">+ Place of Birth</span><span class="module-field-chip custom">+ Document Class</span><span class="module-field-chip custom">+ Emergency Contact</span><span class="module-field-chip custom">+ Verification Notes</span>
+              <span class="module-field-chip">✓ Expiry Date Watchdog</span><span class="module-field-chip">✓ Full Legal Name</span><span class="module-field-chip">✓ Issuing Authority</span><span class="module-field-chip">✓ Issue Date</span>
+              <span class="module-field-chip custom">+ Expiry Date</span><span class="module-field-chip custom">+ Place of Birth</span><span class="module-field-chip custom">+ Document Class</span><span class="module-field-chip custom">+ Verification Notes</span>
             </div>
 
             <div class="module-card-footer">
@@ -775,8 +824,8 @@
 
             <div class="module-fields-title">Purpose-Built Schema Fields</div>
             <div class="module-field-chips">
-              <span class="module-field-chip">✓ Network SSID</span><span class="module-field-chip">✓ Wi-Fi Password</span><span class="module-field-chip">✓ Encryption (WPA3)</span><span class="module-field-chip">✓ Location</span>
-              <span class="module-field-chip custom">+ Router Gateway IP</span><span class="module-field-chip custom">+ Admin Username</span><span class="module-field-chip custom">+ Admin Password</span><span class="module-field-chip custom">+ MAC Whitelist</span>
+              <span class="module-field-chip">✓ Instant Wi-Fi QR Code</span><span class="module-field-chip">✓ Network SSID</span><span class="module-field-chip">✓ Wi-Fi Password</span><span class="module-field-chip">✓ Security (WPA3/WPA2)</span>
+              <span class="module-field-chip custom">+ Router Gateway IP</span><span class="module-field-chip custom">+ Admin Username</span><span class="module-field-chip custom">+ Admin Password</span><span class="module-field-chip custom">+ 2.4 / 5GHz Band</span>
             </div>
 
             <div class="module-card-footer">
@@ -804,7 +853,7 @@
             <tbody>
               <tr>
                 <th>Current Version</th>
-                <td><strong>v1.0.37 (Build 38)</strong> • Production Ready on Android</td>
+                <td><strong>v1.0.43 (Build 45)</strong> • Production Ready on Android</td>
               </tr>
               <tr>
                 <th>Framework &amp; Language</th>
@@ -820,7 +869,19 @@
               </tr>
               <tr>
                 <th>Authentication</th>
-                <td>Android BiometricPrompt (Fingerprint &amp; Face) + <strong>4 to 6 Digit Master PIN</strong></td>
+                <td>Android BiometricPrompt (Fingerprint &amp; Face Unlock) + iOS Face ID/Touch ID + <strong>4 to 6 Digit Master PIN</strong></td>
+              </tr>
+              <tr>
+                <th>Trash Recovery Vault</th>
+                <td>Soft-deletion protected holding vault with 1-tap restore &amp; permanent purge</td>
+              </tr>
+              <tr>
+                <th>Brand Visual Identifiers</th>
+                <td>Domain-based live website favicon caching with cryptographic monograms</td>
+              </tr>
+              <tr>
+                <th>Wi-Fi QR Code Engine</th>
+                <td>Standards-compliant on-the-fly Wi-Fi QR generator (<code>qr_flutter</code>) for instant guest connect</td>
               </tr>
               <tr>
                 <th>Cloud Sync Engine</th>
@@ -913,6 +974,36 @@
               <p>The app continuously audits the entropy of every saved credential. If any password lacks sufficient length, complexity, or character diversity, it flags it with a warning badge. You can open the Weak Passwords sheet anytime to review and strengthen them using the built-in generator.</p>
             </div>
           </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>What happens if I accidentally delete a credential? Is there a Trash bin?</span>
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>Yes! PasswordDiary includes a protected <strong>Trash &amp; Recently Deleted</strong> recovery vault. When you delete any password, card, or note, it is moved to the Trash bin with exact timestamps rather than being permanently destroyed. You can review deleted items, restore any entry back to its active category with a single tap, or empty the trash permanently whenever you wish.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>How does the Instant Wi-Fi QR Code feature work?</span>
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>When you store a Wi-Fi network in PasswordDiary, the app generates a standards-compliant Wi-Fi configuration QR code directly on your screen (100% offline). Visiting guests and friends can scan the QR code with their smartphone camera to connect to your encrypted network instantly without anyone needing to read, copy, or type complex 30-character passwords.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>Does PasswordDiary support Face Unlock alongside Fingerprint?</span>
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>Yes! PasswordDiary integrates device-adaptive biometric authentication using Android BiometricPrompt and iOS LocalAuthentication. It seamlessly supports Face ID, Face Unlock, and Fingerprint sensors. If biometric authentication fails or is temporarily unavailable, your 4 to 6-digit Master PIN is always available as a fallback.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -967,7 +1058,7 @@
             <a href="../expensemate/">ExpenseMate v4.1</a>
             <a href="../chesstimer/">ChessTimer v1.0.9</a>
             <a href="../calculator/">Calculator v1.0.0</a>
-            <a href="../passworddiary/">PasswordDiary v1.0.37</a>
+            <a href="../passworddiary/">PasswordDiary v1.0.43</a>
           </div>
 
           <div class="footer-links-group">
